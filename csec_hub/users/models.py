@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import Group
 
 
 
@@ -20,7 +21,6 @@ class Memebership(User):
     member_of = models.ForeignKey('Division', on_delete=models.CASCADE, related_name='member_type')
     authority = models.ForeignKey('Authority', on_delete=models.CASCADE, null=True, blank=True, related_name='authority')
     is_accepted = models.BooleanField(default=False)
-    accepted_by = models.ForeignKey('Authority', on_delete=models.CASCADE, null=True, blank=True, related_name='accepted_by')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -28,9 +28,12 @@ class Memebership(User):
 
     def __str__(self):
         return self.username
+
+
     
-    def add_to_group(self, member_of):
-        self.groups.add(member_of)
+    def add_to_group(self):
+        new_group = Group.objects.get_or_create(name = self.memeber_of)
+        self.groups.add(new_group)
         self.save()
 
 class Division(models.Model):
