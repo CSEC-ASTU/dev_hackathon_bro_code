@@ -56,13 +56,10 @@ class FeedType(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.name
+        return self.name.name
 
     
-    def add_to_group(self):
-        new_group = Group.objects.get_or_create(name=self.name)
-        self.groups.add(new_group)
-        self.save()
+   
 
 
      
