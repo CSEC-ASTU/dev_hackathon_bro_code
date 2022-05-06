@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
     # 3rd party apps
     'django_summernote',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -92,6 +93,17 @@ DATABASES = {
     }
 }
 
+# mysql database configuration
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.getenv("DB_ENGINE"),
+#         'NAME': os.getenv("DB_NAME"),
+#         'USER': os.getenv("DB_USER"),
+#         'PASSWORD': os.getenv("DB_PASSWORD"),
+#         'HOST': os.getenv("DB_HOST"),
+#         'PORT': os.getenv("DB_PORT"),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -126,10 +138,13 @@ USE_TZ = True
 
 AUTH_USER_MODEL = 'users.User'
 
+TAGGIT_CASE_INSENSITIVE = True
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR, 'media/'
