@@ -1,0 +1,332 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+  <!-- Start Pre-loader -->
+  <div class="pre-loader-wrap">
+    <div class="pre-loader triangle">
+      <svg viewBox="0 0 86 80">
+        <polygon points="43 8 79 72 7 72"></polygon>
+      </svg>
+      <span>Loading...</span>
+    </div>
+  </div>
+  <!-- End Pre-loader -->
+  <!-- Start header section -->
+  <section class="header-section page-header">
+    <header class="header-area">
+      <div class="dope-nav-container breakpoint-off">
+        <div class="container">
+          <div class="row">
+            <!-- Main Menu -->
+            <nav class="dope-navbar justify-content-between" id="dopeNav">
+
+              <!-- Logo -->
+              <a class="nav-brand" href="index.html"><img src="{% static 'img/logo.svg' %}" alt=""></a>
+
+              <!-- Navbar Toggler -->
+              <div class="dope-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
+              </div>
+
+              <!-- Menu -->
+              <div class="dope-menu">
+                <!-- close btn -->
+                <div class="dopecloseIcon">
+                  <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                </div>
+                
+             <!-- Nav Start -->
+             <div class="dopenav">
+              <ul id="nav">
+                <li><a href="{% url 'indexpage' %}">Home</a></li>
+                <li><a href="{% url 'events' %}">Events</a></li>
+                <li><a href="{% url 'feeds' %}">Feeds</a></li>
+                {% comment %} <li><a href="service.html">Sponsorship</a></li> {% endcomment %}
+                <li><a href="{% url 'about' %}">About</a></li>
+                
+                
+                
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'faq' %}">FAQ</a></li>
+              </ul>
+
+            </div>
+            <!-- Nav End -->
+
+                <a href="contact.html" class="menu-btn">Get a quote</a>
+              </div>
+            </nav>
+            <div class="overlay"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row section-gap">
+        <div class="col-md-12">
+          <h1>Our Blog</h1>
+          <ul class="pagination">
+            <li><a href="index.html">Home</a></li>
+            <li>Our Blog</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End header section -->
+
+  <!-- Start blog-post section -->
+  <section class="blog-post-section section-gap">
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-lg-8 col-md-12 blog-posts">
+          <div class="single-post">
+            <a class="feature-img" href="single.html"><img class="img-fluid" src="{% static 'img/f1.jpg' %}" alt=""></a>
+            <div class="details">
+              <div class="meta">
+                <span>By:</span> Marius Kabies / <span>Date:</span> 08.06.2019
+              </div>
+              <a href="single.html">
+                <h2>Effective business delivery solutions at a glance</h2>
+              </a>
+              <p>
+                One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a
+                horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his
+                brown belly, slightly domed and divided by arches into stiff sections.
+              </p>
+            </div>
+          </div>
+          <div class="single-post">
+            <a class="feature-img" href="single.html"><img class="img-fluid" src="{% static 'img/f2.jpg' %}" alt=""></a>
+            <div class="details">
+              <div class="meta">
+                <span>By:</span> Fahem Ahmed / <span>Date:</span> 18.05.2019
+              </div>
+              <a href="single.html">
+                <h2>Contented direction septem but end excellent.</h2>
+              </a>
+              <p>
+                The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks
+                and devious Semikoli but the Little Blind Text didn’t listen She packed her seven versalia , put her
+                initial into the belt and made herself on the way.
+              </p>
+            </div>
+          </div>
+          <div class="single-post">
+            <a class="feature-img" href="single.html"><img class="img-fluid" src="{% static 'img/f3.jpg' %}" alt=""></a>
+            <div class="details">
+              <div class="meta">
+                <span>By:</span> Marius Kabies / <span>Date:</span> 20.04.2019
+              </div>
+              <a href="single.html">
+                <h2>One morning, when Gregor Samsa woke from troubled dreams.</h2>
+              </a>
+              <p>
+                A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
+                paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful
+                Pointing has no control about the blind texts it is an almost unorthographic life.
+              </p>
+            </div>
+          </div>
+          <nav aria-label="page navigation">
+            <ul class="pagination">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-lg-4 col-md-12 sidebar">
+          <div class="widget widget_search">
+            <div class="input-group">
+              <input class="form-control" type="text" placeholder="Search Here...">
+              <div class="input-group-append">
+                <button class="form-btn-style" type="submit">
+                  <i class="icofont-search-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="widget category_widget">
+            <h4 class="widget-title">Post Categories</h4>
+            <ul>
+              <li><a href="#">Business Development (10)</a></li>
+              <li><a href="#">UI/UX Design (7)</a></li>
+              <li><a href="#">Online Marketing (3)</a></li>
+              <li><a href="#">Search Engineen Optimization (2)</a></li>
+              <li><a href="#">Facebook Marketing (13)</a></li>
+            </ul>
+          </div>
+          <div class="widget ads_widget text-center">
+            <img class="img-fluid" src="{% static 'img/ads.jpg' %}" alt="">
+          </div>
+          <div class="widget widget_recent_entries">
+            <h4 class="widget-title">Recent Post</h4>
+            <ul>
+              <li class="d-flex align-items-center justify-content-center">
+                <a class="thumb" href="single.html">
+                  <img src="{% static 'img/r1.jpg' %}" alt="">
+                </a>
+                <div class="meta-wrap">
+                  <a href="single.html">
+                    AdWords History Timeline Published
+                  </a>
+                  <p>November 16, 2018</p>
+                </div>
+              </li>
+              <li class="d-flex align-items-center justify-content-center">
+                <a class="thumb" href="single.html">
+                  <img src="{% static 'img/r2.jpg' %}" alt="">
+                </a>
+                <div class="meta-wrap">
+                  <a href="single.html">
+                    Contented direction septem but end excellent.
+                  </a>
+                  <p>November 16, 2018</p>
+                </div>
+              </li>
+              <li class="d-flex align-items-center justify-content-center">
+                <a class="thumb" href="single.html">
+                  <img src="{% static 'img/r3.jpg' %}" alt="">
+                </a>
+                <div class="meta-wrap">
+                  <a href="single.html">
+                    One morning, when Gregor Samsa woke from troubled.
+                  </a>
+                  <p>November 16, 2018</p>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+          <div class="widget widget_tag_cloud">
+            <h4 class="widget-title">Tags</h4>
+            <ul>
+              <li><a href="#">analysis</a></li>
+              <li><a href="#">business</a></li>
+              <li><a href="#">marketing</a></li>
+              <li><a href="#">optimize</a></li>
+              <li><a href="#">ppc</a></li>
+              <li><a href="#">esearch</a></li>
+              <li><a href="#">seo </a></li>
+              <li><a href="#">smm</a></li>
+              <li><a href="#">targeting</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End blog-post section -->
+  <!-- Start subscribe-form section -->
+  <section class="subscribe-form-section">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center cta-subscribe-wrap other-page">
+        <div class="col-md-5">
+          <h4>Don't miss any Update <br>
+            Subscribe to our Newsletter.
+          </h4>
+        </div>
+        <div class="col-md-7">
+          <form class="input-group subscribe-form-wrap">
+            <input class="form-control" type="text" placeholder="Your Email Address">
+            <div class="input-group-append">
+              <button class="form-btn-style" type="submit">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End subscribe-form section -->
+  <!-- Start footer section -->
+  <footer class="footer-section home-two">
+    <div class="container">
+      <div class="row footer-top section-gap-bottom d-flex justify-content-between">
+        <div class="col-lg-4 col-md-6 col-6 footer-widgets">
+          <img class="footer-logo" src="{% static 'img/logo2.svg' %}" alt="">
+          <p>It is a long established fact that
+            reader will be distracted the readable
+            content of a page when looking at its
+            point of using desktop.</p>
+          <ul class="social-lists">
+            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+            <li><a href="#"><i class="icofont-twitter"></i></a></li>
+            <li><a href="#"><i class="icofont-instagram"></i></a></li>
+            <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">About</h4>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Partners</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">Conditions</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Services</h4>
+            <ul>
+              <li><a href="#">Official lottery</a></li>
+              <li><a href="#">100% Safe Secure</a></li>
+              <li><a href="#">Instant Payout </a></li>
+              <li><a href="#">Performance Bonus</a></li>
+              <li><a href="#">Dedicated Support</a></li>
+              <li><a href="#">No commission</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Company</h4>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Apps</a></li>
+              <li><a href="#">Lottery</a></li>
+              <li><a href="#">Bonues</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row copyright-bottom d-flex align-items-center">
+        <div class="col-md-6">
+          <p><a href="templateshub.net">Templates Hub</a></p>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Privecy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End footer section -->
+  <!-- Start Scroll Top -->
+  <div class="scroll-top">
+    <i class="icofont-rounded-up"></i>
+  </div>
+  <!-- End Scroll Top -->
+  
+  {% endblock content%}

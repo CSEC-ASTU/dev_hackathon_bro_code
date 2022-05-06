@@ -1,0 +1,376 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <!-- Start Pre-loader -->
+  <div class="pre-loader-wrap">
+    <div class="pre-loader triangle">
+      <svg viewBox="0 0 86 80">
+        <polygon points="43 8 79 72 7 72"></polygon>
+      </svg>
+      <span>Loading...</span>
+    </div>
+  </div>
+  <!-- End Pre-loader -->
+  <!-- Start header section -->
+  <section class="header-section page-header">
+    <header class="header-area">
+      <div class="dope-nav-container breakpoint-off">
+        <div class="container">
+          <div class="row">
+            <!-- Main Menu -->
+            <nav class="dope-navbar justify-content-between" id="dopeNav">
+
+              <!-- Logo -->
+              <a class="nav-brand" href="index.html"><img src="{% static 'img/logo.svg' %}" alt=""></a>
+
+              <!-- Navbar Toggler -->
+              <div class="dope-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
+              </div>
+
+              <!-- Menu -->
+              <div class="dope-menu">
+                <!-- close btn -->
+                <div class="dopecloseIcon">
+                  <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                </div>
+
+                 <!-- Nav Start -->
+                 <div class="dopenav">
+                  <ul id="nav">
+                    <li><a href="{% url 'indexpage' %}">Home</a></li>
+                    <li><a href="{% url 'events' %}">Events</a></li>
+                    <li><a href="{% url 'feeds' %}">Feeds</a></li>
+                    {% comment %} <li><a href="service.html">Sponsorship</a></li> {% endcomment %}
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    
+                    
+                    
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                  </ul>
+
+                </div>
+                <!-- Nav End -->
+
+                <a href="contact.html" class="menu-btn">Get a quote</a>
+              </div>
+            </nav>
+            <div class="overlay"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row section-gap">
+        <div class="col-md-12">
+          <h1>Our Portfolio</h1>
+          <ul class="pagination">
+            <li><a href="index.html">Home</a></li>
+            <li>Our Portfolio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End header section -->
+
+  <!-- Start portfolio filter section -->
+  <section class="portfolio-filter-section section-gap-top">
+    <div class="container">
+      <div class="row d-flex justify-content-center section-title">
+        <div class="col-lg-6 col-md-8 col-12">
+          <h1>Some project we provide
+            for our customer</h1>
+          <p>There are many variations of passages of passage available the majority
+            you are going rassing to use a passage of you need to sure.</p>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <ul class="filter-list">
+          <li class="filter-button" data-filter="all">Show All</li>
+          <li class="filter-button" data-filter="branding">Branding</li>
+          <li class="filter-button" data-filter="creative">Creative</li>
+          <li class="filter-button" data-filter="design">Design</li>
+          <li class="filter-button" data-filter="minimal">Minimal</li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="single-portfolio col-lg-4 col-md-6 filter branding">
+          <div class="thumb">
+            <img src="{% static 'img/p1.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="details">
+            <a href="service-details.html">
+              <h4>Cover Design</h4>
+            </a>
+            <p>There are many variations passages
+              passage available the croten majority
+              use going many krun passage available many.</p>
+            <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="single-portfolio col-lg-4 col-md-6 filter creative">
+          <div class="thumb">
+            <img src="{% static 'img/p2.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="details">
+            <a href="service-details.html">
+              <h4>Graphical Representation</h4>
+            </a>
+            <p>There are many variations passages
+              passage available the croten majority
+              use going many krun passage available many.</p>
+            <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="single-portfolio col-lg-4 col-md-6 filter branding">
+          <div class="thumb">
+            <img src="{% static 'img/p3.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="details">
+            <a href="service-details.html">
+              <h4>Banner Design</h4>
+            </a>
+            <p>There are many variations passages
+              passage available the croten majority
+              use going many krun passage available many.</p>
+            <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="single-portfolio col-lg-4 col-md-6 filter minimal">
+          <div class="thumb">
+            <img src="{% static 'img/p4.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="details">
+            <a href="service-details.html">
+              <h4>Magazine Design</h4>
+            </a>
+            <p>There are many variations passages
+              passage available the croten majority
+              use going many krun passage available many.</p>
+            <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="single-portfolio col-lg-4 col-md-6 filter design">
+          <div class="thumb">
+            <img src="{% static  'img/p5.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="details">
+            <a href="service-details.html">
+              <h4>Cover Design</h4>
+            </a>
+            <p>There are many variations passages
+              passage available the croten majority
+              use going many krun passage available many.</p>
+            <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="single-portfolio col-lg-4 col-md-6 filter minimal">
+          <div class="thumb">
+            <img src="{% static 'img/p6.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="details">
+            <a href="service-details.html">
+              <h4>Flayer Design</h4>
+            </a>
+            <p>There are many variations passages
+              passage available the croten majority
+              use going many krun passage available many.</p>
+            <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="single-portfolio col-lg-4 col-md-6 filter minimal">
+          <div class="thumb">
+            <img src="{% static 'img/p7.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="details">
+            <a href="service-details.html">
+              <h4>Flayer Design</h4>
+            </a>
+            <p>There are many variations passages
+              passage available the croten majority
+              use going many krun passage available many.</p>
+            <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="single-portfolio col-lg-4 col-md-6 filter minimal">
+          <div class="thumb">
+            <img src="{% static 'img/p8.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="details">
+            <a href="service-details.html">
+              <h4>Flayer Design</h4>
+            </a>
+            <p>There are many variations passages
+              passage available the croten majority
+              use going many krun passage available many.</p>
+            <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="single-portfolio col-lg-4 col-md-6 filter minimal">
+          <div class="thumb">
+            <img src="{% static 'img/p9.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="details">
+            <a href="service-details.html">
+              <h4>Flayer Design</h4>
+            </a>
+            <p>There are many variations passages
+              passage available the croten majority
+              use going many krun passage available many.</p>
+            <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- End portfolio filter section -->
+
+
+  <!-- Start Brand Logo Section -->
+  <section class="brand-logo-section">
+    <div class="container">
+      <div class="row bottom-logo-wrap">
+        <div class="brand-logo-carousel owl-carousel owl-theme">
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand1.png' %}" alt="">
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand2.png' %}" alt="">
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand3.png' %}" alt="">
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand4.png' %}" alt="">
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand5.png' %}" alt="">
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand6.png' %}" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Brand Logo Section -->
+  <!-- Start subscribe-form section -->
+  <section class="subscribe-form-section">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center cta-subscribe-wrap other-page">
+        <div class="col-md-5">
+          <h4>Don't miss any Update <br>
+            Subscribe to our Newsletter.
+          </h4>
+        </div>
+        <div class="col-md-7">
+          <form class="input-group subscribe-form-wrap">
+            <input class="form-control" type="text" placeholder="Your Email Address">
+            <div class="input-group-append">
+              <button class="form-btn-style" type="submit">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End subscribe-form section -->
+  <!-- Start footer section -->
+  <footer class="footer-section home-two">
+    <div class="container">
+      <div class="row footer-top section-gap-bottom d-flex justify-content-between">
+        <div class="col-lg-4 col-md-6 col-6 footer-widgets">
+          <img class="footer-logo" src="{% static 'img/logo2.svg' %}" alt="">
+          <p>It is a long established fact that
+            reader will be distracted the readable
+            content of a page when looking at its
+            point of using desktop.</p>
+          <ul class="social-lists">
+            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+            <li><a href="#"><i class="icofont-twitter"></i></a></li>
+            <li><a href="#"><i class="icofont-instagram"></i></a></li>
+            <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">About</h4>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Partners</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">Conditions</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Services</h4>
+            <ul>
+              <li><a href="#">Official lottery</a></li>
+              <li><a href="#">100% Safe Secure</a></li>
+              <li><a href="#">Instant Payout </a></li>
+              <li><a href="#">Performance Bonus</a></li>
+              <li><a href="#">Dedicated Support</a></li>
+              <li><a href="#">No commission</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Company</h4>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Apps</a></li>
+              <li><a href="#">Lottery</a></li>
+              <li><a href="#">Bonues</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row copyright-bottom d-flex align-items-center">
+        <div class="col-md-6">
+          <p><a href="templateshub.net">Templates Hub</a></p>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Privecy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End footer section -->
+  <!-- Start Scroll Top -->
+  <div class="scroll-top">
+    <i class="icofont-rounded-up"></i>
+  </div>
+  {% endblock content %}
