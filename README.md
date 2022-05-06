@@ -1,2 +1,7 @@
 # dev_hackathon_bro_code
-Bro Cpde
+## CSEC Club Management Platform
+### Bro C0de
+#### Esrael Dawit
+#### Natnael Kiflu
+#### Yonathan Assefa
+
