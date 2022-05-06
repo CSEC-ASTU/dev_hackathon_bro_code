@@ -49,8 +49,7 @@ CUSTOM_INSTALLED_APPS = [
 ]
 
 INSTALLED_LIBRARIES = [
-    'admin_volt.apps.AdminVoltConfig',
-    'volt',
+    'admin_volt',
     'django.contrib.admin',
 ]
 
