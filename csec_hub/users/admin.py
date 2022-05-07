@@ -1,7 +1,33 @@
 from django.contrib import admin
-from .models import Division, Memebership, Authority
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.admin import UserAdmin
+from .models import User, Division, Membership, Authority
+from django.utils.translation import gettext_lazy as _
 
 
+class UserChangeForm(UserChangeForm):
+    class Meta(UserChangeForm.Meta):
+        model = User
+@admin.register(User)
+class UserAdmin(UserAdmin):
+	form = UserChangeForm
+
+	fieldsets = (
+	        (None, {'fields': ('email', 'phone', 'password',)}),
+		(_('Personal info'), {'fields': ('first_name', 'last_name', )}),
+		(_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions', )}),
+		(_('Important dates'), {'fields': ('last_login', 'date_joined', )}),
+			
+	)
+	add_fieldsets = (
+		(None, {
+			'classes': ('wide', ),
+			'fields': ('email', 'phone', 'password1', 'password2', ),
+		}),
+	)
+	list_display = ['email', 'first_name', 'last_name', 'is_staff', "phone", 'is_active']
+	search_fields = ('email', 'first_name', 'last_name', )
+	ordering = ('email', )
 @admin.register(Division)
 class DivisionAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'created_at', 'updated_at', 'is_active')
@@ -11,8 +37,8 @@ class DivisionAdmin(admin.ModelAdmin):
     list_editable = ('is_active',)
     ordering = ('-created_at',)
 
-@admin.register(Memebership)
-class MemebershipAdmin(admin.ModelAdmin):
+@admin.register(Membership)
+class MembershipAdmin(admin.ModelAdmin):
     list_display = ('school_id','member_of','member_authority', 'created_at', 'updated_at', 'is_active','is_accepted')
     list_filter = ('is_accepted', 'created_at', 'updated_at', 'is_active')
     search_fields = ('is_accepted', 'created_at', 'updated_at', 'is_active')
