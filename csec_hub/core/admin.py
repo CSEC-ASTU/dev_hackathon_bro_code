@@ -2,7 +2,7 @@ from multiprocessing import Event
 from django.contrib import admin
 
 from django_summernote.admin import SummernoteModelAdmin
-from .models import CpdScoreBoard,DevScoreBoard,Feed, FeedType, Event
+from .models import ScoreBoard,Feed, FeedType, Event
 
 class FeedAdmin(SummernoteModelAdmin):
     summernote_fields = ('body',)
@@ -12,37 +12,29 @@ class FeedAdmin(SummernoteModelAdmin):
 
 admin.site.register(Feed, FeedAdmin)
 
-@admin.register(CpdScoreBoard)
-class CpdScoreBoardAdmin(admin.ModelAdmin):
-    list_display = ('title', 'posted_by', 'created_at', 'updated_at', 'is_active')
-    list_filter = ('posted_by', 'created_at', 'updated_at', 'is_active')
+@admin.register(ScoreBoard)
+class ScoreBoardAdmin(SummernoteModelAdmin):
+
+
+    fieldsets = (
+        ('Score Board', {
+            'fields': ('title', 'scoreboard_date','body', 'posted_by', 'is_active','tags')
+        }),
+        ('Meta Data', {
+            'fields': ('created_at', 'updated_at')
+        }),
+    )
+    summernote_fields = ('body',)
+    readonly_fields = ['created_at','updated_at',]
+    list_display = ('title', 'posted_by','body', 'created_at', 'updated_at', 'is_active','scoreboard_date' )
+    
+    list_filter = ('posted_by', 'created_at', 'updated_at', 'is_active','scoreboard_date')
     search_fields = ('title', 'posted_by__username', 'created_at', 'updated_at', 'is_active')
     list_per_page = 10
     ordering = ('-created_at',)
     list_display_links = ('title',)
     list_editable = ('is_active',)
     list_select_related = ('posted_by',)
-@admin.register(DevScoreBoard)
-class DevScoreBoardAdmin(admin.ModelAdmin):
-    # field set
-    fieldsets = (
-        ('Basic Information', {
-            'fields': ('title', 'posted_by', 'created_at', 'updated_at', 'is_active')
-        }),
-        ('Content', {
-            'fields': ('body',)
-        }),
-        ('Tags', {
-            'fields': ('tags',)
-        }),
-    )
-    
-    list_display = ('title', 'posted_by', 'created_at', 'updated_at', 'is_active')
-    list_filter = ('posted_by', 'created_at', 'updated_at', 'is_active')
-    search_fields = ('title', 'posted_by__username', 'created_at', 'updated_at', 'is_active')
-    list_per_page = 10
-    ordering = ('-created_at',)
-    list_display_links = ('title',)
 
 @admin.register(FeedType)
 class FeedTypeAdmin(admin.ModelAdmin):

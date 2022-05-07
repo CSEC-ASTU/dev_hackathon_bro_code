@@ -14,5 +14,18 @@ urlpatterns = [
     path('dev_score_board/', views.DevScoreBoardView.as_view(), name='dev_score_board'),
     path('dev_score_board/<int:pk>/', views.DevScoreBoardDetailView.as_view(), name='dev_score_board_detail'),
 
-    
+
+    path('',views.hompage,name = 'indexpage'),
+  
+  
+    path('about',views.about,name = 'about'),
+
+    path('contact',views.contact,name = 'contact'),
+    path('faq',views.faq,name = 'faq'),
+
+    path('register',views.register,name = 'register'),
+    path('signin',views.signin,name = 'signin'),
+    path('hall-of-fame',views.hallOfFame,name = 'hall-of-fame'),
+    path('fame-detail',views.fameDetail,name = 'fame-detail'),
 ]
+
