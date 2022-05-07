@@ -21,20 +21,36 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'phone']
     
     
-class Membership(User):
+class Membership(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     school_id = models.CharField(max_length=255, blank=True, null=True)
     member_of = models.ForeignKey('Division', on_delete=models.CASCADE, related_name='member_type')
-    member_authority = models.ForeignKey('Authority', on_delete=models.CASCADE, null=True, blank=True, related_name='member_authority')
-    is_accepted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+    is_accepted = models.BooleanField(default=False)
     class Meta:
         verbose_name = 'Member'
         verbose_name_plural = 'Members'
 
     def __str__(self):
-        return self.username
-            
+        return self.user.username
+
+class Excuitive(models.Model):
+    user = models.OneToOneField(Membership, on_delete=models.CASCADE, primary_key=True)
+    authority = models.OneToOneField('Authority', on_delete=models.CASCADE, null=True, blank=True, related_name='authority')
+    is_accepted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+    class Meta:
+        verbose_name = 'Excuitive'
+        verbose_name_plural = 'Excuitives'
+    
+    def __str__(self):
+        return 
+
+
 class Division(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()

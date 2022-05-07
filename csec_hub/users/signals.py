@@ -8,7 +8,7 @@ from .models import Membership
 def add_to_group(sender, instance, created, **kwargs):
    if created:
        new_group, created = Group.objects.get_or_create(name=instance.member_of.name)
-       instance.groups.add(new_group)
+       instance.user.groups.add(new_group)
        instance.save()
    else:
        pass

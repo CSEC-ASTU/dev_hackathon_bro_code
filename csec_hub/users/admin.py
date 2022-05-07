@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.admin import UserAdmin
-from .models import User, Division, Membership, Authority
+from .models import Excuitive, User, Division, Membership, Authority
 from django.utils.translation import gettext_lazy as _
 
 
@@ -39,13 +39,19 @@ class DivisionAdmin(admin.ModelAdmin):
 
 @admin.register(Membership)
 class MembershipAdmin(admin.ModelAdmin):
-    list_display = ('school_id','member_of','member_authority', 'created_at', 'updated_at', 'is_active','is_accepted')
+    list_display = ('school_id','member_of', 'created_at', 'updated_at', 'is_active','is_accepted')
     list_filter = ('is_accepted', 'created_at', 'updated_at', 'is_active')
     search_fields = ('is_accepted', 'created_at', 'updated_at', 'is_active')
     list_per_page = 10
     list_editable = ('is_accepted',)
     ordering = ('-created_at',)
 
+@admin.register(Excuitive)
+class ExcutiveAdmin(admin.ModelAdmin):
+    list_display = ('user', 'authority', 'is_accepted', 'created_at', 'updated_at', 'is_active')
+    list_filter = ('is_accepted', 'created_at', 'updated_at', 'is_active')
+    search_fields = ('is_accepted', 'created_at', 'updated_at', 'is_active')
+    
 @admin.register(Authority)
 class AuthorityAdmin(admin.ModelAdmin):
     list_display = ('position', 'description', 'created_at', 'updated_at', 'is_active')
