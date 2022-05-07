@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Division, Memebership, Authority
+from .models import Division, Membership, Authority
 
 
 @admin.register(Division)
@@ -11,7 +11,7 @@ class DivisionAdmin(admin.ModelAdmin):
     list_editable = ('is_active',)
     ordering = ('-created_at',)
 
-@admin.register(Memebership)
+@admin.register(Membership)
 class MemebershipAdmin(admin.ModelAdmin):
     list_display = ('school_id','member_of','member_authority', 'created_at', 'updated_at', 'is_active','is_accepted')
     list_filter = ('is_accepted', 'created_at', 'updated_at', 'is_active')
