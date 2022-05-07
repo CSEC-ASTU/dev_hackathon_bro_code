@@ -15,5 +15,7 @@ urlpatterns = [
 
     path('event-detail',views.eventDetail,name = 'event-detail'),
     path('feed-detail',views.feedDetail,name = 'feed-detail'),
+    path('register',views.register,name = 'register'),
+    path('signin',views.signin,name = 'signin'),
 
 ]
