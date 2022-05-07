@@ -49,8 +49,8 @@ class ScoreBoardView(ListView):
         self.template_name = 'scoreboard.html'
         self.context_object_name = 'score_board'
         self.queryset = self.model.objects.filter(is_active=True)
-        self.paginate_by = 10
-        self.paginate_orphans = 5
+        self.paginate_by = 1
+        
 
 
 
@@ -67,8 +67,8 @@ class FeedView(ListView):
         self.template_name = 'feeds.html'
         self.context_object_name = 'feed'
         self.queryset = self.model.objects.filter(is_active=True)
-        self.paginate_by = 10
-        self.paginate_orphans = 5
+        self.paginate_by = 1
+        
 
 class FeedDetailView(DetailView):
     def __init__(self):
