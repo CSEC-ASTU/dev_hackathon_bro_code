@@ -22,19 +22,38 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'phone']
     
     
+<<<<<<< Updated upstream
 class Membership(User):
+=======
+<<<<<<< Updated upstream
+class Memebership(User):
+=======
+class Membership(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='membership')
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     school_id = models.CharField(max_length=255, blank=True, null=True)
-    member_of = models.ForeignKey('Division', on_delete=models.CASCADE, related_name='member_type')
+    member_of = models.ManyToManyField('Division', related_name='member_type')
     member_authority = models.ForeignKey('Authority', on_delete=models.CASCADE, null=True, blank=True, related_name='member_authority')
     is_accepted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+<<<<<<< Updated upstream
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     class Meta:
         verbose_name = 'Membership'
+=======
+<<<<<<< Updated upstream
+=======
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    is_active = models.BooleanField(default=True)
+    class Meta:
+        verbose_name = 'Membership'
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
     def __str__(self):
-        return self.username
+        return self.user.username
     
 class Division(models.Model):
     name = models.CharField(max_length=255)
