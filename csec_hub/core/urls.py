@@ -3,7 +3,7 @@ from . import views
 
 app_name = 'core'
 
-url_patterns = [
+urlpatterns = [
    
     path('feed/', views.FeedView.as_view(), name='feed'),
     path('feed/<int:pk>/', views.FeedDetailView.as_view(), name='feed_detail'),
