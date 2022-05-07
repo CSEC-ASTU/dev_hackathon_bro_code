@@ -77,11 +77,8 @@ def activate(request, uidb64, token):
 # Sign in view
 class SignInView(LoginView):
     template_name = 'login.html'
-    redirect_authenticated_user = True
+    # redirect_authenticated_user = True
     extra_context = {'title': 'Sign In'}
-    # redirect user
-    def get_success_url(self):
-        return reverse_lazy('home')
 
 
 # django sign out view
