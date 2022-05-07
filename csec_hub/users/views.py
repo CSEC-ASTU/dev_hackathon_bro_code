@@ -56,7 +56,7 @@ class SignUpView(SuccessMessageMixin, CreateView):
                     mail_subject, message, to=[to_email]
         )
         email.send()
-        return HttpResponse('Please confirm your email address to complete the registration')
+        return redirect('users:email-sent')
 
 
 def activate(request, uidb64, token):
@@ -73,8 +73,13 @@ def activate(request, uidb64, token):
         return redirect('login')
         # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
-        return HttpResponse('Activation link is invalid!')
+        return redirect('users:link-expired')
 
+def emailSent(request):
+    return render(request,'email-sent.html',context={})
+
+def expiredLink(request):
+    return render(request,'link-expired.html',context={})
 
 # Sign in view
 class SignInView(LoginView):
@@ -103,10 +108,10 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, TemplateView):
 
 # password reset view
 class PasswordResetView(SuccessMessageMixin, PasswordResetView):
-    template_name = 'users/password_reset.html'
+    template_name = 'password_reset.html'
     success_url = reverse_lazy('password_reset_done')
     success_message = "Password reset email sent successfully"
-    email_template_name = 'users/password_reset_email.html'
+    # email_template_name = 'users/password_reset_email.html'
     subject_template_name = 'users/password_reset_subject.txt'
     extra_email_context = {'url': 'https://www.csec.org.in/hub/password_reset/{uid}/{token}'}
 
