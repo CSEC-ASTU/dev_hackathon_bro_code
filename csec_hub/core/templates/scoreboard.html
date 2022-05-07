@@ -98,13 +98,13 @@
           <h4>{{score.title}} </h4>
           <div class="single-post">
         
-             <img src=" {{score.image.url}}">
+             {{score.body |safe}}
                
          
             <div class="details">
               <div class="meta">
                 <span>By:</span>{{score.posted_by}} / <span>Date:</span> {{score.updated_at}}
-                <p> {{score.description}} </p>
+               
                 <a href="{% url 'core:feed-detail' score.id %}" style="margin-left:100px;color:#188bfd">
                   
                   Learn More

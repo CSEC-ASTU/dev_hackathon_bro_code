@@ -12,8 +12,7 @@ class ScoreBoard(models.Model):
         return 'cscore_board/%s' % filename
 
     title = models.CharField(max_length=255)
-    description = models.TextField()
-    image = models.ImageField(upload_to=upload_to_score_board)
+    body = models.TextField()
     posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='score_board_posted_by')
     tags = TaggableManager() 
     scoreboard_date = models.DateTimeField()

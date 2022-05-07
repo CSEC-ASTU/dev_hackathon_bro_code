@@ -13,20 +13,20 @@ class FeedAdmin(SummernoteModelAdmin):
 admin.site.register(Feed, FeedAdmin)
 
 @admin.register(ScoreBoard)
-class ScoreBoardAdmin(admin.ModelAdmin):
+class ScoreBoardAdmin(SummernoteModelAdmin):
 
 
     fieldsets = (
         ('Score Board', {
-            'fields': ('title', 'image', 'scoreboard_date','description', 'posted_by', 'is_active','tags')
+            'fields': ('title', 'scoreboard_date','body', 'posted_by', 'is_active','tags')
         }),
         ('Meta Data', {
             'fields': ('created_at', 'updated_at')
         }),
     )
-
+    summernote_fields = ('body',)
     readonly_fields = ['created_at','updated_at',]
-    list_display = ('title', 'posted_by','description', 'created_at', 'updated_at', 'is_active','scoreboard_date','image' )
+    list_display = ('title', 'posted_by','body', 'created_at', 'updated_at', 'is_active','scoreboard_date' )
     
     list_filter = ('posted_by', 'created_at', 'updated_at', 'is_active','scoreboard_date')
     search_fields = ('title', 'posted_by__username', 'created_at', 'updated_at', 'is_active')
