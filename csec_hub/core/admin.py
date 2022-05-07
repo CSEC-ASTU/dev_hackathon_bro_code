@@ -1,7 +1,8 @@
+from multiprocessing import Event
 from django.contrib import admin
 
 from django_summernote.admin import SummernoteModelAdmin
-from .models import CpdScorBoard,DevScoreBoard,Feed, FeedType
+from .models import CpdScoreBoard,DevScoreBoard,Feed, FeedType, Event
 
 class FeedAdmin(SummernoteModelAdmin):
     summernote_fields = ('body',)
@@ -11,8 +12,8 @@ class FeedAdmin(SummernoteModelAdmin):
 
 admin.site.register(Feed, FeedAdmin)
 
-@admin.register(CpdScorBoard)
-class CpdScorBoardAdmin(admin.ModelAdmin):
+@admin.register(CpdScoreBoard)
+class CpdScoreBoardAdmin(admin.ModelAdmin):
     list_display = ('title', 'posted_by', 'created_at', 'updated_at', 'is_active')
     list_filter = ('posted_by', 'created_at', 'updated_at', 'is_active')
     search_fields = ('title', 'posted_by__username', 'created_at', 'updated_at', 'is_active')
@@ -52,3 +53,10 @@ class FeedTypeAdmin(admin.ModelAdmin):
     ordering = ('-created_at',)
     list_display_links = ('name',)
     list_editable = ('is_active',)
+
+@admin.register(Event)
+class EventAdmin(admin.ModelAdmin):
+    list_display = ('title', 'posted_by', 'created_at', 'updated_at', 'is_active', 'is_completed')
+    list_filter = ('posted_by', 'created_at', 'updated_at', 'is_active')
+    search_fields = ('title', 'posted_by__username', 'created_at', 'updated_at', 'is_active', 'is_completed')
+    list_editable = ('is_completed',)   
