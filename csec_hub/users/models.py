@@ -48,7 +48,7 @@ class Excuitive(models.Model):
         verbose_name_plural = 'Excuitives'
     
     def __str__(self):
-        return 
+        return self.user.user.username
 
 
 class Division(models.Model):
