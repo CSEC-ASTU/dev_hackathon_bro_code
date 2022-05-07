@@ -11,7 +11,7 @@ class User(AbstractUser):
     def upload_to_profile(self, filename):
         return 'dev_score_board/%s' % filename
 
-
+    email = models.EmailField(unique=True)
     telegram_username = models.CharField(max_length=255, blank=True, null=True)
     sex = models.CharField(max_length=1, choices=SEXCHOICE)
     profile_picture = models.ImageField(upload_to_profile, null=True, blank=True)

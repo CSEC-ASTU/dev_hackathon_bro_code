@@ -22,10 +22,10 @@ class UserAdmin(UserAdmin):
 	add_fieldsets = (
 		(None, {
 			'classes': ('wide', ),
-			'fields': ('email', 'phone', 'password1', 'password2', ),
+			'fields': ('username', 'email', 'phone', 'password1', 'password2', ),
 		}),
 	)
-	list_display = ['email', 'first_name', 'last_name', 'is_staff', "phone", 'is_active']
+	list_display = ['phone','username','email', 'first_name', 'last_name', 'is_staff', "phone", 'is_active']
 	search_fields = ('email', 'first_name', 'last_name', )
 	ordering = ('email', )
 @admin.register(Division)
