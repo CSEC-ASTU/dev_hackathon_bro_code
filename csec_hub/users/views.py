@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from .forms import UserRegisterForm
+from django.shortcuts import redirect
 
 # View
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView
@@ -10,6 +10,8 @@ from django.views.generic.edit import CreateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+# Model
+from .forms import UserRegisterForm
 
 # Sign up view
 class SignUpView(SuccessMessageMixin, CreateView):
