@@ -35,12 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig',
-    'core.apps.CoreConfig',
+
 ]
 
 CUSTOM_INSTALLED_APPS = [
-    'core',
+    'users.apps.UsersConfig',
+    'core.apps.CoreConfig',
 ]
 
 INSTALLED_LIBRARIES = [
