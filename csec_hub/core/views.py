@@ -32,12 +32,6 @@ def fameDetail(request):
 
 
 
-def register(request):
-    return render(request,'register.html',context={})
-
-def signin(request):
-        return render(request,'signin.html',context={})
-
 
 
 
