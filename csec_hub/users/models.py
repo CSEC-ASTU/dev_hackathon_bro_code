@@ -22,9 +22,9 @@ class User(AbstractUser):
     
     
 class Membership(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='membership')
     school_id = models.CharField(max_length=255, blank=True, null=True)
-    member_of = models.ForeignKey('Division', on_delete=models.CASCADE, related_name='member_type')
+    member_of = models.ForeignKey('Division', on_delete=models.CASCADE, related_name='member_type', unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
@@ -37,7 +37,7 @@ class Membership(models.Model):
         return self.user.username
 
 class Excuitive(models.Model):
-    user = models.OneToOneField(Membership, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(Membership, on_delete=models.CASCADE)
     authority = models.OneToOneField('Authority', on_delete=models.CASCADE, null=True, blank=True, related_name='authority')
     is_accepted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
