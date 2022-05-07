@@ -23,6 +23,19 @@ class CpdScorBoardAdmin(admin.ModelAdmin):
     list_select_related = ('posted_by',)
 @admin.register(DevScoreBoard)
 class DevScoreBoardAdmin(admin.ModelAdmin):
+    # field set
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('title', 'posted_by', 'created_at', 'updated_at', 'is_active')
+        }),
+        ('Content', {
+            'fields': ('body',)
+        }),
+        ('Tags', {
+            'fields': ('tags',)
+        }),
+    )
+    
     list_display = ('title', 'posted_by', 'created_at', 'updated_at', 'is_active')
     list_filter = ('posted_by', 'created_at', 'updated_at', 'is_active')
     search_fields = ('title', 'posted_by__username', 'created_at', 'updated_at', 'is_active')
