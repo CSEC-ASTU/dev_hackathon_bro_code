@@ -43,7 +43,7 @@
                     <li><a href="{% url 'core:indexpage' %}">Home</a></li>
                     <li><a href="{% url 'core:events' %}">Events</a></li>
                     <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
-                    {% comment %} <li><a href="service.html">Sponsorship</a></li> {% endcomment %}
+                    <li><a href="{% url 'core:score_board' %}">SoreBoard</a></li>                    
                     <li><a href="{% url 'core:about' %}">About</a></li>
                     
                     
@@ -78,11 +78,11 @@
     <div class="container">
       <div class="row section-gap">
         <div class="col-md-12">
-          <h1>Blog Details</h1>
+          <h1>Feed Details</h1>
           <ul class="pagination">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li>Blog Details</li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Feed</a></li>
+            <li>Feed Details</li>
           </ul>
         </div>
       </div>
@@ -96,110 +96,29 @@
       <div class="row d-flex">
         <div class="col-lg-8 col-md-12 blog-posts">
           <div class="single-post post">
-            <img class="img-fluid" src="{% static 'img/f1.jpg' %}" alt="">
-            <div class="details entry-content">
+
+            
+          <div class="single-post">
+            <a href="single.html">
+            
+            </a>
+            
+            {{feed.body |safe}}
+            <div class="details">
               <div class="meta">
-                <span>By:</span> Marius Kabies / <span>Date:</span> 08.06.2019
+                <span>By:</span> {{feed.posted_by}} / <span>Date:</span> {{feed.updated_at}}
               </div>
-              <h2 class="title">Effective business delivery solutions at a glance</h2>
-              <br>
-              <p>
-                One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a
-                horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his
-                brown belly, slightly domed and divided by arches into stiff sections.
-              </p> <br>
-              <p>
-                It is a long established fact that a reader will be distracted by the readable content of a page whene
-                looking at its
-                layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                opposed too
-                using 'Content here, content here', making it look like readable English. Many publishing packa ges and
-                web page
-                editors now use Lorem Ipsum as their default model text, and a search for will uncover many web sites
-                still in
-                their infancy look like readable English.
-              </p> <br>
-              <img class="img-fluid" src="{% static 'img/post-img.jpg' %}" alt=""> <br> <br>
-              <p>
-                It is a long established fact that a reader will be distracted by the readable content of a page whene
-                looking at its
-                layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                opposed too
-                using 'Content here, content here', making it look like readable English. Many publishing packa ges and
-                web page
-                editors now use Lorem Ipsum as their default model text, and a search for will uncover many web sites
-                still in
-                their infancy look like readable English.
-              </p>
-              <br>
-              <img class="img-fluid" src="{% static 'img/post-img2.jpg' %}" alt="">
+            
             </div>
-            <div class="footer-meta row">
-              <div class="col-md-6 meta-left">
-                <p><span>Category:</span></p>
-                <ul>
-                  <li><a href="#">Business Development, </a></li>
-                  <li><a href="#">UI/UX Design</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 meta-right">
-                <p><span>Tags:</span></p>
-                <ul>
-                  <li><a href="#">marketing, </a></li>
-                  <li><a href="#">business, </a></li>
-                  <li><a href="#">agency</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="comments-wrap">
-              <h2>Comments (02)</h2>
-              <div class="media comments">
-                <img class="mr-3" src="{% static 'img/avatar1.jpg' %}" alt="Generic placeholder image">
-                <div class="media-body">
-                  <h5 class="mt-0">Jon Doe</h5>
-                  <p>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                    scelerisque ante sollicitudin. Cras purus odio, vestibulum
-                    in vulputate at, tempus viverra turpis. Fusce condimentum
-                    nunc ac nisi vulputate fringilla. Donec lacinia congue felis
-                    in faucibus.
-                  </p>
-                  <div class="comment-buttons">
-                    <a href="#" class="primary-btn black-btn">Replay</a>
-                  </div>
-                </div>
-              </div>
-              <div class="media comments">
-                <img class="mr-3" src="{% static 'img/avatar2.jpg' %}" alt="Generic placeholder image">
-                <div class="media-body">
-                  <h5 class="mt-0">Jane Doe</h5>
-                  <p>
-                    It is a long established fact that a reader will be distracted by the readable content of a page
-                    whene looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                    distribution of letters, as opposed too using.
-                  </p>
-                  <div class="comment-buttons">
-                    <a href="#" class="primary-btn black-btn">Replay</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="comment-form-wrap">
-              <h2>Leave a Comment</h2>
-              <div class="row">
-                <div class="col-md-6">
-                  <input class="form-control" type="text" name="name" placeholder="Name">
-                </div>
-                <div class="col-md-6">
-                  <input class="form-control" type="email" name="email" placeholder="Email">
-                </div>
-                <div class="col-md-12">
-                  <input class="form-control" type="text" name="website" placeholder="Website">
-                  <textarea class="form-control" name="messege" placeholder="Messege" cols="30" rows="10"></textarea>
-                  <a class="btn-style" href="#">Post Comment</a>
-                </div>
-              </div>
-            </div>
+            <h4>{{feed.title}}
+            </h4>
+           
+          </div>
+
+     
+
+         
+       
           </div>
         </div>
         <div class="col-lg-4 col-md-12 sidebar">

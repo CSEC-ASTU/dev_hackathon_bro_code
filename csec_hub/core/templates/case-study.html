@@ -60,8 +60,13 @@
                     <li><a href="{% url 'core:indexpage' %}">Home</a></li>
                     <li><a href="{% url 'core:events' %}">Events</a></li>
                     <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
-                    {% comment %} <li><a href="service.html">Sponsorship</a></li> {% endcomment %}
-                    <li><a href="{% url 'core:about' %}">About</a></li>
+                    <li>
+                      <a href="service.html">SoreBoard</a>
+                      <ul class="sub-menu">
+                        <li><a href="index.html">Cpd ScoreBoard</a></li>
+                        <li><a href="index2.html">Dev ScoreBoard</a>
+                      </ul>
+                    </li>                    <li><a href="{% url 'core:about' %}">About</a></li>
                     
                     
                     

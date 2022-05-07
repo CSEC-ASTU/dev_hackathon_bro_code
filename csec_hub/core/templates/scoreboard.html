@@ -94,22 +94,25 @@
       <div class="row d-flex">
         <div class="col-lg-8 col-md-12 blog-posts">
 
-          {% for fed in feed%}
+          {% for score in score_board%}
+          <h4>{{score.title}} </h4>
           <div class="single-post">
         
-            
-            {{fed.body |safe}}     
+             <img src=" {{score.image.url}}">
+               
          
             <div class="details">
               <div class="meta">
-                <span>By:</span> {{fed.posted_by}} / <span>Date:</span> {{fed.updated_at}}
-                <a href="{% url 'core:feed-detail' fed.id %}" style="margin-left:100px;color:#188bfd">
+                <span>By:</span>{{score.posted_by}} / <span>Date:</span> {{score.updated_at}}
+                <p> {{score.description}} </p>
+                <a href="{% url 'core:feed-detail' score.id %}" style="margin-left:100px;color:#188bfd">
+                  
                   Learn More
                  </a>
               </div>
             
             </div>
-            <h4>{{fed.title}}
+            
             </h4>
            
           </div>

@@ -21,7 +21,7 @@
             <nav class="dope-navbar justify-content-between" id="dopeNav">
 
               <!-- Logo -->
-              <a class="nav-brand" href="index.html"><img src="{% static 'img/logo.svg' %}" alt=""></a>
+              <a class="nav-brand" href="index.html"><img src="assets/img/logo.svg" alt=""></a>
 
               <!-- Navbar Toggler -->
               <div class="dope-navbar-toggler">
@@ -35,6 +35,7 @@
                   <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                 </div>
 
+                
                  <!-- Nav Start -->
                  <div class="dopenav">
                   <ul id="nav">
@@ -64,7 +65,6 @@
                 </div>
                 <!-- Nav End -->
                 
-
                 <a href="contact.html" class="menu-btn">Get a quote</a>
               </div>
             </nav>
@@ -73,126 +73,78 @@
         </div>
       </div>
     </header>
-    <div class="container">
-      <div class="row section-gap">
-        <div class="col-md-12">
-          <h1>Our Portfolio</h1>
-          <ul class="pagination">
-            <li><a href="index.html">Home</a></li>
-            <li>Our Portfolio</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    
   </section>
   <!-- End header section -->
-
-  <!-- Start portfolio filter section -->
-  <section class="portfolio-filter-section section-gap-top">
+  <!-- Start portfolio-details section -->
+  <section class="portfolio-details-section det  ">
     <div class="container">
-      <div class="row d-flex justify-content-center section-title">
-        <div class="col-lg-6 col-md-8 col-12">
-          <h1>Some project we provide
-            for our customer </h1>
-           
-          <p>There are many variations of passages of passage available the majority
-            you are going rassing to use a passage of you need to sure.</p>
+      <div class="row d-flex ">
+
+        <div class="col-lg-6 details-container  mt-5">
+          <div class="abt mt-5 mr-5">
+            <h1>Tomas Edison</h1>
+            
+            <p style="mr-5">  
+              Where does it come from?
+              
+              Contrary to popular belief, Lorem Ipsum 
+              is not simply random text. 
+              It has roots in a piece of class
+
+            </p>
+            <table>
+              <tr>
+                <td class="title">Client</td>
+                <td>Donal Arichange</td>
+              </tr>
+              <tr>
+                <td class="title">Project type</td>
+                <td>Digital Marketing</td>
+              </tr>
+            </table>
+
+          </div>
         </div>
-      </div>
+        <div class="col-lg-6 gallery-wrap  mt-5 mb-5">
+          <div class="outer mb-5 mt-5" style="background-color:#dddbdc;margin-top:50px">
+            <div id="big" class="owl-carousel owl-theme portfolio-carousel mb-2 mt-5" >
+              
+                <img class="img-fluid" style="max-height:300px;object-fit: fill;" src="https://cmhof.imgix.net/content/uploads/2019/03/11072215/Anderson_Bill.jpg" alt="">
+              
+          </div>
 
-      <div class="row">
+          <div class="ml-4 mt-5 pb-5" > 
 
-        {% for ev in event %}
+            <h4>achivments</h4>
+            <table>
+              <tr>
+                <td class="title">Client</td>
+                <td>Donal Arichange</td>
+              </tr>
+              <tr>
+                <td class="title">Project type</td>
+                <td>Digital Marketing</td>
+              </tr>
+            </table>
+          </div>
+        </div>
         
-        <div class="single-portfolio col-lg-4 col-md-6 filter branding">
-          <div class="thumb">
-            <img src="{{ev.poster.url}}" class="img-fluid" alt="">
-          </div>
-          <div class="details">
-            <a href="{% url 'core:event-detail' ev.id %}">
-              <h4>{{ev.title}}  </h4>
-            </a>
-            <p>{{ev.description}} </p>
-            <a class="btn-style" href="{% url 'core:event-detail' ev.id %}"><i class="icofont-arrow-right"></i></a>
-          </div>
-        </div>
-
-     {% endfor %}
       </div>
-    </div>
-  </section>
-  <!-- End portfolio filter section -->
 
 
-  <!-- Start Brand Logo Section -->
-  <section class="brand-logo-section">
-    <div class="container">
-      <div class="row bottom-logo-wrap">
-        <div class="brand-logo-carousel owl-carousel owl-theme">
-          <div class="single-brand-logo">
-            <a href="#">
-              <img class="img-fluid" src="{% static 'img/brand1.png' %}" alt="">
-            </a>
-          </div>
-          <div class="single-brand-logo">
-            <a href="#">
-              <img class="img-fluid" src="{% static 'img/brand2.png' %}" alt="">
-            </a>
-          </div>
-          <div class="single-brand-logo">
-            <a href="#">
-              <img class="img-fluid" src="{% static 'img/brand3.png' %}" alt="">
-            </a>
-          </div>
-          <div class="single-brand-logo">
-            <a href="#">
-              <img class="img-fluid" src="{% static 'img/brand4.png' %}" alt="">
-            </a>
-          </div>
-          <div class="single-brand-logo">
-            <a href="#">
-              <img class="img-fluid" src="{% static 'img/brand5.png' %}" alt="">
-            </a>
-          </div>
-          <div class="single-brand-logo">
-            <a href="#">
-              <img class="img-fluid" src="{% static 'img/brand6.png' %}" alt="">
-            </a>
-          </div>
-        </div>
-      </div>
+
+     
     </div>
   </section>
-  <!-- End Brand Logo Section -->
-  <!-- Start subscribe-form section -->
-  <section class="subscribe-form-section">
-    <div class="container">
-      <div class="row d-flex justify-content-center align-items-center cta-subscribe-wrap other-page">
-        <div class="col-md-5">
-          <h4>Don't miss any Update <br>
-            Subscribe to our Newsletter.
-          </h4>
-        </div>
-        <div class="col-md-7">
-          <form class="input-group subscribe-form-wrap">
-            <input class="form-control" type="text" placeholder="Your Email Address">
-            <div class="input-group-append">
-              <button class="form-btn-style" type="submit">
-                Subscribe
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End subscribe-form section -->
+  <!-- End portfolio-details section -->
+
   <!-- Start footer section -->
-  <footer class="footer-section home-two">
-    <div class="container">
+  <footer class="footer-section home-two mt-5">
+    <div class="container mt-5">
       <div class="row footer-top section-gap-bottom d-flex justify-content-between">
         <div class="col-lg-4 col-md-6 col-6 footer-widgets">
-          <img class="footer-logo" src="{% static 'img/logo2.svg' %}" alt="">
+          <img class="footer-logo" src="assets/img/logo2.svg" alt="">
           <p>It is a long established fact that
             reader will be distracted the readable
             content of a page when looking at its
@@ -263,4 +215,5 @@
   <div class="scroll-top">
     <i class="icofont-rounded-up"></i>
   </div>
-  {% endblock content %}
+  <!-- End Scroll Top -->
+{% endblock content%}
