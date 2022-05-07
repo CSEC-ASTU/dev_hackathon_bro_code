@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.models import Group
 
 
 class User(AbstractUser):
@@ -22,17 +21,20 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'phone']
     
     
-class Memebership(User):
+class Membership(User):
     school_id = models.CharField(max_length=255, blank=True, null=True)
     member_of = models.ForeignKey('Division', on_delete=models.CASCADE, related_name='member_type')
     member_authority = models.ForeignKey('Authority', on_delete=models.CASCADE, null=True, blank=True, related_name='member_authority')
     is_accepted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    class Meta:
+        verbose_name = 'Member'
+        verbose_name_plural = 'Members'
 
     def __str__(self):
         return self.username
-    
+            
 class Division(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
