@@ -12,10 +12,19 @@ class User(AbstractUser):
         return 'dev_score_board/%s' % filename
 
     email = models.EmailField(unique=True)
-    telegram_username = models.CharField(max_length=255, blank=True, null=True)
     sex = models.CharField(max_length=1, choices=SEXCHOICE)
     profile_picture = models.ImageField(upload_to_profile, null=True, blank=True)
     phone = models.CharField(max_length=13)
+
+    # links
+    telegram_username = models.CharField(max_length=255, blank=True, null=True)
+    github = models.URLField(blank=True, null=True)
+    linkedin = models.URLField(blank=True, null=True)
+    facebook = models.URLField(blank=True, null=True)
+    twitter = models.URLField(blank=True, null=True)
+    instagram = models.URLField(blank=True, null=True)
+    website = models.URLField(blank=True, null=True)
+    # end links
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'phone']

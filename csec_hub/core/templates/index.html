@@ -9,7 +9,7 @@
       <svg viewBox="0 0 86 80">
         <polygon points="43 8 79 72 7 72"></polygon>
       </svg>
-      <span>Loading...</span>
+      <span>Welcome...</span>
     </div>
   </div>
   <!-- End Pre-loader -->
@@ -24,7 +24,7 @@
             <nav class="dope-navbar justify-content-between" id="dopeNav">
 
               <!-- Logo -->
-              <a class="nav-brand" href="index.html"><img src="{% static 'img/logo.svg' %}" alt=></a>
+              <a class="nav-brand mt-5" href="{% url 'core:indexpage' %}"><img src="{% static 'img/csec-logo2.png' %}" alt=></a>
 
               <!-- Navbar Toggler -->
               <div class="dope-navbar-toggler">
@@ -54,27 +54,31 @@
                     <li><a href="{% url 'core:faq' %}">FAQ</a></li>
 
 
+                    {% if request.user.is_authenticated %}
                     <li> 
 
-                      <img src="{% static 'img/p4.png' %}" style="background-color:#fff;width:35px;border-radius:50%;padding:5px 5px;"alt="">
-   
+                      {% if user.profile_picture%}
+                      <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
+  
+                      {%else%}
+                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+  
+                      {%endif%}
                       <ul class="sub-menu">
-                           <li><a href="index.html">message 1</a></li>
-                           <li><a href="index2.html">message 2</a>
+                           <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                           <li><a href="{% url 'users:logout'%}">Logout</a>
                          </ul>
                     </li>
-                  </ul>
+            
+                  {% else %}
+                  <a href="{% url 'users:login' %}" class="btn-style blue-btn ml-5">Login</a>
+  
+                  {% endif %}
+                </ul>
+                </div>
 
                 </div>
                 <!-- Nav End -->
-                {% if request.user.is_authenticated %}
-                <a href="{% url 'users:logout' %}" class="menu-btn">logout</a>
-                {% else %}
-                <a href="{% url 'users:login' %}" class="menu-btn">Login</a>
-
-                {% endif %}
-              
-              </div>
             </nav>
             <div class="overlay"></div>
           </div>
@@ -84,12 +88,10 @@
     <div class="container">
       <div class="row section-gap header-content">
         <div class="col-lg-7 col-md-8 header-text-wrap">
-          <h1>Boost your business
-            with decent guidline
-            and passion.</h1>
-          <p>There are many variations of passages the majority available <br>
-            majority have suffered alteration believable.</p>
-          <a class="btn-style blue-btn" href="#">Discover More</a>
+          <h1>Achive your Carrier goals with us.</h1>
+          <p>We are builders, Dreamers, Problem-solvers & Thinkers. 
+            <br>We are ASTU Computer Science & Engineering Club (CSEC ASTU), the largest club in our campus.</p>
+          <a class="btn-style blue-btn" href="{% url 'core:about' %}">Discover More</a>
         </div>
       </div>
     </div>
@@ -102,7 +104,7 @@
       <div class="row d-flex justify-content-center section-title">
         <div class="col-lg-6 col-md-8 col-12">
           <h1>What we provide
-            special services for you</h1>
+            special services for our community</h1>
           <p>There are many variations of passages of passage available the majority
             you are going rassing to use a passage of you need to sure.</p>
         </div>
@@ -111,25 +113,22 @@
         <div class="col-lg-4 col-md-6 col-12">
           <div data-tilt class="single-service text-center">
             <img src="{% static 'img/s1.png' %}" alt=>
-            <h4>Social Marketing</h4>
-            <p>There are many variations from passages
-              and passage available the majority you
-              are going rassing.</p>
+            <h4>Competitive Programming</h4>
+            <p>Focus on problem solving and algorithms for undergraduate students</p>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-service text-center">
             <img src="{% static 'img/s2.png' %}" alt=>
-            <h4>SEO Service</h4>
-            <p>Finished her are its honoured drawings nor. Pretty see mutual thrown all not edward Particular
-              anboisterous up.</p>
+            <h4>Capacity Building</h4>
+            <p>Build your skills + serve our community</p>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-service text-center">
             <img src="{% static 'img/s3.png' %}" alt=>
-            <h4>Web Development</h4>
-            <p>Too cultivated use solicitude frequently. Dashwood likewise up consider continue entrance.
+            <h4>Development Division</h4>
+            <p> Be the ultimate developer of your dreams. 
             </p>
           </div>
         </div>
@@ -146,24 +145,20 @@
           <img src="{% static 'img/i.png' %}" alt=>
         </div>
         <div class="col-lg-6 col-md-12 info-right">
-          <h1>We’ve helped some amazing
-            startups rebrand, redesign
-            and get to market.</h1>
+          <h1>We train our members on</h1>
           <ul>
             <li>
               <div class="list-icon"><img src="{% static 'img/b1.png' %}" alt=></div>
-              <p>Two before narrow not relied how except moment myself. Dejection assurance mrs led certainly. So gate
-                at no only none open. Betrayed at properly it of graceful on.</p>
+              <p> Workshops for developing marketable skills in a great way to practice coding outside of classroom.</p>
             </li>
             <li>
               <div class="list-icon"><img src="{% static 'img/b2.png' %}" alt=></div>
-              <p>Had denoting properly jointure you occasion directly raillery. In said to of poor full be post face
-                snug Introduced imprudence see say.</p>
+              <p> Hackathons for building and creating applications and employ technical skills.</p>
             </li>
             <li>
               <div class="list-icon"><img src="{% static 'img/b3.png' %}"</div>
               <p>
-                Built purse maids cease her ham new seven among and. Pulled coming wooded tended it answer remain me be.
+                Code sessions with our mentors to learn new skills and improve your coding skills.</p>
               </p>
             </li>
           </ul>
@@ -183,7 +178,7 @@
             <div class="col-md-6 col-6">
               <div class="single-why text-center mb-30">
                 <img src="{% static 'img/w1.png' %}" alt=>
-                <h4>Traffic Analysis</h4>
+                <h4> Optimised Solutions</h4>
               </div>
               <div class="single-why text-center">
                 <img src="{% static 'img/w2.png' %}" alt=>
@@ -231,7 +226,7 @@
           <div class="single-stat">
             <h1>
               <div class="odometer odometer_number_one">0000</div>
-              <div class="sub-text">Project <br> Completed</div>
+              <div class="sub-text">Current <br> members</div>
             </h1>
           </div>
         </div>
@@ -239,7 +234,7 @@
           <div class="single-stat">
             <h1>
               <div class="odometer odometer_number_two">000</div>
-              <div class="sub-text">Happy <br> Clients</div>
+              <div class="sub-text">Development <br> Division</div>
             </h1>
           </div>
         </div>
@@ -247,7 +242,7 @@
           <div class="single-stat">
             <h1>
               <div class="odometer odometer_number_three">0000</div>
-              <div class="sub-text">Positive <br> Feedback</div>
+              <div class="sub-text">Competitive <br> Programming</div>
             </h1>
           </div>
         </div>
@@ -255,7 +250,7 @@
           <div class="single-stat">
             <h1>
               <div class="odometer odometer_number_four">0000</div>
-              <div class="sub-text">Cup <br> Coffee</div>
+              <div class="sub-text">Capacity <br> Building</div>
             </h1>
           </div>
         </div>
@@ -265,7 +260,7 @@
   <!-- End stat section -->
 
   <!-- Start portfolio section -->
-  <section class="portfolio-section section-gap-top">
+  <!-- <section class="portfolio-section section-gap-top">
     <div class="container">
       <div class="row d-flex justify-content-center section-title">
         <div class="col-lg-6 col-md-8 col-12">
@@ -343,7 +338,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!-- End portfolio section -->
 
   <!-- Start info-two section -->
@@ -356,9 +351,7 @@
             <h1>Growth strategy with <br>
               robust implementation</h1>
             <p class="sub-text">
-              There are many variations of passages of passage available the
-              majority you are going rassing to use a passage of you need to
-              sure versions over the years.
+              Whether you’ve never even seen a line of code before or you’ve written full-stack applications that scale, we’ve got you covered. With tech talks, workshops, challenges, and more, there’s plenty of ways to gain new skills and level up your career. Our exciting events, ranging from beginner to advanced, will get you up and running with your first website or how to deploy and auto-scale your application on the cloud.
             </p>
             <div class="row bottom-txt-wrap">
               <div class="col-md-6 col-12 single-bottom-wrap">
@@ -386,12 +379,10 @@
     <div class="container">
       <div class="row d-flex justify-content-center align-items-center">
         <div class="col-lg-5 col-md-12 testimonial-left">
-          <h1>Our lovely <br> Customers
+          <h1>Our lovely <br> Community
             Feedback</h1>
           <p>
-            It uses a dictionary over latin words combined with handful
-            of model sentence structure to generate which looks reasonable the
-            generated Lorem Ipsum is therefore.
+            CSEC ASTU has a great community of students and teachers.
           </p>
           <div id="leftNav" class="owl-nav"></div>
         </div>
@@ -399,50 +390,43 @@
           <div class="testimonial-carousel owl-carousel owl-theme">
             <div class="single-testimonial">
               <p>
-                It uses a dictionary over latin words combined with handful
-                of model sentence structure to generate which looks reasonable the
-                generated Lorem Ipsum is therefore.
+                I love being a part of this community. I am a student of ASTU and I am very happy to be a part of this community.
               </p>
               <div class="d-flex align-items-center">
                 <div class="thumb">
-                  <img src="{% static 'img/t1.png' %}" alt=>
+                  <img src="{{ user.profile_picture.url }}" alt=>
                 </div>
                 <div class="details">
-                  <h4>Michelle Payne</h4>
-                  <span>CEO of company</span>
-                </div>
-              </div>
-            </div>
-            <div class="single-testimonial">
-
-              <p>
-                It uses a dictionary over latin words combined with handful
-                of model sentence structure to generate which looks reasonable the
-                generated Lorem Ipsum is therefore always.
-              </p>
-              <div class="d-flex align-items-center">
-                <div class="thumb">
-                  <img src="{% static 'img/t1.png' %}" alt=>
-                </div>
-                <div class="details">
-                  <h4>Michelle Payne</h4>
-                  <span>CEO of Google</span>
+                  <h4>Esrael Dawit</h4>
+                  <span>PR</span>
                 </div>
               </div>
             </div>
             <div class="single-testimonial">
               <p>
-                It uses a dictionary over latin words combined with handful
-                of model sentence structure to generate which looks reasonable the
-                generated Lorem Ipsum is therefore.
+                I love being a part of this community. I am a student of ASTU and I am very happy to be a part of this community.
               </p>
               <div class="d-flex align-items-center">
                 <div class="thumb">
-                  <img src="{% static 'img/t1.png' %}" alt=>
+                  <img src="{{ user.profile_picture.url }}" alt=>
                 </div>
                 <div class="details">
-                  <h4>Michelle Payne</h4>
-                  <span>CEO of Github</span>
+                  <h4>Esrael Dawit</h4>
+                  <span>PR</span>
+                </div>
+              </div>
+            </div>
+            <div class="single-testimonial">
+              <p>
+                I love being a part of this community. I am a student of ASTU and I am very happy to be a part of this community.
+              </p>
+              <div class="d-flex align-items-center">
+                <div class="thumb">
+                  <img src="{{ user.profile_picture.url }}" alt=>
+                </div>
+                <div class="details">
+                  <h4>Esrael Dawit</h4>
+                  <span>PR</span>
                 </div>
               </div>
             </div>
@@ -454,7 +438,7 @@
   <!-- End testimonial section -->
 
   <!-- Start blog section -->
-  <section class="blog-section section-gap-top">
+  <!-- <section class="blog-section section-gap-top">
     <div class="container">
       <div class="row d-flex justify-content-center section-title">
         <div class="col-lg-6 col-md-8 col-12">
@@ -540,7 +524,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!-- End blog section -->
 
   <!-- Start logo section -->
@@ -589,11 +573,9 @@
     <div class="container">
       <div class="row footer-top d-flex justify-content-between">
         <div class="col-lg-4 col-md-6 col-6 footer-widgets">
-          <img class="footer-logo" src="{% static 'img/logo.svg' %}" alt=>
-          <p>It is a long established fact that
-            reader will be distracted the readable
-            content of a page when looking at its
-            point of using desktop.</p>
+          <img class="footer-logo" style="width: 50%;" src="{% static 'img/csec-logo2.png' %}" alt=>
+          <p>To help students interested in technology to meet other
+            like‑minded students and to help advance their careers</p>
           <ul class="social-lists">
             <li><a href="#"><i class="icofont-facebook"></i></a></li>
             <li><a href="#"><i class="icofont-twitter"></i></a></li>
@@ -618,12 +600,11 @@
           <div class="single-widget">
             <h4 class="wiget-title">Services</h4>
             <ul>
-              <li><a href="#">Official lottery</a></li>
-              <li><a href="#">100% Safe Secure</a></li>
-              <li><a href="#">Instant Payout </a></li>
-              <li><a href="#">Performance Bonus</a></li>
-              <li><a href="#">Dedicated Support</a></li>
-              <li><a href="#">No commission</a></li>
+              
+              <li><a href="#">Cyber Security</a></li>
+              <li><a href="#">Competetive programming</a></li>
+              <li><a href="#">Fast Development</a></li>
+              <li><a href="#">Community Service</a></li>
             </ul>
           </div>
         </div>
@@ -631,12 +612,12 @@
           <div class="single-widget">
             <h4 class="wiget-title">Company</h4>
             <ul>
-              <li><a href="#">Blog</a></li>
+              <li><a href="#">Feeds</a></li>
               <li><a href="#">Contact</a></li>
-              <li><a href="#">Customers</a></li>
-              <li><a href="#">Apps</a></li>
-              <li><a href="#">Lottery</a></li>
-              <li><a href="#">Bonues</a></li>
+              <li><a href="#">Members</a></li>
+              <li><a href="#">Podcasts</a></li>
+              <li><a href="#">Hall of fame</a></li>
+              <li><a href="#">Events</a></li>
             </ul>
           </div>
         </div>
@@ -648,14 +629,14 @@
         </div>
         <div class="col-md-6">
           <div class="input-group subscribe-wrap">
-            <input class="form-control" type="email" placeholder="Enter Your Email">
+            <input class="form-control" type="text" placeholder="telegram username">
             <button class="btn-style red-btn">Subscribe Now</button>
           </div>
         </div>
       </div>
       <div class="row copyright-bottom d-flex align-items-center">
         <div class="col-md-6">
-          <p><a href="templateshub.net">Templates Hub</a></p>
+          <p><a href="#">CSEC ASTU</a></p>
         </div>
         <div class="col-md-6">
           <ul>
