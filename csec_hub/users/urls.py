@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, reverse_lazy
 from .views import SignInView, SignUpView, SignOutView, PasswordResetView, PasswordResetDoneView, activate,emailSent,expiredLink
 
 from django.contrib.auth import views as auth_views
@@ -26,6 +26,7 @@ path(
         ),
         name="change_password",
     ),
+
     path(
         "change-password/done",
         auth_views.PasswordChangeDoneView.as_view(
@@ -33,16 +34,19 @@ path(
         ),
         name="change_password_done",
     ),
+
     path(
         "password-reset/",
         auth_views.PasswordResetView.as_view(
-            template_name="registration/password-reset/password_reset_form.html",
-            subject_template_name="registration/password-reset/password_reset_subject.txt",
-            email_template_name="registration/password-reset/password_reset_email.html",
-            success_url="/auth/password-reset/done/",
+            template_name="passwordReset/password_reset_form.html",
+            
+            
+            # email_template_name="registration/password-reset/password_reset_email.html",
+            success_url= reverse_lazy('users:email-sent')
         ),
         name="password_reset",
     ),
+
     path(
         "password-reset/done/",
         auth_views.PasswordResetDoneView.as_view(
@@ -53,7 +57,7 @@ path(
     path(
         "password-reset-confirm/<uidb64>/<token>/",
         auth_views.PasswordResetConfirmView.as_view(
-            template_name="registration/password-reset/password_reset_confirm.html"
+            template_name="passwordReset/password_reset_confirm.html"
         ),
         name="password_reset_confirm",
     ),

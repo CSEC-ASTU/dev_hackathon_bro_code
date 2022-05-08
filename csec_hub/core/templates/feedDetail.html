@@ -145,57 +145,16 @@
           <div class="widget ads_widget text-center">
             <img class="img-fluid" src="{% static 'img/ads.jpg' %}" alt="">
           </div>
-          <div class="widget widget_recent_entries">
-            <h4 class="widget-title">Recent Post</h4>
-            <ul>
-              <li class="d-flex align-items-center justify-content-center">
-                <a class="thumb" href="single.html">
-                  <img src="{% static 'img/r1.jpg' %}" alt="">
-                </a>
-                <div class="meta-wrap">
-                  <a href="single.html">
-                    AdWords History Timeline Published
-                  </a>
-                  <p>November 16, 2018</p>
-                </div>
-              </li>
-              <li class="d-flex align-items-center justify-content-center">
-                <a class="thumb" href="single.html">
-                  <img src="{% static 'img/r2.jpg' %}" alt="">
-                </a>
-                <div class="meta-wrap">
-                  <a href="single.html">
-                    Contented direction septem but end excellent.
-                  </a>
-                  <p>November 16, 2018</p>
-                </div>
-              </li>
-              <li class="d-flex align-items-center justify-content-center">
-                <a class="thumb" href="single.html">
-                  <img src="{% static 'img/r3.jpg' %}" alt="">
-                </a>
-                <div class="meta-wrap">
-                  <a href="single.html">
-                    One morning, when Gregor Samsa woke from troubled.
-                  </a>
-                  <p>November 16, 2018</p>
-                </div>
-              </li>
-
-            </ul>
-          </div>
+          
           <div class="widget widget_tag_cloud">
             <h4 class="widget-title">Tags</h4>
             <ul>
-              <li><a href="#">analysis</a></li>
-              <li><a href="#">business</a></li>
-              <li><a href="#">marketing</a></li>
-              <li><a href="#">optimize</a></li>
-              <li><a href="#">ppc</a></li>
-              <li><a href="#">esearch</a></li>
-              <li><a href="#">seo </a></li>
-              <li><a href="#">smm</a></li>
-              <li><a href="#">targeting</a></li>
+
+              {% for tag in fed.tags.all %}
+              <li><a href="#">{{tag.name}}</a></li>
+
+              {% endfor %}
+              
             </ul>
           </div>
         </div>

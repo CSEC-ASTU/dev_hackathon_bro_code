@@ -5,9 +5,9 @@ app_name = 'core'
 
 urlpatterns = [
    
-    path('feed/', views.FeedView.as_view(), name='feeds'),
-    path('feed/<int:pk>/', views.FeedDetailView.as_view(), name='feed_detail'),
-    path('event/', views.EventView.as_view(), name='events'),
+    path('feeds/', views.FeedView.as_view(), name='feeds'),
+    path('feed-detail/<int:pk>/', views.FeedDetailView.as_view(), name='feed-detail'),
+    path('events/', views.EventView.as_view(), name='events'),
     path('event/<int:pk>/', views.EventDetailView.as_view(), name='event_detail'),
     path('score_board/', views.ScoreBoardView.as_view(), name='score_board'),
     path('score_board/<int:pk>/', views.ScoreBoardDetailView.as_view(), name='score_board_detail'),
