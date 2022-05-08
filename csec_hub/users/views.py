@@ -1,4 +1,5 @@
 from audioop import reverse
+from pyexpat import model
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, render
@@ -133,14 +134,15 @@ class SignOutView(LogoutView):
 
 # profile view
 class ProfileView(LoginRequiredMixin, TemplateView):
-    template_name = 'users/profile.html'
+    template_name = 'user-profile.html'
     extra_context = {'title': 'Profile'}
+    model = User
 
 # profile update view
-class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, TemplateView):
-    template_name = 'users/profile_update.html'
-    extra_context = {'title': 'Profile Update'}
-    success_message = "Your profile was updated successfully"
+# class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, TemplateView):
+#     template_name = 'profile_update.html'
+#     extra_context = {'title': 'Profile Update'}
+#     success_message = "Your profile was updated successfully"
 
 
 # password reset view
@@ -160,13 +162,15 @@ class PasswordResetDoneView(SuccessMessageMixin, PasswordResetDoneView):
 
 
 
-# django class based view profile update view render multiple forms
+ # django class based view profile update view render multiple forms
 class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, TemplateView):
-    template_name = 'users/profile_update.html'
+    template_name = 'profile_update.html'
     extra_context = {'title': 'Profile Update'}
+    form_class = UserRegisterForm
     success_message = "Your profile was updated successfully"
+    success_url = reverse_lazy('profile')
+
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'password']
-    success_url = reverse_lazy('profile')
-  
+        fields = ['username','first_name','last_name']
+

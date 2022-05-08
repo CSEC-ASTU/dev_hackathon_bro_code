@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import SignInView, SignUpView, SignOutView, PasswordResetView, PasswordResetDoneView, activate, accept_request, decline_request
+from .views import accept_request, decline_request
 from django.urls import path, reverse_lazy
-from .views import emailSent,expiredLink
+from .views import SignInView, SignUpView, SignOutView, PasswordResetView, PasswordResetDoneView, activate, emailSent, expiredLink, ProfileView, ProfileUpdateView
 
 from django.contrib.auth import views as auth_views
 
@@ -11,6 +11,8 @@ app_name = 'users'
 urlpatterns = [
     path('login/', SignInView.as_view(), name='login'),
     path('logout/', SignOutView.as_view(), name='logout'),
+    path('profile/',ProfileView.as_view(), name='profile'),
+    path('update-profile/',ProfileUpdateView.as_view(), name='update-profile'),
     path('register-user/', SignUpView.as_view(), name='register'),
     path('password_reset/', PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
