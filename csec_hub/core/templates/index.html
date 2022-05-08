@@ -52,6 +52,14 @@
                     
                     <li><a href="{% url 'core:contact' %}">Contact</a></li>
                     <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+                    <li>
+                      <a href="#" style="color:#fff"> Pages</a>
+                      <ul class="sub-menu">
+                           <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                           <li><a href="{% url 'core:hall-of-fame'%}">Hall of Fame</a>
+                         </ul>
+                    </li>
+
 
 
                     {% if request.user.is_authenticated %}
