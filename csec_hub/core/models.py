@@ -5,36 +5,18 @@ from users.models import User, Membership, Division
 from django.contrib.auth.models import Group
 from taggit.managers import TaggableManager
 
-class CpdScoreBoard(models.Model):
-
-    def upload_to_cpd_score_board(self, filename):
-        return f'cpd_score_board/%s/{filename}'
+class ScoreBoard(models.Model):
 
     title = models.CharField(max_length=255)
-    description = models.TextField()
-    image = models.ImageField(upload_to=upload_to_cpd_score_board)
-    posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='cpd_score_board_posted_by')
+    body = models.TextField()
+    posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='score_board_posted_by')
     tags = TaggableManager()
     score_board_date = models.DateField()
     week = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
-class DevScoreBoard(models.Model):
 
-    def upload_to_dev_score_board(self, filename):
-        return 'dev_score_board/%s/{filename}'
-        
-    title = models.CharField(max_length=255)
-    description = models.TextField()
-    image = models.ImageField(upload_to=upload_to_dev_score_board)
-    posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='dev_score_board_posted_by')
-    tags = TaggableManager()  
-    score_board_date = models.DateField()
-    week = models.PositiveIntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    is_active = models.BooleanField(default=True)
 
 class Feed(models.Model):
     title = models.CharField(max_length=255)
@@ -73,6 +55,7 @@ class Event(models.Model):
     ending_date = models.DateTimeField()
     posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='event_posted_by')
     tags = TaggableManager()
+    has_form = models.BooleanField(default=False)
     is_completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

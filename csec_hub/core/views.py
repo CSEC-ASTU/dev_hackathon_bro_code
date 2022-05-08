@@ -3,55 +3,30 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 from django.shortcuts import render
 from .forms import SearchForm, VotingForm
-from .models import CpdScoreBoard, DevScoreBoard, Feed, Event, Voting
-from .filters import CpdScoreBoardFilter, DevScoreBoardFilter
+from .models import ScoreBoard, Feed, Event, Voting
+from .filters import ScoreBoardFilter
 
 
-class CpdScoreBoardView(ListView):
+class ScoreBoardView(ListView):
     def __init__(self):
-        self.model = CpdScoreBoard
-        self.template_name = 'core/cpd_score_board/list.html'
-        self.context_object_name = 'cpd_score_board'
+        self.model = ScoreBoard
+        self.template_name = 'core/score_board/list.html'
+        self.context_object_name = 'score_board'
         self.queryset = self.model.objects.filter(is_active=True)
         self.paginate_by = 10
         self.paginate_orphans = 1
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filter'] = CpdScoreBoardFilter(self.request.GET, queryset=self.get_queryset())
+        context['filter'] = ScoreBoardFilter(self.request.GET, queryset=self.get_queryset())
         return context
 
- 
 
-        
-
-class CpdScoreBoardDetailView(DetailView):
+class ScoreBoardDetailView(DetailView):
     def __init__(self):
-        self.model = CpdScoreBoard
-        self.template_name = 'core/cpd_score_board/detail.html'
-        self.context_object_name = 'cpd_score_board'
-
-
-
-class DevScoreBoardView(ListView):
-    def __init__(self):
-        self.model = DevScoreBoard
-        self.template_name = 'core/dev_score_board/list.html'
-        self.context_object_name = 'dev_score_board'
-        self.queryset = self.model.objects.filter(is_active=True)
-        self.paginate_by = 10
-        self.paginate_orphans = 1
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['filter'] = DevScoreBoardFilter(self.request.GET, queryset=self.get_queryset())
-        return context
-
-class DevScoreBoardDetailView(DetailView):
-    def __init__(self):
-        self.model = DevScoreBoard
-        self.template_name = 'core/dev_score_board/detail.html'
-        self.context_object_name = 'dev_score_board'
+        self.model = ScoreBoard
+        self.template_name = 'core/score_board/detail.html'
+        self.context_object_name = 'score_board'
 
 
 class FeedView(ListView):
