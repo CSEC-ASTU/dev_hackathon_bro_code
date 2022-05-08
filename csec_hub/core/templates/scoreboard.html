@@ -43,7 +43,7 @@
                 <li><a href="{% url 'core:indexpage' %}">Home</a></li>
                 <li><a href="{% url 'core:events' %}">Events</a></li>
                 <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
-                <li><a href="{% url 'core:score_board' %}">SoreBoard</a></li>                    
+                <li><a href="{% url 'core:score_board' %}">ScoreBoard</a></li>                    
                 <li><a href="{% url 'core:about' %}">About</a></li>
                 
                 
@@ -54,13 +54,13 @@
 
                 <li> 
 
-                  <img src="{% static 'img/p4.png' %}" style="background-color:#fff;width:35px;border-radius:50%;padding:5px 5px;"alt="">
-
-                  <ul class="sub-menu">
-                       <li><a href="index.html">message 1</a></li>
-                       <li><a href="index2.html">message 2</a>
-                     </ul>
-                </li>
+                   
+                  <a href="#" style="color:#fff"> Pages</a>
+                <ul class="sub-menu">
+                     <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                     <li><a href="{% url 'core:hall-of-fame'%}">Hall of Fame</a>
+                   </ul>
+              </li>
               </ul>
 
             </div>
@@ -94,7 +94,7 @@
       <div class="row d-flex">
         <div class="col-lg-8 col-md-12 blog-posts">
 
-          {% for score in score_board%}
+          {% for score in filter.qs%}
           <h4>{{score.title}} </h4>
           <div class="single-post">
         
@@ -105,10 +105,7 @@
               <div class="meta">
                 <span>By:</span>{{score.posted_by}} / <span>Date:</span> {{score.updated_at}}
                
-                <a href="{% url 'core:feed-detail' score.id %}" style="margin-left:100px;color:#188bfd">
-                  
-                  Learn More
-                 </a>
+               
               </div>
             
             </div>
@@ -144,25 +141,59 @@
           </nav>
         </div>
         <div class="col-lg-4 col-md-12 sidebar">
-          <div class="widget widget_search">
-            <div class="input-group">
-              <input class="form-control" type="text" placeholder="Search Here...">
-              <div class="input-group-append">
-                <button class="form-btn-style" type="submit">
-                  <i class="icofont-search-2"></i>
-                </button>
-              </div>
-            </div>
-          </div>
+        
           <div class="widget category_widget">
-            <h4 class="widget-title">Post Categories</h4>
-            <ul>
-              <li><a href="#">Business Development (10)</a></li>
-              <li><a href="#">UI/UX Design (7)</a></li>
-              <li><a href="#">Online Marketing (3)</a></li>
-              <li><a href="#">Search Engineen Optimization (2)</a></li>
-              <li><a href="#">Facebook Marketing (13)</a></li>
-            </ul>
+            <h4 class="widget-title">Filter ScoreBoard</h4>
+
+            <form method="get">
+
+      
+          <div class="container">
+        
+
+            
+            <div>
+              <label> <label for="id_scoreboard_date__day">Scoreboard date day</label> 
+              <input type="number" name="scoreboard_date__day" step="any" id="id_scoreboard_date__day" min="0">
+    
+         </label></div>
+    
+         <div>
+              <label> <label for="id_scoreboard_date__day">Scoreboard Month</label> 
+             <input type="number" name="scoreboard_date__month" step="any" id="id_scoreboard_date__month" min="0">
+         </label></div>
+         <div>
+            <label for="id_scoreboard_date__day">Scoreboard Year</label> 
+              <input type="number" name="scoreboard_date__year" step="any" id="id_scoreboard_date__year" min="0">
+        </div>
+         <div class="mb-3">
+           <label for="id_scoreboard_date__day">Week</label> 
+
+           <div>
+            <input type="number" name="week" step="any" id="id_scoreboard_date__year" min="0"> 
+
+           </div>
+            </div>
+     
+            <div>
+              <label for="id_week__gt">Week is greater than</label>
+              <input type="number" name="week__gt" step="any" id="id_week__gt" min="0">
+            </div>
+        
+            <div class="mb-3">
+              <label for="id_week__lt">Week is less than:</label>
+              <input type="number" name="week__lt" step="any" id="id_week__lt" min="0">
+            </div>
+        
+    
+        <button type="submit" class="menu-btn">  Filter</button>
+          </div>
+    
+             
+            </form>
+            
+           
+            
           </div>
           <div class="widget ads_widget text-center">
             <img class="img-fluid" src="{% static 'img/ads.jpg' %}" alt="">

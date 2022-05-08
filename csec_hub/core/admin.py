@@ -18,7 +18,7 @@ class ScoreBoardAdmin(SummernoteModelAdmin):
 
     fieldsets = (
         ('Score Board', {
-            'fields': ('title', 'scoreboard_date','body', 'posted_by', 'is_active','tags')
+            'fields': ('title', 'scoreboard_date','body', 'posted_by', 'is_active','tags','week')
         }),
         ('Meta Data', {
             'fields': ('created_at', 'updated_at')
@@ -26,7 +26,7 @@ class ScoreBoardAdmin(SummernoteModelAdmin):
     )
     summernote_fields = ('body',)
     readonly_fields = ['created_at','updated_at',]
-    list_display = ('title', 'posted_by','body', 'created_at', 'updated_at', 'is_active','scoreboard_date' )
+    list_display = ('title', 'posted_by','body', 'created_at', 'updated_at', 'is_active','scoreboard_date','week' )
     
     list_filter = ('posted_by', 'created_at', 'updated_at', 'is_active','scoreboard_date')
     search_fields = ('title', 'posted_by__username', 'created_at', 'updated_at', 'is_active')

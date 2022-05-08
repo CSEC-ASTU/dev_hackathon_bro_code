@@ -54,13 +54,13 @@
 
                 <li> 
 
-                  <img src="{% static 'img/p4.png' %}" style="background-color:#fff;width:35px;border-radius:50%;padding:5px 5px;"alt="">
-
-                  <ul class="sub-menu">
-                       <li><a href="index.html">message 1</a></li>
-                       <li><a href="index2.html">message 2</a>
-                     </ul>
-                </li>
+                   
+                  <a href="#" style="color:#fff"> Pages</a>
+                <ul class="sub-menu">
+                     <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                     <li><a href="{% url 'core:hall-of-fame'%}">Hall of Fame</a>
+                   </ul>
+              </li>
               </ul>
 
             </div>
@@ -94,7 +94,9 @@
       <div class="row d-flex">
         <div class="col-lg-8 col-md-12 blog-posts">
 
-          {% for fed in feed%}
+
+          
+          {% for fed in queryset  %}
           <div class="single-post">
         
             <h4>{{fed.title}}</h4>
@@ -140,25 +142,18 @@
         </div>
         <div class="col-lg-4 col-md-12 sidebar">
           <div class="widget widget_search">
+            <form method ="get">
             <div class="input-group">
               <input class="form-control" type="text" placeholder="Search Here...">
               <div class="input-group-append">
-                <button class="form-btn-style" type="submit">
+                <button class="form-btn-style" name="query"  type="submit">
                   <i class="icofont-search-2"></i>
                 </button>
               </div>
             </div>
+          </form>
           </div>
-          <div class="widget category_widget">
-            <h4 class="widget-title">Post Categories</h4>
-            <ul>
-              <li><a href="#">Business Development (10)</a></li>
-              <li><a href="#">UI/UX Design (7)</a></li>
-              <li><a href="#">Online Marketing (3)</a></li>
-              <li><a href="#">Search Engineen Optimization (2)</a></li>
-              <li><a href="#">Facebook Marketing (13)</a></li>
-            </ul>
-          </div>
+       
           <div class="widget ads_widget text-center">
             <img class="img-fluid" src="{% static 'img/ads.jpg' %}" alt="">
           </div>

@@ -1,3 +1,4 @@
+from multiprocessing import context
 import re
 from django.views.generic import ListView
 from django.views.generic import DetailView
@@ -66,6 +67,12 @@ class ScoreBoardDetailView(DetailView):
         self.model = ScoreBoard
         self.template_name = 'core/cpd_score_board/detail.html'
         self.context_object_name = 'cpd_score_board'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = ScoreBoardFilter(self.request.GET,queryset=self.get_queryset)
+
+        return context
 
 
 class FeedView(ListView):
@@ -84,6 +91,13 @@ class FeedView(ListView):
         if query:
             queryset = queryset.filter(title__icontains=query, is_active=True)
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.form_class
+
+        context['queryset'] = self.get_queryset()
+        return context
 
 class FeedDetailView(DetailView):
     def __init__(self):

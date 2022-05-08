@@ -1,4 +1,5 @@
 
+from pyexpat import model
 from django.db import models
 from users.models import User, Membership, Division
 from django.contrib.auth.models import Group
@@ -13,10 +14,11 @@ class ScoreBoard(models.Model):
     body = models.TextField()
     posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='score_board_posted_by')
     tags = TaggableManager() 
-    scoreboard_date = models.DateTimeField()
+    scoreboard_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
+    week = models.PositiveIntegerField()
 
 
 class Feed(models.Model):
