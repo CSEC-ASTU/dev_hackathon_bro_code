@@ -26,5 +26,10 @@ urlpatterns = [
     # path('signin',views.signin,name = 'signin'),
     path('hall-of-fame',views.hallOfFame,name = 'hall-of-fame'),
     path('fame-detail',views.fameDetail,name = 'fame-detail'),
-]
 
+
+    path('voting/', views.VotingView.as_view(), name='voting'),
+    path('voting/<int:pk>/', views.VotingDetailView.as_view(), name='voting_detail'),
+        
+    
+]
