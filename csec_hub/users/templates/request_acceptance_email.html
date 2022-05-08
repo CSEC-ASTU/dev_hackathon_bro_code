@@ -1,0 +1,5 @@
+{% autoescape off %}
+Hi {{ user.username }},
+Please click on the link to accept the request, click the following link, {{ domain }}{% url 'users:accept_request' uidb64=uid token=token %}.
+To decline the request click the following link, {{ domain }}{% url 'users:decline_request' uidb64=uid token=token %}.
+{% endautoescape %}

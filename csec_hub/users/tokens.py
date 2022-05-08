@@ -8,3 +8,5 @@ class TokenGenerator(PasswordResetTokenGenerator):
             six.text_type(user.is_active)
         )
 account_activation_token = TokenGenerator()
+
+executive_request_token = TokenGenerator()

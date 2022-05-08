@@ -10,6 +10,8 @@ from django.views.generic.edit import CreateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from .models import Membership, Excuitive
+
 # Model
 from .forms import UserRegisterForm
 
@@ -18,7 +20,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_str
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from .tokens import account_activation_token
+from .tokens import account_activation_token, executive_request_token
 from django.core.mail import EmailMessage
 from django.contrib.auth import login
 from django.http import HttpResponse
@@ -73,6 +75,41 @@ def activate(request, uidb64, token):
     else:
         return HttpResponse('Activation link is invalid!')
 
+def accept_request(request, uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+        membership = Membership.objects.filter(user=user).order_by('-id')[0]  
+        excuitive = Excuitive.objects.get(user=membership)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and executive_request_token.check_token(user, token):
+        excuitive.is_accepted = True
+        excuitive.save()
+        login(request, user)
+        # reverse to login page
+        print("accepted")
+        return HttpResponse("You accepted the request!")
+        # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+    else:
+        return HttpResponse('Activation link is invalid!')
+
+def decline_request(request, uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+        membership = Membership.objects.filter(user=user).order_by('-id')[0]  
+        excuitive = Excuitive.objects.get(user=membership)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and executive_request_token.check_token(user, token):
+        excuitive.delete()
+        # reverse to login page
+        print("declined")
+        return HttpResponse("You successfuly declined the request!")
+        # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+    else:
+        return HttpResponse('Decline link is invalid!')
 
 # Sign in view
 class SignInView(LoginView):
@@ -97,23 +134,6 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, TemplateView):
     template_name = 'users/profile_update.html'
     extra_context = {'title': 'Profile Update'}
     success_message = "Your profile was updated successfully"
-
-
-# password reset view
-class PasswordResetView(SuccessMessageMixin, PasswordResetView):
-    template_name = 'users/password_reset.html'
-    success_url = reverse_lazy('password_reset_done')
-    success_message = "Password reset email sent successfully"
-    email_template_name = 'users/password_reset_email.html'
-    subject_template_name = 'users/password_reset_subject.txt'
-    extra_email_context = {'url': 'https://www.csec.org.in/hub/password_reset/{uid}/{token}'}
-
-# password reset done view
-class PasswordResetDoneView(SuccessMessageMixin, PasswordResetDoneView):
-    template_name = 'users/password_reset_done.html'
-    success_message = "Password reset email sent successfully"
-
-
 
 
 # django class based view profile update view render multiple forms
