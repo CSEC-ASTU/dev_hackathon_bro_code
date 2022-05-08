@@ -36,48 +36,49 @@
                   <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                 </div>
                 
-             <!-- Nav Start -->
-             <div class="dopenav">
-              <ul id="nav">
-                <li><a href="{% url 'core:indexpage' %}">Home</a></li>
-                <li><a href="{% url 'core:events' %}">Events</a></li>
-                <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
-                <li><a href="{% url 'core:score_board' %}">SoreBoard</a></li>                    
+              </div>
 
-                <li><a href="{% url 'core:about' %}">About</a></li>
-                
-                
-                
-                <li><a href="{% url 'core:contact' %}">Contact</a></li>
-                <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+              <!-- Nav Start -->
+              <div class="dopenav">
+                <ul id="nav">
+                  <li><a href="{% url 'core:indexpage' %}">Home</a></li>
+                  <li><a href="{% url 'core:events' %}">Events</a></li>
+                  <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
+                  <li><a href="{% url 'core:score_board' %}">ScoreBoard</a></li>                    
+
+                  <li><a href="{% url 'core:about' %}">About</a></li>
+                  
+                  
+                  
+                  <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                  <li><a href="{% url 'core:faq' %}">FAQ</a></li>
 
 
-                {% if request.user.is_authenticated %}
-                <li> 
+                  {% if request.user.is_authenticated %}
+                  <li> 
 
-                  {% if user.profile_picture%}
-                  <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
+                    {% if user.profile_picture%}
+                    <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
 
-                  {%else%}
-                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+                    {%else%}
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
 
-                  {%endif%}
-                  <ul class="sub-menu">
-                       <li><a href="{% url 'users:profile' %}">Profile</a></li>
-                       <li><a href="{% url 'users:logout'%}">Logout</a>
-                     </ul>
-                </li>
-        
-              {% else %}
-              <a href="{% url 'users:login' %}" class="btn-style blue-btn ml-5">Login</a>
+                    {%endif%}
+                    <ul class="sub-menu">
+                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                         <li><a href="{% url 'users:logout'%}">Logout</a>
+                       </ul>
+                  </li>
+          
+                {% else %}
+                <a href="{% url 'users:login' %}" class="btn-style blue-btn ml-5">Login</a>
 
-              {% endif %}
-            </ul>
-            </div>
+                {% endif %}
+              </ul>
+              </div>
 
-            </div>
-            <!-- Nav End -->
-            
+              </div>
+              <!-- Nav End -->
               </div>
             </nav>
             <div class="overlay"></div>
@@ -107,17 +108,17 @@
             <a class="nav-link active" id="v-pills-overview-tab" data-toggle="pill" href="#v-pills-overview" role="tab"
               aria-controls="v-pills-overview" aria-selected="true">
               <img src="{% static 'img/aa1.png' %}" alt="">
-              <h4>Company Overview</h4>
+              <h4>CLUB Overview</h4>
             </a>
             <a class="nav-link" id="v-pills-mission-tab" data-toggle="pill" href="#v-pills-mission" role="tab"
               aria-controls="v-pills-mission" aria-selected="false">
               <img src="{% static 'img/aa2.png' %}" alt="">
-              <h4>Mission of Xeolit</h4>
+              <h4>Mission of CSEC ASTU</h4>
             </a>
             <a class="nav-link" id="v-pills-vision-tab" data-toggle="pill" href="#v-pills-vision" role="tab"
               aria-controls="v-pills-vision" aria-selected="false">
               <img src="{% static 'img/aa3.png' %}" alt="">
-              <h4>Vission of Xeolit</h4>
+              <h4>Vission of CSEC ASTU</h4>
             </a>
           </div>
         </div>
@@ -125,9 +126,9 @@
           <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="v-pills-overview" role="tabpanel"
               aria-labelledby="v-pills-overview-tab">
-              <h2>We’ve helped some amazing startups
-                rebrand, redesign and get to market
-                to a successful business.</h2>
+              <h2>We’ve helped some amazing Students
+                rebrand, redesign and get to higher level
+                to a successful Skills.</h2>
               <p>
                 On the other hand, we denounce with righteous indignation and dislike men who are so beguie
                 and demoralized by the charms of pleasure of the by desire, that they cannot foresee the pain
@@ -180,8 +181,7 @@
     <div class="container">
       <div class="row d-flex align-items-center">
         <div class="about-left col-lg-6 col-md-12">
-          <h1>Effective business delivery
-            solutions at a glance</h1>
+          <h1>Effective Growth and community managnment</h1>
           <p>Two before narrow not relied how except moment myself. Dejection assurance mrs led certainly. So gate at no
             only none open. Betrayed at properly it of graceful on devonshire acceptance son.</p>
           <div class="row">
@@ -211,84 +211,7 @@
   </section>
   <!-- End about section -->
 
-  <!-- Start team section -->
-  <section class="team-section section-gap">
-    <div class="container">
-      <h1 class="title text-center">We’r dynamic team of talented people <br>
-        of innovative & marketing expert.</h1>
-      <div class="row d-flex justify-content-center">
-        <div class="col-lg-3 col-md-6">
-          <div class="single-team">
-            <div class="thumb">
-              <img class="img-fluid" src="{% static 'img/t1.jpg' %}" alt="">
-            </div>
-            <div class="details text-center yellow">
-              <h4>Magdalen Pappas</h4>
-              <p>Web Developer</p>
-              <ul>
-                <li><a href="http://facebook.com/"><i class="icofont-facebook"></i></a></li>
-                <li><a href="http://twitter.com/"><i class="icofont-twitter"></i></a></li>
-                <li><a href="http://instagram.com/"><i class="icofont-instagram"></i></a></li>
-                <li><a href="http://linkedin.com/"><i class="icofont-linkedin"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="single-team">
-            <div class="thumb">
-              <img src="{% static 'img/t2.jpg' %}" alt="">
-            </div>
-            <div class="details text-center purple">
-              <h4>Gertude Clement</h4>
-              <p>Apps Developer</p>
-              <ul>
-                <li><a href="http://facebook.com/"><i class="icofont-facebook"></i></a></li>
-                <li><a href="http://twitter.com/"><i class="icofont-twitter"></i></a></li>
-                <li><a href="http://instagram.com/"><i class="icofont-instagram"></i></a></li>
-                <li><a href="http://linkedin.com/"><i class="icofont-linkedin"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="single-team">
-            <div class="thumb">
-              <img src="{% static 'img/t3.jpg' %}" alt="">
-            </div>
-            <div class="details text-center purple2">
-              <h4>Fiona Sanborn</h4>
-              <p>Project Manager</p>
-              <ul>
-                <li><a href="http://facebook.com/"><i class="icofont-facebook"></i></a></li>
-                <li><a href="http://twitter.com/"><i class="icofont-twitter"></i></a></li>
-                <li><a href="http://instagram.com/"><i class="icofont-instagram"></i></a></li>
-                <li><a href="http://linkedin.com/"><i class="icofont-linkedin"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="single-team">
-            <div class="thumb">
-              <img src="{% static 'img/t4.jpg' %}" alt="">
-            </div>
-            <div class="details text-center green">
-              <h4>Ruthe Seaman</h4>
-              <p>Marketing Manager</p>
-              <ul>
-                <li><a href="http://facebook.com/"><i class="icofont-facebook"></i></a></li>
-                <li><a href="http://twitter.com/"><i class="icofont-twitter"></i></a></li>
-                <li><a href="http://instagram.com/"><i class="icofont-instagram"></i></a></li>
-                <li><a href="http://linkedin.com/"><i class="icofont-linkedin"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End team section -->
+  
   <!-- Start Brand Logo Section -->
   <section class="brand-logo-section">
     <div class="container">
@@ -353,7 +276,77 @@
   </section>
   <!-- End subscribe-form section -->
   <!-- Start footer section -->
-  
+  <footer class="footer-section home-two">
+    <div class="container">
+      <div class="row footer-top section-gap-bottom d-flex justify-content-between">
+        <div class="col-lg-4 col-md-6 col-6 footer-widgets">
+          <img class="footer-logo" src="{% static 'img/csec-logo2.svg' %}" alt="">
+
+          <p>It is a long established fact that
+            reader will be distracted the readable
+            content of a page when looking at its
+            point of using desktop.</p>
+          <ul class="social-lists">
+            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+            <li><a href="#"><i class="icofont-twitter"></i></a></li>
+            <li><a href="#"><i class="icofont-instagram"></i></a></li>
+            <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">About</h4>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Partners</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">Conditions</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Services</h4>
+            <ul>
+              <li><a href="#">Official lottery</a></li>
+              <li><a href="#">100% Safe Secure</a></li>
+              <li><a href="#">Instant Payout </a></li>
+              <li><a href="#">Performance Bonus</a></li>
+              <li><a href="#">Dedicated Support</a></li>
+              <li><a href="#">No commission</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Company</h4>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Apps</a></li>
+              <li><a href="#">Lottery</a></li>
+              <li><a href="#">Bonues</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row copyright-bottom d-flex align-items-center">
+        <div class="col-md-6">
+          <p><a href="#">CSEC ASTU</a></p>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Privecy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
   <!-- End footer section -->
   <!-- Start Scroll Top -->
   <div class="scroll-top">

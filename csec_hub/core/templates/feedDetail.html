@@ -23,7 +23,7 @@
             <nav class="dope-navbar justify-content-between" id="dopeNav">
 
               <!-- Logo -->
-              <a class="nav-brand" href="index.html"><img src="{% static 'img/logo.svg' %}" alt=""></a>
+              <a class="nav-brand mt-5" href="{% url 'core:indexpage' %}"><img src="{% static 'img/csec-logo2.png' %}" alt=></a>
 
               <!-- Navbar Toggler -->
               <div class="dope-navbar-toggler">
@@ -37,37 +37,51 @@
                   <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                 </div>
 
-                 <!-- Nav Start -->
-                 <div class="dopenav">
-                  <ul id="nav">
-                    <li><a href="{% url 'core:indexpage' %}">Home</a></li>
-                    <li><a href="{% url 'core:events' %}">Events</a></li>
-                    <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
-                    <li><a href="{% url 'core:score_board' %}">SoreBoard</a></li>                    
-                    <li><a href="{% url 'core:about' %}">About</a></li>
-                    
-                    
-                    
-                    <li><a href="{% url 'core:contact' %}">Contact</a></li>
-                    <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+              </div>
+
+              <!-- Nav Start -->
+              <div class="dopenav">
+                <ul id="nav">
+                  <li><a href="{% url 'core:indexpage' %}">Home</a></li>
+                  <li><a href="{% url 'core:events' %}">Events</a></li>
+                  <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
+                  <li><a href="{% url 'core:score_board' %}">ScoreBoard</a></li>                    
+
+                  <li><a href="{% url 'core:about' %}">About</a></li>
+                  
+                  
+                  
+                  <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                  <li><a href="{% url 'core:faq' %}">FAQ</a></li>
 
 
-                    <li> 
+                  {% if request.user.is_authenticated %}
+                  <li> 
 
-                      <img src="{% static 'img/p4.png' %}" style="background-color:#fff;width:35px;border-radius:50%;padding:5px 5px;"alt="">
-   
-                      <ul class="sub-menu">
-                           <li><a href="index.html">message 1</a></li>
-                           <li><a href="index2.html">message 2</a>
-                         </ul>
-                    </li>
-                  </ul>
+                    {% if user.profile_picture%}
+                    <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
 
-                </div>
-                <!-- Nav End -->
-                
+                    {%else%}
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
 
-                <a href="contact.html" class="menu-btn">Get a quote</a>
+                    {%endif%}
+                    <ul class="sub-menu">
+                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                         <li><a href="{% url 'users:logout'%}">Logout</a>
+                       </ul>
+                  </li>
+          
+                {% else %}
+                <a href="{% url 'users:login' %}" class="btn-style blue-btn ml-5">Login</a>
+
+                {% endif %}
+              </ul>
+              </div>
+
+              </div>
+              <!-- Nav End -->
+
+              <a class="nav-brand mt-5" href="{% url 'core:indexpage' %}"><img src="{% static 'img/csec-logo2.png' %}" alt=></a>
               </div>
             </nav>
             <div class="overlay"></div>
@@ -190,7 +204,8 @@
     <div class="container">
       <div class="row footer-top section-gap-bottom d-flex justify-content-between">
         <div class="col-lg-4 col-md-6 col-6 footer-widgets">
-          <img class="footer-logo" src="{% static 'img/logo2.svg' %}" alt="">
+          <img class="footer-logo" src="{% static 'img/csec-logo2.svg' %}" alt="">
+
           <p>It is a long established fact that
             reader will be distracted the readable
             content of a page when looking at its
@@ -244,7 +259,7 @@
       </div>
       <div class="row copyright-bottom d-flex align-items-center">
         <div class="col-md-6">
-          <p><a href="templateshub.net">Templates Hub</a></p>
+          <p><a href="#">CSEC ASTU</a></p>
         </div>
         <div class="col-md-6">
           <ul>

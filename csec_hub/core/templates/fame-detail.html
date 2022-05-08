@@ -21,7 +21,7 @@
             <nav class="dope-navbar justify-content-between" id="dopeNav">
 
               <!-- Logo -->
-              <a class="nav-brand" href="index.html"><img src="assets/img/logo.svg" alt=""></a>
+              <a class="nav-brand mt-5" href="{% url 'core:indexpage' %}"><img src="{% static 'img/csec-logo2.png' %}" alt=></a>
 
               <!-- Navbar Toggler -->
               <div class="dope-navbar-toggler">
@@ -36,36 +36,51 @@
                 </div>
 
                 
-                 <!-- Nav Start -->
-                 <div class="dopenav">
-                  <ul id="nav">
-                    <li><a href="{% url 'core:indexpage' %}">Home</a></li>
-                    <li><a href="{% url 'core:events' %}">Events</a></li>
-                    <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
-                    <li><a href="{% url 'core:score_board' %}">SoreBoard</a></li>                    
-                    <li><a href="{% url 'core:about' %}">About</a></li>
-                    
-                    
-                    
-                    <li><a href="{% url 'core:contact' %}">Contact</a></li>
-                    <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+              </div>
+
+              <!-- Nav Start -->
+              <div class="dopenav">
+                <ul id="nav">
+                  <li><a href="{% url 'core:indexpage' %}">Home</a></li>
+                  <li><a href="{% url 'core:events' %}">Events</a></li>
+                  <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
+                  <li><a href="{% url 'core:score_board' %}">ScoreBoard</a></li>                    
+
+                  <li><a href="{% url 'core:about' %}">About</a></li>
+                  
+                  
+                  
+                  <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                  <li><a href="{% url 'core:faq' %}">FAQ</a></li>
 
 
-                    <li> 
+                  {% if request.user.is_authenticated %}
+                  <li> 
 
-                      <img src="{% static 'img/p4.png' %}" style="background-color:#fff;width:35px;border-radius:50%;padding:5px 5px;"alt="">
-   
-                      <ul class="sub-menu">
-                           <li><a href="index.html">message 1</a></li>
-                           <li><a href="index2.html">message 2</a>
-                         </ul>
-                    </li>
-                  </ul>
+                    {% if user.profile_picture%}
+                    <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
 
-                </div>
-                <!-- Nav End -->
+                    {%else%}
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+
+                    {%endif%}
+                    <ul class="sub-menu">
+                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                         <li><a href="{% url 'users:logout'%}">Logout</a>
+                       </ul>
+                  </li>
+          
+                {% else %}
+                <a href="{% url 'users:login' %}" class="btn-style blue-btn ml-5">Login</a>
+
+                {% endif %}
+              </ul>
+              </div>
+
+              </div>
+              <!-- Nav End -->
                 
-                <a href="contact.html" class="menu-btn">Get a quote</a>
+              <a class="nav-brand mt-5" href="{% url 'core:indexpage' %}"><img src="{% static 'img/csec-logo2.png' %}" alt=></a>
               </div>
             </nav>
             <div class="overlay"></div>
@@ -107,7 +122,7 @@
           </div>
         </div>
         <div class="col-lg-6 gallery-wrap  mt-5 mb-5">
-          <div class="outer mb-5 mt-5" style="background-color:#dddbdc;margin-top:50px">
+          <div class="outer mb-5 mt-5"  style="background-color:#dddbdc;margin-top:50px;">
             <div id="big" class="owl-carousel owl-theme portfolio-carousel mb-2 mt-5" >
               
                 <img class="img-fluid" style="max-height:300px;object-fit: fill;" src="https://cmhof.imgix.net/content/uploads/2019/03/11072215/Anderson_Bill.jpg" alt="">
@@ -140,11 +155,12 @@
   <!-- End portfolio-details section -->
 
   <!-- Start footer section -->
-  <footer class="footer-section home-two mt-5">
-    <div class="container mt-5">
+  <footer class="footer-section home-two">
+    <div class="container">
       <div class="row footer-top section-gap-bottom d-flex justify-content-between">
         <div class="col-lg-4 col-md-6 col-6 footer-widgets">
-          <img class="footer-logo" src="assets/img/logo2.svg" alt="">
+          <img class="footer-logo" src="{% static 'img/csec-logo2.svg' %}" alt="">
+
           <p>It is a long established fact that
             reader will be distracted the readable
             content of a page when looking at its
@@ -198,7 +214,7 @@
       </div>
       <div class="row copyright-bottom d-flex align-items-center">
         <div class="col-md-6">
-          <p><a href="templateshub.net">Templates Hub</a></p>
+          <p><a href="#">CSEC ASTU</a></p>
         </div>
         <div class="col-md-6">
           <ul>

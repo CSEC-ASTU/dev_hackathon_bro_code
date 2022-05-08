@@ -22,7 +22,7 @@
             <nav class="dope-navbar justify-content-between" id="dopeNav">
 
               <!-- Logo -->
-              <a class="nav-brand" href="index.html"><img src="{% static 'img/logo.svg' %}" alt=""></a>
+              <a class="nav-brand mt-5" href="{% url 'core:indexpage' %}"><img src="{% static 'img/csec-logo2.png' %}" alt=></a>
 
               <!-- Navbar Toggler -->
               <div class="dope-navbar-toggler">
@@ -35,14 +35,16 @@
                 <div class="dopecloseIcon">
                   <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                 </div>
+              </div>
 
-               <!-- Nav Start -->
-               <div class="dopenav">
+              <!-- Nav Start -->
+              <div class="dopenav">
                 <ul id="nav">
                   <li><a href="{% url 'core:indexpage' %}">Home</a></li>
                   <li><a href="{% url 'core:events' %}">Events</a></li>
                   <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
-                  <li><a href="{% url 'core:score_board' %}">SoreBoard</a></li>                    
+                  <li><a href="{% url 'core:score_board' %}">ScoreBoard</a></li>                    
+
                   <li><a href="{% url 'core:about' %}">About</a></li>
                   
                   
@@ -51,23 +53,32 @@
                   <li><a href="{% url 'core:faq' %}">FAQ</a></li>
 
 
+                  {% if request.user.is_authenticated %}
                   <li> 
 
-                    <img src="{% static 'img/p4.png' %}" style="background-color:#fff;width:35px;border-radius:50%;padding:5px 5px;"alt="">
- 
+                    {% if user.profile_picture%}
+                    <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
+
+                    {%else%}
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+
+                    {%endif%}
                     <ul class="sub-menu">
-                         <li><a href="index.html">message 1</a></li>
-                         <li><a href="index2.html">message 2</a>
+                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                         <li><a href="{% url 'users:logout'%}">Logout</a>
                        </ul>
                   </li>
-                </ul>
+          
+                {% else %}
+                <a href="{% url 'users:login' %}" class="btn-style blue-btn ml-5">Login</a>
+
+                {% endif %}
+              </ul>
+              </div>
 
               </div>
               <!-- Nav End -->
               
-
-              
-                <a href="contact.html" class="menu-btn">Get a quote</a>
               </div>
             </nav>
             <div class="overlay"></div>
@@ -103,15 +114,14 @@
                 <h2 class="mb-0">
                   <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
                     aria-expanded="true" aria-controls="collapseOne">
-                    01. What are the business advisory company?
+                    01. What is Computer Science ? ... 
                   </button>
                 </h2>
               </div>
 
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                  Computer science (CS) is the study of computers and algorithmic processes including their principles, their hardware and software designs, their applications, and their impact on society. 
                 </div>
               </div>
             </div>
@@ -120,15 +130,13 @@
                 <h2 class="mb-0">
                   <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="false" aria-controls="collapseTwo">
-                    2. What is social media promotion?
+                    2. What is a Computer Science Pathway? 
                   </button>
                 </h2>
               </div>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                  Brunch 3 wolf moon tempor.
+                  A pathway is a sequence of Computer Science courses for students. One example of a Computer Science Pathway includes three courses: Exploring Computer Science, Computer Science Principles, and Advanced Placement (AP) Computer Science A or/and AP Computer Science Principles (available in fall 2016).
                 </div>
               </div>
             </div>
@@ -137,15 +145,13 @@
                 <h2 class="mb-0">
                   <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                     data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    3. How work keyword research?
+                    3. How do you know students are successful in Computer Science?
                   </button>
                 </h2>
               </div>
               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                  Brunch 3 wolf moon tempor, sunt aliqua.
+                  Several of the classes offered have assessments, rubrics, and other tools to measure student success in the Computer Science courses.
                 </div>
               </div>
             </div>
@@ -154,15 +160,13 @@
                 <h2 class="mb-0">
                   <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                     data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    4. Will you have any discounts/bonuses?
+                    4. What is a good model of introductory Computer Science?
                   </button>
                 </h2>
               </div>
               <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                  Brunch 3 wolf moon tempor, sunt aliqua.
+                  Computer Science has been implemented well in the Los Angeles Unified School District (LAUSD). First, in the 2013-2014 school year, student participation in Exploring Computer Science (ECS) closely matched the demographics of the district even when taking into consideration females, Latinos/as, and African-Americans (Binning, 2014). Female students in ECS showed a significant increase in their belief that you can grow in your Computer Science ability
                 </div>
               </div>
             </div>
@@ -171,15 +175,13 @@
                 <h2 class="mb-0">
                   <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                     data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                    5. Where do I start my SEO strategy?
+                    5.What does it mean to have equity in Computer Science? 
                   </button>
                 </h2>
               </div>
               <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                  Brunch 3 wolf moon tempor, sunt aliqua.
+                  Women and students of color are underrepresented in Computer Science. In 2010, although there were about 14% Latinas/os in the U.S. only 5.6% were in the Science and Engineering Fields (this includes Computer Science). While African Americans were almost 12% of the population they were 4.6% of the Science and Engineering workforce. Further, in 2010, women constituted only 28% of workers in these occupations, even though they accounted for nearly half of the college-educated workforce.
                 </div>
               </div>
             </div>
@@ -196,10 +198,9 @@
       <div class="row d-flex justify-content-center">
         <div class="col-lg-7 col-md-8 text-center">
           <h1>Still Need Help?</h1>
-          <p>We enjoy adapting our strategies to offer every client the best
-            solutions that are at the forefront of the industry.Anim pariatur cliche reprehenderit, enim eiusmod high
-            life accusamus terry richardson ad squid. 3 wolf moon officia aute</p>
-          <a class="btn-style" href="contact.html">Contact Us</a>
+          <p>We enjoy adapting our strategies to offer every Student the best
+            solutions that are at the forefront of the industry.</p>
+          <a class="btn-style" href="{% url 'core:contact' %}">Contact Us</a>
         </div>
       </div>
     </div>
@@ -274,7 +275,8 @@
     <div class="container">
       <div class="row footer-top section-gap-bottom d-flex justify-content-between">
         <div class="col-lg-4 col-md-6 col-6 footer-widgets">
-          <img class="footer-logo" src="{% static 'img/logo2.svg' %}" alt="">
+          <img class="footer-logo" src="{% static 'img/csec-logo2.svg' %}" alt="">
+
           <p>It is a long established fact that
             reader will be distracted the readable
             content of a page when looking at its
@@ -328,7 +330,7 @@
       </div>
       <div class="row copyright-bottom d-flex align-items-center">
         <div class="col-md-6">
-          <p><a href="templateshub.net">Templates Hub</a></p>
+          <p><a href="#">CSEC ASTU</a></p>
         </div>
         <div class="col-md-6">
           <ul>
