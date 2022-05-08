@@ -141,15 +141,8 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, TemplateView):
     template_name = 'users/profile_update.html'
     extra_context = {'title': 'Profile Update'}
     success_message = "Your profile was updated successfully"
-    form_class = UserRegisterForm
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'password']
     success_url = reverse_lazy('profile')
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = UserRegisterForm()
-        return context
-    def post(self, request, *args, **kwargs):
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('profile')
-        return self.render_to_response(self.get_context_data(form=form))
+  
