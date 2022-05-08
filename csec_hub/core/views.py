@@ -10,6 +10,16 @@ from .models import ScoreBoard, Feed, Event
 from .filters import *
 
 
+
+from ast import Sub
+import re
+from django.views.generic import ListView
+from django.views.generic import DetailView
+from django.shortcuts import redirect, render
+from .forms import SearchForm, VotingForm, SubscriptionForm
+from .models import ScoreBoard, Feed, Event, Voting
+from .filters import ScoreBoardFilter
+
 def hompage(request):
     return render(request,'index.html',context={})
 
@@ -36,11 +46,6 @@ def fameDetail(request):
 
 
 
-
-
-
-
-
 class ScoreBoardView(ListView):
     def __init__(self):
         self.model = ScoreBoard
@@ -56,7 +61,6 @@ class ScoreBoardView(ListView):
         context['filter'] = ScoreBoardFilter(self.request.GET, queryset=self.get_queryset())
         return context
 
- 
 
         
 
@@ -104,6 +108,26 @@ class FeedDetailView(DetailView):
         self.model = Feed
         self.template_name = 'feedDetail.html'
         self.context_object_name = 'feed'
+
+    def post(self, request, *args, **kwargs):
+        form = SubscriptionForm(request.POST)
+        if form.is_valid():
+            form.save(commit=False)
+            current_user = request.user
+            form.user = current_user
+            if current_user not in form.feed.subscribers.all():
+                if form.user.telegram_username != form.cleaned_data['tg_user_name']:
+                    form.user.telegram_username = form.cleaned_data['tg_user_name']
+                form.feed = self.get_object()
+                form.feed.subscribers.add(current_user)
+                form.save()
+                return redirect('core:feed_detail', pk=form.feed.feed_type.pk)
+            else:
+                return redirect('core:feed_detail', pk=form.feed.feed_type.pk)
+        
+        return render(request, 'core/feed/detail.html', {'form': form})
+
+                
         
 
 class EventView(ListView):
@@ -122,13 +146,28 @@ class EventView(ListView):
         if query:
             queryset = queryset.filter(title__icontains=query, is_active=True)
         return queryset
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.form_class
+        context['queryset'] = self.get_queryset()
+        return context
+    
+
 
 class EventDetailView(DetailView):
     def __init__(self):
         self.model = Event
         self.template_name = 'eventDetail.html'
         self.context_object_name = 'event'
+    def post(self, request, *args, **kwargs):
+        form = SubscriptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('core:event_detail', pk=self.kwargs['pk'])
+        return render(request, self.template_name, {'form': form})
 
+            
 
 class VotingView(ListView):
     def __init__(self):

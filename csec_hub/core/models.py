@@ -27,6 +27,7 @@ class Feed(models.Model):
     type = models.ForeignKey('FeedType', on_delete=models.CASCADE, related_name='feed_type')
     posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='feed_posted_by', limit_choices_to={'is_active': True},)
     tags = TaggableManager()
+    is_sent = models.BooleanField(default=False)        
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
@@ -38,6 +39,7 @@ class Feed(models.Model):
 class FeedType(models.Model):
     name = models.ForeignKey(Division, on_delete=models.CASCADE, related_name='feed_type')
     description = models.TextField()
+    subscribers = models.ManyToManyField(User, related_name='subscribed_feed_type', limit_choices_to={'is_active': True}, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
@@ -58,6 +60,7 @@ class Event(models.Model):
     ending_date = models.DateTimeField()
     posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='event_posted_by')
     tags = TaggableManager()
+    has_form = models.BooleanField(default=False)
     is_completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -76,6 +79,18 @@ class EventParticipant(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
+
+class Subscription(models.Model):
+   
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_subscription', limit_choices_to={'is_active': True},)
+    tg_user_name = models.CharField(max_length=100)
+    feed = models.ForeignKey(FeedType, on_delete=models.CASCADE, related_name='feed_subscription', limit_choices_to={'is_active': True},)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='event_subscription', limit_choices_to={'is_active': True},null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+
 
 
 class Candidate(Membership):
