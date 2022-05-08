@@ -44,7 +44,6 @@
                   <li><a href="{% url 'core:events' %}">Events</a></li>
                   <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
                   <li><a href="{% url 'core:score_board' %}">ScoreBoard</a></li>                    
-
                   <li><a href="{% url 'core:about' %}">About</a></li>
                   
                   
@@ -75,6 +74,14 @@
                 {% endif %}
               </ul>
               </div>
+                   
+                    <a href="#" style="color:#fff"> Pages</a>
+                  <ul class="sub-menu">
+                       <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                       <li><a href="{% url 'core:hall-of-fame'%}">Hall of Fame</a>
+                     </ul>
+                </li>
+                </ul>
 
               </div>
               <!-- Nav End -->

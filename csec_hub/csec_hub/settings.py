@@ -48,10 +48,15 @@ INSTALLED_LIBRARIES = [
     'django.contrib.admin',
     'django_summernote',
     'taggit',
+    'django_filters',
+
+
 ]
 
 INSTALLED_APPS += CUSTOM_INSTALLED_APPS
 INSTALLED_APPS += INSTALLED_LIBRARIES
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

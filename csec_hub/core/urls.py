@@ -8,7 +8,7 @@ urlpatterns = [
     path('feeds/', views.FeedView.as_view(), name='feeds'),
     path('feed-detail/<int:pk>/', views.FeedDetailView.as_view(), name='feed-detail'),
     path('events/', views.EventView.as_view(), name='events'),
-    path('event/<int:pk>/', views.EventDetailView.as_view(), name='event_detail'),
+    path('event/<int:pk>/', views.EventDetailView.as_view(), name='event-detail'),
     path('score_board/', views.ScoreBoardView.as_view(), name='score_board'),
     path('score_board/<int:pk>/', views.ScoreBoardDetailView.as_view(), name='score_board_detail'),
 
@@ -26,5 +26,10 @@ urlpatterns = [
     # path('signin',views.signin,name = 'signin'),
     path('hall-of-fame',views.hallOfFame,name = 'hall-of-fame'),
     path('fame-detail',views.fameDetail,name = 'fame-detail'),
-]
 
+
+    path('voting/', views.VotingView.as_view(), name='voting'),
+    path('voting/<int:pk>/', views.VotingDetailView.as_view(), name='voting_detail'),
+        
+    
+]

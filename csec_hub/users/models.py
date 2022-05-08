@@ -1,3 +1,4 @@
+import re
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -31,7 +32,7 @@ class User(AbstractUser):
     
     
 class Membership(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='membership')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='membership')
     school_id = models.CharField(max_length=255, blank=True, null=True)
     member_of = models.ForeignKey('Division', on_delete=models.CASCADE, related_name='member_type')
     created_at = models.DateTimeField(auto_now_add=True)
