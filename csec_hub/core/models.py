@@ -16,10 +16,10 @@ class CpdScoreBoard(models.Model):
     posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='cpd_score_board_posted_by')
     tags = TaggableManager()
     score_board_date = models.DateField()
+    week = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
-
 class DevScoreBoard(models.Model):
 
     def upload_to_dev_score_board(self, filename):
@@ -31,6 +31,7 @@ class DevScoreBoard(models.Model):
     posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='dev_score_board_posted_by')
     tags = TaggableManager()  
     score_board_date = models.DateField()
+    week = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
