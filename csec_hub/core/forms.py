@@ -8,6 +8,9 @@ from .models import Voting
 class SearchForm(forms.Form):
     query = forms.CharField(max_length=255, required=False)
 
-
+class VotingForm(forms.ModelForm):
+    class Meta:
+        model = Voting
+        fields = ['msg']
 
 		

@@ -39,18 +39,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # local apps
+]
+CUSTOME_INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
-
-
-
-
-
-    # 3rd party apps
+]
+INSTALLED_LIBARIES = [
     'django_summernote',
     'taggit',
+    'django_filters',
 ]
+
+INSTALLED_APPS += CUSTOME_INSTALLED_APPS
+INSTALLED_APPS += INSTALLED_LIBARIES
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

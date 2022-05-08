@@ -14,7 +14,8 @@ class CpdScoreBoard(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to=upload_to_cpd_score_board)
     posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='cpd_score_board_posted_by')
-    tags = TaggableManager() 
+    tags = TaggableManager()
+    score_board_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
@@ -29,6 +30,7 @@ class DevScoreBoard(models.Model):
     image = models.ImageField(upload_to=upload_to_dev_score_board)
     posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='dev_score_board_posted_by')
     tags = TaggableManager()  
+    score_board_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
@@ -91,21 +93,19 @@ class EventParticipant(models.Model):
 
 
 class Candidate(Membership):
-    
     msg = models.TextField()
     votes = models.PositiveIntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    is_active = models.BooleanField(default=True)
-
+    
 
     def __str__(self):
         return self.user.username
 
 
 class Voting(models.Model):
-    candidate = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='voting_candidate')
+    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE, related_name='voting_candidate')
+    voted_by = models.ManyToManyField(User, related_name='candidate_voted')
     vote_date = models.DateTimeField()
+    msg = models.CharField(max_length=3, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
