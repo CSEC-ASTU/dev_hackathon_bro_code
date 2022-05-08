@@ -36,20 +36,7 @@
                 </div>
               </div>
 
-              <!-- Nav Start -->
-              <div class="dopenav">
-                <ul id="nav">
-                  <li><a href="{% url 'core:indexpage' %}">Home</a></li>
-                  <li><a href="{% url 'core:events' %}">Events</a></li>
-                  <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
-                  <li><a href="{% url 'core:score_board' %}">ScoreBoard</a></li>                    
-
-                  <li><a href="{% url 'core:about' %}">About</a></li>
-                  
-                  
-                  
-                  <li><a href="{% url 'core:contact' %}">Contact</a></li>
-                  <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+             
                  <!-- Nav Start -->
                  <div class="dopenav">
                   <ul id="nav">
@@ -63,6 +50,13 @@
                     
                     <li><a href="{% url 'core:contact' %}">Contact</a></li>
                     <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+                    <li>
+                      <a href="#" style="color:#fff"> Pages</a>
+                      <ul class="sub-menu">
+                           <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                           <li><a href="{% url 'core:hall-of-fame'%}">Hall of Fame</a>
+                         </ul>
+                    </li>
 
 
                   {% if request.user.is_authenticated %}
@@ -71,11 +65,7 @@
                     {% if user.profile_picture%}
                     <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
                    
-                      <a href="#" style="color:#fff"> Pages</a>
-                    <ul class="sub-menu">
-                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
-                         <li><a href="{% url 'core:hall-of-fame'%}">Hall of Fame</a>
-                       </ul>
+                     
                   </li>
                   </ul>
 
