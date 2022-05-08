@@ -2,7 +2,7 @@ from multiprocessing import Event
 from django.contrib import admin
 
 from django_summernote.admin import SummernoteModelAdmin
-from .models import ScoreBoard,Feed, FeedType, Event
+from .models import ScoreBoard,Feed, FeedType, Event, Subscription
 
 class FeedAdmin(SummernoteModelAdmin):
     summernote_fields = ('body',)
@@ -32,6 +32,16 @@ class FeedTypeAdmin(admin.ModelAdmin):
     list_per_page = 10
     ordering = ('-created_at',)
     list_display_links = ('name',)
+    list_editable = ('is_active',)
+
+@admin.register(Subscription)
+class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = ('user', 'feed', 'created_at', 'updated_at', 'is_active')
+    list_filter = ('user', 'feed', 'created_at', 'updated_at', 'is_active')
+    search_fields = ('user', 'feed', 'created_at', 'updated_at', 'is_active')
+    list_per_page = 10
+    ordering = ('-created_at',)
+    list_display_links = ('user', 'feed')
     list_editable = ('is_active',)
 
 @admin.register(Event)
