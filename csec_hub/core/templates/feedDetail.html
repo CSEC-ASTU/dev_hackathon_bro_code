@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+  {% load static %}
+
+
+ {% block content%}
+  <!-- Start Pre-loader -->
+  <div class="pre-loader-wrap">
+    <div class="pre-loader triangle">
+      <svg viewBox="0 0 86 80">
+        <polygon points="43 8 79 72 7 72"></polygon>
+      </svg>
+      <span>Loading...</span>
+    </div>
+  </div>
+  <!-- End Pre-loader -->
+  <!-- Start header section -->
+  <section class="header-section page-header">
+    <header class="header-area">
+      <div class="dope-nav-container breakpoint-off">
+        <div class="container">
+          <div class="row">
+            <!-- Main Menu -->
+            <nav class="dope-navbar justify-content-between" id="dopeNav">
+
+              <!-- Logo -->
+              <a class="nav-brand" href="index.html"><img src="{% static 'img/logo.svg' %}" alt=""></a>
+
+              <!-- Navbar Toggler -->
+              <div class="dope-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
+              </div>
+
+              <!-- Menu -->
+              <div class="dope-menu">
+                <!-- close btn -->
+                <div class="dopecloseIcon">
+                  <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                </div>
+
+                 <!-- Nav Start -->
+                 <div class="dopenav">
+                  <ul id="nav">
+                    <li><a href="{% url 'core:indexpage' %}">Home</a></li>
+                    <li><a href="{% url 'core:events' %}">Events</a></li>
+                    <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
+                    <li><a href="{% url 'core:score_board' %}">SoreBoard</a></li>                    
+                    <li><a href="{% url 'core:about' %}">About</a></li>
+                    
+                    
+                    
+                    <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                    <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+
+
+                    <li> 
+
+                      <img src="{% static 'img/p4.png' %}" style="background-color:#fff;width:35px;border-radius:50%;padding:5px 5px;"alt="">
+   
+                      <ul class="sub-menu">
+                           <li><a href="index.html">message 1</a></li>
+                           <li><a href="index2.html">message 2</a>
+                         </ul>
+                    </li>
+                  </ul>
+
+                </div>
+                <!-- Nav End -->
+                
+
+                <a href="contact.html" class="menu-btn">Get a quote</a>
+              </div>
+            </nav>
+            <div class="overlay"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row section-gap">
+        <div class="col-md-12">
+          <h1>Feed Details</h1>
+          <ul class="pagination">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Feed</a></li>
+            <li>Feed Details</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End header section -->
+
+  <!-- Start blog-post section -->
+  <section class="blog-post-section section-gap">
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-lg-8 col-md-12 blog-posts">
+          <div class="single-post post">
+
+            
+          <div class="single-post">
+            <a href="single.html">
+            
+            </a>
+            <h4>{{feed.title}}
+            {{feed.body |safe}}
+            <div class="details">
+              <div class="meta">
+                <span>By:</span> {{feed.posted_by}} / <span>Date:</span> {{feed.updated_at}}
+              </div>
+            
+            </div>
+            
+            </h4>
+           
+          </div>
+
+     
+
+         
+       
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 sidebar">
+          <div class="widget widget_search">
+            <div class="input-group">
+              <input class="form-control" type="text" placeholder="Search Here...">
+              <div class="input-group-append">
+                <button class="form-btn-style" type="submit">
+                  <i class="icofont-search-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="widget category_widget">
+            <h4 class="widget-title">Post Categories</h4>
+            <ul>
+              <li><a href="#">Business Development (10)</a></li>
+              <li><a href="#">UI/UX Design (7)</a></li>
+              <li><a href="#">Online Marketing (3)</a></li>
+              <li><a href="#">Search Engineen Optimization (2)</a></li>
+              <li><a href="#">Facebook Marketing (13)</a></li>
+            </ul>
+          </div>
+          <div class="widget ads_widget text-center">
+            <img class="img-fluid" src="{% static 'img/ads.jpg' %}" alt="">
+          </div>
+          
+          <div class="widget widget_tag_cloud">
+            <h4 class="widget-title">Tags</h4>
+            <ul>
+
+              {% for tag in fed.tags.all %}
+              <li><a href="#">{{tag.name}}</a></li>
+
+              {% endfor %}
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End blog-post section -->
+  <!-- Start subscribe-form section -->
+  <section class="subscribe-form-section">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center cta-subscribe-wrap other-page">
+        <div class="col-md-5">
+          <h4>Don't miss any Update <br>
+            Subscribe to our Newsletter.
+          </h4>
+        </div>
+        <div class="col-md-7">
+          <form class="input-group subscribe-form-wrap">
+            <input class="form-control" type="text" placeholder="Your Email Address">
+            <div class="input-group-append">
+              <button class="form-btn-style" type="submit">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End subscribe-form section -->
+  <!-- Start footer section -->
+  <footer class="footer-section home-two">
+    <div class="container">
+      <div class="row footer-top section-gap-bottom d-flex justify-content-between">
+        <div class="col-lg-4 col-md-6 col-6 footer-widgets">
+          <img class="footer-logo" src="{% static 'img/logo2.svg' %}" alt="">
+          <p>It is a long established fact that
+            reader will be distracted the readable
+            content of a page when looking at its
+            point of using desktop.</p>
+          <ul class="social-lists">
+            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+            <li><a href="#"><i class="icofont-twitter"></i></a></li>
+            <li><a href="#"><i class="icofont-instagram"></i></a></li>
+            <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">About</h4>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Partners</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">Conditions</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Services</h4>
+            <ul>
+              <li><a href="#">Official lottery</a></li>
+              <li><a href="#">100% Safe Secure</a></li>
+              <li><a href="#">Instant Payout </a></li>
+              <li><a href="#">Performance Bonus</a></li>
+              <li><a href="#">Dedicated Support</a></li>
+              <li><a href="#">No commission</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Company</h4>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Apps</a></li>
+              <li><a href="#">Lottery</a></li>
+              <li><a href="#">Bonues</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row copyright-bottom d-flex align-items-center">
+        <div class="col-md-6">
+          <p><a href="templateshub.net">Templates Hub</a></p>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Privecy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End footer section -->
+  <!-- Start Scroll Top -->
+  <div class="scroll-top">
+    <i class="icofont-rounded-up"></i>
+  </div>
+  <!-- End Scroll Top -->
+ 
+  {% endblock content%}

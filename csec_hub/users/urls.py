@@ -1,19 +1,24 @@
 from django.urls import path
 from .views import SignInView, SignUpView, SignOutView, PasswordResetView, PasswordResetDoneView, activate, accept_request, decline_request
+from django.urls import path, reverse_lazy
+from .views import emailSent,expiredLink
 
 from django.contrib.auth import views as auth_views
 
 app_name = 'users'
 
+
 urlpatterns = [
     path('login/', SignInView.as_view(), name='login'),
     path('logout/', SignOutView.as_view(), name='logout'),
-    path('register/', SignUpView.as_view(), name='register'),
+    path('register-user/', SignUpView.as_view(), name='register'),
     path('password_reset/', PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('activate/<uidb64>/<token>/', activate, name='activate'),
     path('accept/<uidb64>/<token>/', accept_request, name='accept_request'),
     path('decline/<uidb64>/<token>/', decline_request, name='decline_request'),
+    path('email-sent', emailSent, name='email-sent'),
+    path('link-expired', expiredLink, name='link-expired'),
     ]
 
 urlpatterns += [
@@ -25,6 +30,7 @@ path(
         ),
         name="change_password",
     ),
+
     path(
         "change-password/done",
         auth_views.PasswordChangeDoneView.as_view(
@@ -32,16 +38,19 @@ path(
         ),
         name="change_password_done",
     ),
+
     path(
         "password-reset/",
         auth_views.PasswordResetView.as_view(
-            template_name="registration/password-reset/password_reset_form.html",
-            subject_template_name="registration/password-reset/password_reset_subject.txt",
-            email_template_name="registration/password-reset/password_reset_email.html",
-            success_url="/auth/password-reset/done/",
+            template_name="passwordReset/password_reset_form.html",
+            
+            
+            # email_template_name="registration/password-reset/password_reset_email.html",
+            success_url= reverse_lazy('users:email-sent')
         ),
         name="password_reset",
     ),
+
     path(
         "password-reset/done/",
         auth_views.PasswordResetDoneView.as_view(
@@ -52,7 +61,7 @@ path(
     path(
         "password-reset-confirm/<uidb64>/<token>/",
         auth_views.PasswordResetConfirmView.as_view(
-            template_name="registration/password-reset/password_reset_confirm.html"
+            template_name="passwordReset/password_reset_confirm.html"
         ),
         name="password_reset_confirm",
     ),

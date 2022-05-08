@@ -1,3 +1,5 @@
+from audioop import reverse
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, render
 
@@ -56,7 +58,7 @@ class SignUpView(SuccessMessageMixin, CreateView):
                     mail_subject, message, to=[to_email]
         )
         email.send()
-        return HttpResponse('Please confirm your email address to complete the registration')
+        return redirect('users:email-sent')
 
 
 def activate(request, uidb64, token):
@@ -73,7 +75,7 @@ def activate(request, uidb64, token):
         return redirect('login')
         # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
-        return HttpResponse('Activation link is invalid!')
+        return redirect('users:link-expired')
 
 def accept_request(request, uidb64, token):
     try:
@@ -110,17 +112,22 @@ def decline_request(request, uidb64, token):
         # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Decline link is invalid!')
+def emailSent(request):
+    return render(request,'email-sent.html',context={})
+
+def expiredLink(request):
+    return render(request,'link-expired.html',context={})
 
 # Sign in view
 class SignInView(LoginView):
-    template_name = 'login.html'
-    redirect_authenticated_user = True
+    template_name = 'signin.html'
+    redirect_authenticated_user = False
     extra_context = {'title': 'Sign In'}
-
-
+    success_url = reverse_lazy('login')
+    
 # django sign out view
 class SignOutView(LogoutView):
-    template_name = 'users/logout.html'
+    template_name = 'logout.html'
     extra_context = {'title': 'Sign Out'}
 
 
@@ -134,6 +141,23 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, TemplateView):
     template_name = 'users/profile_update.html'
     extra_context = {'title': 'Profile Update'}
     success_message = "Your profile was updated successfully"
+
+
+# password reset view
+class PasswordResetView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'password_reset.html'
+    success_url = reverse_lazy('password_reset_done')
+    success_message = "Password reset email sent successfully"
+    # email_template_name = 'users/password_reset_email.html'
+    subject_template_name = 'users/password_reset_subject.txt'
+    extra_email_context = {'url': 'https://www.csec.org.in/hub/password_reset/{uid}/{token}'}
+
+# password reset done view
+class PasswordResetDoneView(SuccessMessageMixin, PasswordResetDoneView):
+    template_name = 'users/password_reset_done.html'
+    success_message = "Password reset email sent successfully"
+
+
 
 
 # django class based view profile update view render multiple forms

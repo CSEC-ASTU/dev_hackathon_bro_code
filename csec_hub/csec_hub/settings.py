@@ -27,30 +27,31 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
-
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # local apps
+]
+
+CUSTOM_INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
+]
 
-
-
-
-
-    # 3rd party apps
+INSTALLED_LIBRARIES = [
+    'admin_volt',
+    'django.contrib.admin',
     'django_summernote',
     'taggit',
 ]
+
+INSTALLED_APPS += CUSTOM_INSTALLED_APPS
+INSTALLED_APPS += INSTALLED_LIBRARIES
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -64,10 +65,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'csec_hub.urls'
 
+
+# Templates Directory
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'templates' ],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,7 +136,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "core:indexpage"
+LOGOUT_REDIRECT_URL = "core:indexpage"
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -151,12 +158,13 @@ TAGGIT_CASE_INSENSITIVE = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR/ 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# media url
+MEDIA_ROOT = BASE_DIR/ 'media'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
