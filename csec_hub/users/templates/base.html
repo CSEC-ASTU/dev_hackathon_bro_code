@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  {% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>CSE ASTU</title>
+  <!-- google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&amp;display=swap" rel="stylesheet">
+  <!-- css styles -->
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/icofont.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/odometer-theme-default.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+
+  <style>
+  .det{
+    background-color:#29282b;
+     height:500px
+  }  
+  .abt{
+    color:#fff
+  }
+  .abt p{
+    font-size:20px;
+    font-weight:500;
+    line-height:28px;
+  }
+  </style>
+</head>
+
+    <body>
+    {% block content %}{% endblock content %}
+
+
+
+    <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/dopeNav.js' %}"></script>
+    <script src="{% static 'js/odometer.js' %}"></script>
+    <script src="{% static 'js/tilt.jquery.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    </body>
+
+
+    
+</html>

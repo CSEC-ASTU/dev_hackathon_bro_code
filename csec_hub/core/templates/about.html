@@ -1,0 +1,357 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+  <!-- Start Pre-loader -->
+  <div class="pre-loader-wrap">
+    <div class="pre-loader triangle">
+      <svg viewBox="0 0 86 80">
+        <polygon points="43 8 79 72 7 72"></polygon>
+      </svg>
+      <span>Loading...</span>
+    </div>
+  </div>
+  <!-- End Pre-loader -->
+  <!-- Start header section -->
+  <section class="header-section page-header">
+    <header class="header-area">
+      <div class="dope-nav-container breakpoint-off">
+        <div class="container">
+          <div class="row">
+            <!-- Main Menu -->
+            <nav class="dope-navbar justify-content-between" id="dopeNav">
+
+              <!-- Logo -->
+              <a class="nav-brand mt-5" href="{% url 'core:indexpage' %}"><img src="{% static 'img/csec-logo2.png' %}" alt=></a>
+
+              <!-- Navbar Toggler -->
+              <div class="dope-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
+              </div>
+
+              <!-- Menu -->
+              <div class="dope-menu">
+                <!-- close btn -->
+                <div class="dopecloseIcon">
+                  <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                </div>
+                
+              </div>
+
+              <!-- Nav Start -->
+              <div class="dopenav">
+                <ul id="nav">
+                  <li><a href="{% url 'core:indexpage' %}">Home</a></li>
+                  <li><a href="{% url 'core:events' %}">Events</a></li>
+                  <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
+                  <li><a href="{% url 'core:score_board' %}">ScoreBoard</a></li>                    
+
+                  <li><a href="{% url 'core:about' %}">About</a></li>
+                  
+                  
+                  
+                  <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                  <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+
+
+                  {% if request.user.is_authenticated %}
+                  <li> 
+
+                    {% if user.profile_picture%}
+                    <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
+
+                    {%else%}
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+
+                    {%endif%}
+                    <ul class="sub-menu">
+                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                         <li><a href="{% url 'users:logout'%}">Logout</a>
+                       </ul>
+                  </li>
+          
+                {% else %}
+                <a href="{% url 'users:login' %}" class="btn-style blue-btn ml-5">Login</a>
+
+                {% endif %}
+              </ul>
+              </div>
+
+              </div>
+              <!-- Nav End -->
+              </div>
+            </nav>
+            <div class="overlay"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row section-gap">
+        <div class="col-md-12">
+          <h1>About Us</h1>
+          <ul class="pagination">
+            <li><a href="#">CSEC</a></li>
+            <li>about us page</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End header section -->
+  <!-- Start overview section -->
+  <section class="overview-section section-gap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-12 tab-left">
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-overview-tab" data-toggle="pill" href="#v-pills-overview" role="tab"
+              aria-controls="v-pills-overview" aria-selected="true">
+              <img src="{% static 'img/aa1.png' %}" alt="">
+              <h4>CLUB Overview</h4>
+            </a>
+            <a class="nav-link" id="v-pills-mission-tab" data-toggle="pill" href="#v-pills-mission" role="tab"
+              aria-controls="v-pills-mission" aria-selected="false">
+              <img src="{% static 'img/aa2.png' %}" alt="">
+              <h4>Mission of CSEC ASTU</h4>
+            </a>
+            <a class="nav-link" id="v-pills-vision-tab" data-toggle="pill" href="#v-pills-vision" role="tab"
+              aria-controls="v-pills-vision" aria-selected="false">
+              <img src="{% static 'img/aa3.png' %}" alt="">
+              <h4>Vission of CSEC ASTU</h4>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-12 tab-right">
+          <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-overview" role="tabpanel"
+              aria-labelledby="v-pills-overview-tab">
+              <h2>We’ve helped some amazing Students
+                rebrand, redesign and get to higher level
+                to a successful Skills.</h2>
+              <p>
+                On the other hand, we denounce with righteous indignation and dislike men who are so beguie
+                and demoralized by the charms of pleasure of the by desire, that they cannot foresee the pain
+                and trouble that are bound to ensue; and blame longs to those who fail in their duty through is
+                weakness of will, which is the same as saying through shrinking from toile and pain these cases
+                them perfectly and easy to distinguish and blame longs to those who fail in their duty through
+                weakness of will, which is the same as saying.
+              </p>
+              <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguie
+                and demoralized by the charms of pleasure of the by desire, that they cannot foresee the pain
+                and trouble that are bound to ensue;.</p>
+            </div>
+            <div class="tab-pane fade" id="v-pills-mission" role="tabpanel" aria-labelledby="v-pills-mission-tab">
+              <h2>Growth strategy with
+                robust Implementation.</h2>
+              <p>
+                On the other hand, we denounce with righteous indignation and dislike men who are so beguie
+                and demoralized by the charms of pleasure of the by desire, that they cannot foresee the pain
+                and trouble that are bound to ensue; and blame longs to those who fail in their duty through is
+                weakness of will, which is the same as saying through shrinking from toile and pain these cases
+                them perfectly and easy to distinguish and blame longs to those who fail in their duty through
+                weakness of will, which is the same as saying.
+              </p>
+              <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguie
+                and demoralized by the charms of pleasure of the by desire, that they cannot foresee the pain
+                and trouble that are bound to ensue;.</p>
+            </div>
+            <div class="tab-pane fade" id="v-pills-vision" role="tabpanel" aria-labelledby="v-pills-vision-tab">
+              <h2>Provide the best quality services Our Working Process.</h2>
+              <p>
+                On the other hand, we denounce with righteous indignation and dislike men who are so beguie
+                and demoralized by the charms of pleasure of the by desire, that they cannot foresee the pain
+                and trouble that are bound to ensue; and blame longs to those who fail in their duty through is
+                weakness of will, which is the same as saying through shrinking from toile and pain these cases
+                them perfectly and easy to distinguish and blame longs to those who fail in their duty through
+                weakness of will, which is the same as saying.
+              </p>
+              <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguie
+                and demoralized by the charms of pleasure of the by desire, that they cannot foresee the pain
+                and trouble that are bound to ensue;.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End overview section -->
+  <!-- Start about section -->
+  <section class="about-section section-gap">
+    <div class="container">
+      <div class="row d-flex align-items-center">
+        <div class="about-left col-lg-6 col-md-12">
+          <h1>Effective Growth and community managnment</h1>
+          <p>Two before narrow not relied how except moment myself. Dejection assurance mrs led certainly. So gate at no
+            only none open. Betrayed at properly it of graceful on devonshire acceptance son.</p>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="purple">Innovative Ideas</h4>
+              <p>Must you with him from him her were more. In eldest be it result should remark Removing yourself.</p>
+            </div>
+            <div class="col-md-6">
+              <h4 class="yellow">Certified Solutions</h4>
+              <p>It as announcing it me stimulated frequently continuing Least their she you now above.</p>
+            </div>
+            <div class="col-md-6">
+              <h4 class="purple2">Robust web plan</h4>
+              <p>Frankness resembled say not new smallness you discovery. Noisier ferrars yet shyness weather.</p>
+            </div>
+            <div class="col-md-6">
+              <h4 class="green">Traffic Analysis</h4>
+              <p>Removing yourself be in answered he. Consider occasion get improved him she eat you discovery.</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-right col-lg-6 col-md-12">
+          <img class="img-fluid" src="{% static 'img/a1.png' %}" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End about section -->
+
+  
+  <!-- Start Brand Logo Section -->
+  <section class="brand-logo-section">
+    <div class="container">
+      <div class="row bottom-logo-wrap">
+        <div class="brand-logo-carousel owl-carousel owl-theme">
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand1.png' %}" alt="">
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand2.png' %}" alt="">
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand3.png' %}" alt="">
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand4.png' %}" alt="">
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand5.png' %}" alt="">
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand6.png' %}" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Brand Logo Section -->
+  <!-- Start subscribe-form section -->
+  <section class="subscribe-form-section">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center cta-subscribe-wrap other-page">
+        <div class="col-md-5">
+          <h4>Don't miss any Update <br>
+            Subscribe to our Newsletter.
+          </h4>
+        </div>
+        <div class="col-md-7">
+          <form class="input-group subscribe-form-wrap">
+            <input class="form-control" type="text" placeholder="Your Email Address">
+            <div class="input-group-append">
+              <button class="form-btn-style" type="submit">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End subscribe-form section -->
+  <!-- Start footer section -->
+  <footer class="footer-section home-two">
+    <div class="container">
+      <div class="row footer-top section-gap-bottom d-flex justify-content-between">
+        <div class="col-lg-4 col-md-6 col-6 footer-widgets">
+          <img class="footer-logo" src="{% static 'img/csec-logo2.svg' %}" alt="">
+
+          <p>It is a long established fact that
+            reader will be distracted the readable
+            content of a page when looking at its
+            point of using desktop.</p>
+          <ul class="social-lists">
+            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+            <li><a href="#"><i class="icofont-twitter"></i></a></li>
+            <li><a href="#"><i class="icofont-instagram"></i></a></li>
+            <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">About</h4>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Partners</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">Conditions</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Services</h4>
+            <ul>
+              <li><a href="#">Official lottery</a></li>
+              <li><a href="#">100% Safe Secure</a></li>
+              <li><a href="#">Instant Payout </a></li>
+              <li><a href="#">Performance Bonus</a></li>
+              <li><a href="#">Dedicated Support</a></li>
+              <li><a href="#">No commission</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Company</h4>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Apps</a></li>
+              <li><a href="#">Lottery</a></li>
+              <li><a href="#">Bonues</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row copyright-bottom d-flex align-items-center">
+        <div class="col-md-6">
+          <p><a href="#">CSEC ASTU</a></p>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Privecy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End footer section -->
+  <!-- Start Scroll Top -->
+  <div class="scroll-top">
+    <i class="icofont-rounded-up"></i>
+  </div>
+  <!-- End Scroll Top -->
+
+  {% endblock content%}

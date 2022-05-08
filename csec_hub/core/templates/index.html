@@ -1,0 +1,662 @@
+{% extends 'base.html' %}
+  {% load static %}
+
+
+ {% block content%}
+  <!-- Start Pre-loader -->
+  <div class="pre-loader-wrap">
+    <div class="pre-loader triangle">
+      <svg viewBox="0 0 86 80">
+        <polygon points="43 8 79 72 7 72"></polygon>
+      </svg>
+      <span>Welcome...</span>
+    </div>
+  </div>
+  <!-- End Pre-loader -->
+
+  <!-- Start header section -->
+  <section class="header-section home-one">
+    <header class="header-area">
+      <div class="dope-nav-container breakpoint-off">
+        <div class="container">
+          <div class="row">
+            <!-- Main Menu -->
+            <nav class="dope-navbar justify-content-between" id="dopeNav">
+
+              <!-- Logo -->
+              <a class="nav-brand mt-5" href="{% url 'core:indexpage' %}"><img src="{% static 'img/csec-logo2.png' %}" alt=></a>
+
+              <!-- Navbar Toggler -->
+              <div class="dope-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
+              </div>
+
+              <!-- Menu -->
+              <div class="dope-menu">
+                <!-- close btn -->
+                <div class="dopecloseIcon">
+                  <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                </div>
+
+                <!-- Nav Start -->
+                <div class="dopenav">
+                  <ul id="nav">
+                    <li><a href="{% url 'core:indexpage' %}">Home</a></li>
+                    <li><a href="{% url 'core:events' %}">Events</a></li>
+                    <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
+                    <li><a href="{% url 'core:score_board' %}">ScoreBoard</a></li>                    
+
+                    <li><a href="{% url 'core:about' %}">About</a></li>
+                    
+                    
+                    
+                    <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                    <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+
+
+                    {% if request.user.is_authenticated %}
+                    <li> 
+
+                      {% if user.profile_picture%}
+                      <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
+  
+                      {%else%}
+                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" style="width:65px;border-radius:50%;padding:5px 5px;">
+  
+                      {%endif%}
+                      <ul class="sub-menu">
+                           <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                           <li><a href="{% url 'users:logout'%}">Logout</a>
+                         </ul>
+                    </li>
+            
+                  {% else %}
+                  <a href="{% url 'users:login' %}" class="btn-style blue-btn ml-5">Login</a>
+  
+                  {% endif %}
+                </ul>
+                </div>
+
+                </div>
+                <!-- Nav End -->
+            </nav>
+            <div class="overlay"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row section-gap header-content">
+        <div class="col-lg-7 col-md-8 header-text-wrap">
+          <h1>Achive your Carrier goals with us.</h1>
+          <p>We are builders, Dreamers, Problem-solvers & Thinkers. 
+            <br>We are ASTU Computer Science & Engineering Club (CSEC ASTU), the largest club in our campus.</p>
+          <a class="btn-style blue-btn" href="{% url 'core:about' %}">Discover More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End header section -->
+
+  <!-- Start services section -->
+  <section class="services-section section-gap home-one">
+    <div class="container">
+      <div class="row d-flex justify-content-center section-title">
+        <div class="col-lg-6 col-md-8 col-12">
+          <h1>What we provide
+            special services for our community</h1>
+          <p>There are many variations of passages of passage available the majority
+            you are going rassing to use a passage of you need to sure.</p>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-4 col-md-6 col-12">
+          <div data-tilt class="single-service text-center">
+            <img src="{% static 'img/s1.png' %}" alt=>
+            <h4>Competitive Programming</h4>
+            <p>Focus on problem solving and algorithms for undergraduate students</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="single-service text-center">
+            <img src="{% static 'img/s2.png' %}" alt=>
+            <h4>Capacity Building</h4>
+            <p>Build your skills + serve our community</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="single-service text-center">
+            <img src="{% static 'img/s3.png' %}" alt=>
+            <h4>Development Division</h4>
+            <p> Be the ultimate developer of your dreams. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End services section -->
+
+  <!-- Start info section -->
+  <section class="info-section section-gap-bottom home-one">
+    <div class="container-fluid">
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-6 col-md-12 info-left">
+          <img src="{% static 'img/i.png' %}" alt=>
+        </div>
+        <div class="col-lg-6 col-md-12 info-right">
+          <h1>We train our members on</h1>
+          <ul>
+            <li>
+              <div class="list-icon"><img src="{% static 'img/b1.png' %}" alt=></div>
+              <p> Workshops for developing marketable skills in a great way to practice coding outside of classroom.</p>
+            </li>
+            <li>
+              <div class="list-icon"><img src="{% static 'img/b2.png' %}" alt=></div>
+              <p> Hackathons for building and creating applications and employ technical skills.</p>
+            </li>
+            <li>
+              <div class="list-icon"><img src="{% static 'img/b3.png' %}"</div>
+              <p>
+                Code sessions with our mentors to learn new skills and improve your coding skills.</p>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End info section -->
+
+  <!-- Start why-choose section -->
+  <section class="why-choose-section section-gap">
+    <div class="container">
+      <div class="row d-flex align-items-center justify-content-between">
+        <img class="pattern-right" src="{% static 'img/why-pattern.png' %}" alt=>
+        <div class="col-lg-6 col-md-12">
+          <div class="row">
+            <div class="col-md-6 col-6">
+              <div class="single-why text-center mb-30">
+                <img src="{% static 'img/w1.png' %}" alt=>
+                <h4> Optimised Solutions</h4>
+              </div>
+              <div class="single-why text-center">
+                <img src="{% static 'img/w2.png' %}" alt=>
+                <h4>24/7 Support</h4>
+              </div>
+            </div>
+            <div class="col-md-6 col-6">
+              <div class="single-why text-center mb-30 mt-50">
+                <img src="{% static 'img/w3.png' %}" alt=>
+                <h4>Robust Plan</h4>
+              </div>
+
+              <div class="single-why text-center">
+                <img src="{% static 'img/w4.png' %}" alt=>
+                <h4>Think Wisely</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="why-left-wrap">
+            <h1>Full range of
+              Search <br> Engine
+              Optimisation.</h1>
+            <h5>There are many variations of passages of passage available the majority you are going rassing to use.
+            </h5>
+            <p>
+              Having a home based business is a wonderful asset to your life. The problem still stands, when it comes
+              timeadvertise your business for a cheap cost. I know you have looked for to answer everywhere I am here to
+              share a few simple creative ways. There are many variations.
+            </p>
+            <a class="btn-style blue-btn" href="#">Discover More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End why-choose section -->
+
+  <!-- Start stat section -->
+  <section class="stat-section section-gap" id="stat_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="single-stat">
+            <h1>
+              <div class="odometer odometer_number_one">0000</div>
+              <div class="sub-text">Current <br> members</div>
+            </h1>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="single-stat">
+            <h1>
+              <div class="odometer odometer_number_two">000</div>
+              <div class="sub-text">Development <br> Division</div>
+            </h1>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="single-stat">
+            <h1>
+              <div class="odometer odometer_number_three">0000</div>
+              <div class="sub-text">Competitive <br> Programming</div>
+            </h1>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="single-stat">
+            <h1>
+              <div class="odometer odometer_number_four">0000</div>
+              <div class="sub-text">Capacity <br> Building</div>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End stat section -->
+
+  <!-- Start portfolio section -->
+  <!-- <section class="portfolio-section section-gap-top">
+    <div class="container">
+      <div class="row d-flex justify-content-center section-title">
+        <div class="col-lg-6 col-md-8 col-12">
+          <h1>Some project we provide
+            for our customer</h1>
+          <p>There are many variations of passages of passage available the majority
+            you are going rassing to use a passage of you need to sure.</p>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-carusel-wrap  owl-carousel owl-theme">
+      <div class="single-portfolio">
+        <div class="thumb">
+          <img src="{% static 'img/p1.jpg' %}" alt=>
+        </div>
+        <div class="details">
+          <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          <a href="service-details.html">
+            <h4>Graphical Presentation</h4>
+          </a>
+          <p>It is a long established fact that reader will be distracted the readable content of a page when looking at
+            its point.</p>
+        </div>
+      </div>
+      <div class="single-portfolio">
+        <div class="thumb">
+          <img src=" {% static 'img/p2.jpg' %}" alt=>
+        </div>
+        <div class="details">
+          <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          <a href="service-details.html">
+            <h4>Banner Design</h4>
+          </a>
+          <p>It is a long established fact that reader will be distracted the readable content of a page when looking at
+            its point.</p>
+        </div>
+      </div>
+      <div class="single-portfolio">
+        <div class="thumb">
+          <img src="{% static 'img/p3.jpg' %}" alt=>
+        </div>
+        <div class="details">
+          <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          <a href="service-details.html">
+            <h4>Magazine Design</h4>
+          </a>
+          <p>It is a long established fact that reader will be distracted the readable content of a page when looking at
+            its point.</p>
+        </div>
+      </div>
+      <div class="single-portfolio">
+        <div class="thumb">
+          <img src="{% static 'img/p4.jpg' %}" alt=>
+        </div>
+        <div class="details">
+          <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          <a href="service-details.html">
+            <h4>Flayer Design</h4>
+          </a>
+          <p>It is a long established fact that reader will be distracted the readable content of a page when looking at
+            its point.</p>
+        </div>
+      </div>
+      <div class="single-portfolio">
+        <div class="thumb">
+          <img src="{% static 'img/p5.jpg' %}" alt=>
+        </div>
+        <div class="details">
+          <a class="btn-style" href="service-details.html"><i class="icofont-arrow-right"></i></a>
+          <a href="service-details.html">
+            <h4>Cover Design</h4>
+          </a>
+          <p>It is a long established fact that reader will be distracted the readable content of a page when looking at
+            its point.</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!-- End portfolio section -->
+
+  <!-- Start info-two section -->
+  <section class="info-two-section section-gap home-one">
+    <div class="container-fluid">
+      <div class="row d-flex align-items-center position-relative">
+        <img class="pattern" src="{% static 'img/info2-pattern.png' %}" alt=>
+        <div class="col-lg-6 col-md-10 col-12 info-left">
+          <div class="info-left-wrap">
+            <h1>Growth strategy with <br>
+              robust implementation</h1>
+            <p class="sub-text">
+              Whether you’ve never even seen a line of code before or you’ve written full-stack applications that scale, we’ve got you covered. With tech talks, workshops, challenges, and more, there’s plenty of ways to gain new skills and level up your career. Our exciting events, ranging from beginner to advanced, will get you up and running with your first website or how to deploy and auto-scale your application on the cloud.
+            </p>
+            <div class="row bottom-txt-wrap">
+              <div class="col-md-6 col-12 single-bottom-wrap">
+                <img src="{% static 'img/i5.png' %}" alt=>
+                <h4>Innovative Ideas</h4>
+                <p>Must you with him from him her were more. In eldest be it result should remark.</p>
+              </div>
+              <div class="col-md-6 col-12 single-bottom-wrap">
+                <img src="{% static 'img/i6.png' %}" alt=>
+                <h4>Certified Solutions</h4>
+                <p>Unpleasant especially assistance sufficient he comparison so inquietude.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 info-right">
+          <img src="{% static 'img/i2.png' %}" alt=>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End info-two section -->
+  <!-- Start testimonial section -->
+  <section class="testimonial-section section-gap">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-lg-5 col-md-12 testimonial-left">
+          <h1>Our lovely <br> Community
+            Feedback</h1>
+          <p>
+            CSEC ASTU has a great community of students and teachers.
+          </p>
+          <div id="leftNav" class="owl-nav"></div>
+        </div>
+        <div class="col-lg-7 col-md-12 testimonial-right">
+          <div class="testimonial-carousel owl-carousel owl-theme">
+            <div class="single-testimonial">
+              <p>
+                I love being a part of this community. I am a student of ASTU and I am very happy to be a part of this community.
+              </p>
+              <div class="d-flex align-items-center">
+                <div class="thumb">
+                  
+                  <li> 
+
+                   
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+
+                </div>
+                <div class="details">
+                  <h4>Esrael Dawit</h4>
+                  <span>PR</span>
+                </div>
+              </div>
+            </div>
+            <div class="single-testimonial">
+              <p>
+                I love being a part of this community. I am a student of ASTU and I am very happy to be a part of this community.
+              </p>
+              <div class="d-flex align-items-center">
+                <div class="thumb">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+                </div>
+                <div class="details">
+                  <h4>Esrael Dawit</h4>
+                  <span>PR</span>
+                </div>
+              </div>
+            </div>
+            <div class="single-testimonial">
+              <p>
+                I love being a part of this community. I am a student of ASTU and I am very happy to be a part of this community.
+              </p>
+              <div class="d-flex align-items-center">
+                <div class="thumb">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+                </div>
+                <div class="details">
+                  <h4>Esrael Dawit</h4>
+                  <span>PR</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End testimonial section -->
+
+  <!-- Start blog section -->
+  <!-- <section class="blog-section section-gap-top">
+    <div class="container">
+      <div class="row d-flex justify-content-center section-title">
+        <div class="col-lg-6 col-md-8 col-12">
+          <h1>Checkout our blog
+            post for latest update</h1>
+          <p>There are many variations of passages of passage available the majority
+            you are going rassing to use a passage of you need to sure.</p>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="single-blog">
+            <div class="feature-thumb">
+              <img src="{% static 'img/b1.jpg' %}" alt=>
+            </div>
+            <div class="details">
+              <a href="single.html">
+                <h4>Many desktop and rasing package
+                  web page editors existence.</h4>
+              </a>
+              <div class="meta d-flex align-items-center justify-content-between">
+                <div class="author-details d-flex align-items-center">
+                  <div class="author-thumb">
+                    <img src="{% static 'img/author1.png' %}" alt=>
+                  </div>
+                  <div class="meta-text">
+                    <h5>Fatema Kruisem</h5>
+                    <span>03.08.2019</span>
+                  </div>
+                </div>
+                <a href="#" class="btn-wrap"><i class="icofont-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="single-blog">
+            <div class="feature-thumb">
+              <img src="{% static 'img/b2.jpg' %}" alt=>
+            </div>
+            <div class="details">
+              <a href="single.html">
+                <h4>Extremity direction existence as dashwoods webpage.</h4>
+              </a>
+              <div class="meta d-flex align-items-center justify-content-between">
+                <div class="author-details d-flex align-items-center">
+                  <div class="author-thumb">
+                    <img src="{% static 'img/author2.png' %}" alt=>
+                  </div>
+                  <div class="meta-text">
+                    <h5>Sammy Erickson</h5>
+                    <span>21.08.2019</span>
+                  </div>
+                </div>
+                <a href="#" class="btn-wrap"><i class="icofont-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="single-blog">
+            <div class="feature-thumb">
+              <img src="{% static 'img/b3.jpg' %}" alt=>
+            </div>
+            <div class="details">
+              <a href="single.html">
+                <h4>Supplied directly pleasant we ignorant ecstatic dashwoods.</h4>
+              </a>
+              <div class="meta d-flex align-items-center justify-content-between">
+                <div class="author-details d-flex align-items-center">
+                  <div class="author-thumb">
+                    <img src="assets/img/author1.png" alt=>
+                  </div>
+                  <div class="meta-text">
+                    <h5>Fatema Kruisem</h5>
+                    <span>23.08.2019</span>
+                  </div>
+                </div>
+                <a href="#" class="btn-wrap"><i class="icofont-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!-- End blog section -->
+
+  <!-- Start logo section -->
+  <section class="brand-logo-section home-one">
+    <div class="container">
+      <div class="row bottom-logo-wrap">
+        <div class="brand-logo-carousel owl-carousel owl-theme">
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand1.png' %}" alt=>
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand2.png' %}" alt=>
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand3.png' %}" alt=>
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand4.png' %}" alt=>
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand5.png' %}" alt=>
+            </a>
+          </div>
+          <div class="single-brand-logo">
+            <a href="#">
+              <img class="img-fluid" src="{% static 'img/brand6.png' %}" alt=>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End logo section -->
+
+  <!-- Start footer section -->
+  <footer class="footer-section section-gap-top home-one">
+    <div class="container">
+      <div class="row footer-top d-flex justify-content-between">
+        <div class="col-lg-4 col-md-6 col-6 footer-widgets">
+          <img class="footer-logo" style="width: 50%;" src="{% static 'img/csec-logo2.png' %}" alt=>
+          <p>To help students interested in technology to meet other
+            like‑minded students and to help advance their careers</p>
+          <ul class="social-lists">
+            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+            <li><a href="#"><i class="icofont-twitter"></i></a></li>
+            <li><a href="#"><i class="icofont-instagram"></i></a></li>
+            <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">About</h4>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Partners</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">Conditions</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Services</h4>
+            <ul>
+              
+              <li><a href="#">Cyber Security</a></li>
+              <li><a href="#">Competetive programming</a></li>
+              <li><a href="#">Fast Development</a></li>
+              <li><a href="#">Community Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Company</h4>
+            <ul>
+              <li><a href="#">Feeds</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Members</a></li>
+              <li><a href="#">Podcasts</a></li>
+              <li><a href="#">Hall of fame</a></li>
+              <li><a href="#">Events</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row footer-bottom section-gap-top d-flex align-items-center">
+        <div class="col-md-6">
+          <h1>Don't wanna miss Update? <br>
+            Let us Subscribe.</h1>
+        </div>
+        <div class="col-md-6">
+          <div class="input-group subscribe-wrap">
+            <input class="form-control" type="text" placeholder="telegram username">
+            <button class="btn-style red-btn">Subscribe Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="row copyright-bottom d-flex align-items-center">
+        <div class="col-md-6">
+          <p><a href="#">CSEC ASTU</a></p>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Privecy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End footer section -->
+  <!-- Start Scroll Top -->
+  <div class="scroll-top">
+    <i class="icofont-rounded-up"></i>
+  </div>
+  <!-- End Scroll Top -->
+  {% endblock content%}

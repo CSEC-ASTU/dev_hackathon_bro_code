@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  {% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Xeolit | SEO & Digital Marketing HTML5 Template</title>
+  <link rel="shortcut icon" type="image" href="{% static 'img/cs.png' %}" />
+    <!-- google Font -->
+  <!-- css styles -->
+  <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
+
+  {% comment %} <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" /> {% endcomment %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+
+  <style> 
+      
+    /*custom font*/
+    {% comment %} @import url(https://fonts.googleapis.com/css?family=Montserrat); {% endcomment %}
+    
+    /*basic reset*/
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    html {
+        height: 100%;
+        {% comment %} background: #19a2fa; /* fallback for old browsers */ {% endcomment %}
+        background: -webkit-linear-gradient(to left, #6441A5, #2a0845); /* Chrome 10-25, Safari 5.1-6 */
+    }
+    
+    body {
+        font-family: nova flat;
+        background: url({% static 'img/csec-new.png' %});
+    }
+    
+    /*form styles*/
+    #msform {
+        text-align: center;
+        position: relative;
+        margin-top:10% !important;
+        border-radius:5px
+
+        
+    }
+    .container{
+
+        display:flex;
+        justify-content:center;
+    }
+    #msform fieldset {
+        background: white;
+        border: 0 none;
+        border-radius: 10px;
+        box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+        padding: 20px 30px;
+        box-sizing: border-box;
+        width: 80%;
+        margin: 0 10%;
+    
+        /*stacking fieldsets above each other*/
+        position: relative;
+    }
+    
+    /*Hide all except first fieldset*/
+    #msform fieldset:not(:first-of-type) {
+        display: none;
+    }
+    .img{
+        width:50px !important;
+    },
+    .img img{
+        width:50px
+    }
+    /*inputs*/
+    #msform input, #msform textarea {
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 0px;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: montserrat;
+        color: #2C3E50;
+        font-size: 13px;
+    }
+    
+    #msform input:focus, #msform textarea:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: 1px solid #ee0979;
+        outline-width: 0;
+        transition: All 0.5s ease-in;
+        -webkit-transition: All 0.5s ease-in;
+        -moz-transition: All 0.5s ease-in;
+        -o-transition: All 0.5s ease-in;
+    }
+    
+    /*buttons*/
+    #msform .action-button {
+        width: 100px;
+        background: #1a75ff;
+        font-weight: bold;
+        color: white;
+        border: 0 none;
+        border-radius: 25px;
+        cursor: pointer;
+        padding: 10px 5px;
+        margin: 10px 5px;
+    }
+    
+    #msform .action-button:hover, #msform .action-button:focus {
+        box-shadow: 0 0 0 2px white, 0 0 0 3px #ffe706;
+    }
+    
+    #msform .action-button-previous {
+        width: 100px;
+        background: #C5C5F1;
+        font-weight: bold;
+        color: white;
+        border: 0 none;
+        border-radius: 25px;
+        cursor: pointer;
+        padding: 10px 5px;
+        margin: 10px 5px;
+    }
+    
+    #msform .action-button-previous:hover, #msform .action-button-previous:focus {
+        box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+    }
+    
+    /*headings*/
+    .fs-title {
+        font-size: 18px;
+        text-transform: uppercase;
+        color: #2C3E50;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+        font-weight: bold;
+    }
+    
+    .fs-subtitle {
+        font-weight: normal;
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    /*progressbar*/
+    #progressbar {
+        margin-bottom: 30px;
+        overflow: hidden;
+        /*CSS counters to number the steps*/
+        counter-reset: step;
+    }
+    
+    #progressbar li {
+        list-style-type: none;
+        color: white;
+        text-transform: uppercase;
+        font-size: 9px;
+        width: 33.33%;
+        float: left;
+        position: relative;
+        letter-spacing: 1px;
+    }
+    
+    #progressbar li:before {
+        content: counter(step);
+        counter-increment: step;
+        width: 24px;
+        height: 24px;
+        line-height: 26px;
+        display: block;
+        font-size: 12px;
+        color: #333;
+        background: white;
+        border-radius: 25px;
+        margin: 0 auto 10px auto;
+    }
+    
+    /*progressbar connectors*/
+    #progressbar li:after {
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: white;
+        position: absolute;
+        left: -50%;
+        top: 9px;
+        z-index: -1; /*put it behind the numbers*/
+    }
+    
+    #progressbar li:first-child:after {
+        /*connector not needed before the first step*/
+        content: none;
+    }
+    
+    /*marking active/completed steps green*/
+    /*The number of the step and the connector before it = green*/
+    #progressbar li.active:before, #progressbar li.active:after {
+        background: #322666;
+        color: white;
+    }
+    
+    
+    /* Not relevant to this form */
+    .dme_link {
+        margin-top: 30px;
+        text-align: center;
+    }
+    .dme_link a {
+        background: #FFF;
+        font-weight: bold;
+        color: #57a5f0;
+        border: 0 none;
+        border-radius: 25px;
+        cursor: pointer;
+        padding: 5px 25px;
+        font-size: 12px;
+    }
+    
+    .dme_link a:hover, .dme_link a:focus {
+        background: #35abf5;
+        text-decoration: none;
+        color:#fff;
+        transition:0.5s ease;
+    }
+    .container-fluid{
+        margin-top:3% !important;
+    }
+
+
+</style>
+  
+</head>
+
+    <body>
+<div class="container-fluid d-flex mt-5">
+
+<!-- MultiStep Form -->
+<div class="row mt-5">
+    <div class="col-md-6 col-md-offset-3 mt-5">
+        <form id="msform" action="{% url 'users:login' %}" method="POST"> 
+            {% csrf_token %}
+            <!-- fieldsets -->
+           
+           
+            <fieldset>
+                <div class="img" style="margin-left:37%;"> <img src="{% static 'img/csec-wv.png' %}" style="width:150px;"></div>
+                {%if form.errors%}
+                {% for field in form %}
+                        {% for er in field.errors%}
+                        <div class="alert alert-danger col-md-12" role="alert" >
+                         <a href="#" class="alert-link">{{field.name}}</a> {{er |escape}}</br>
+                        </div>
+                         {%endfor%}
+                {%endfor%}
+                {%endif%}
+             
+                <h2 class="fs-title">Sign in</h2>
+                <h3 class="fs-subtitle">Fill in your credentials</h3>
+        
+                <input id="id_username" type="text" name="username" placeholder="username"/>
+                <input id="id_password"  type="password" name="password" placeholder="Password"/>
+                <input type="submit" name="submit" class="submit btn-lg action-button" value="Sign in"/>
+                <p> <a href="{% url 'users:password_reset' %}" >Forgot Password ? Reset Here</a></p>
+
+            </fieldset>
+        </form>
+        <!-- link to designify.me code snippets -->
+        <div class="dme_link">
+            <p> <a href="{% url 'users:register' %}" >Don't have an account ? Register Here</a></p>
+        </div>
+        <!-- /.link to designify.me code snippets -->
+    </div>
+</div>
+<!-- /.MultiStep Form -->
+
+</div>
+
+
+<script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+<
+
+</body>
+
+</html>
+
+
+
+

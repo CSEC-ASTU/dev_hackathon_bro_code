@@ -1,0 +1,455 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <!-- Start Pre-loader -->
+  <div class="pre-loader-wrap">
+    <div class="pre-loader triangle">
+      <svg viewBox="0 0 86 80">
+        <polygon points="43 8 79 72 7 72"></polygon>
+      </svg>
+      <span>Loading...</span>
+    </div>
+  </div>
+  <!-- End Pre-loader -->
+  <!-- Start header section -->
+  <section class="header-section page-header">
+    <header class="header-area">
+      <div class="dope-nav-container breakpoint-off">
+        <div class="container">
+          <div class="row">
+            <!-- Main Menu -->
+            <nav class="dope-navbar justify-content-between" id="dopeNav">
+
+              <!-- Logo -->
+              <a class="nav-brand mt-5" href="{% url 'core:indexpage' %}"><img src="{% static 'img/csec-logo2.png' %}" alt=></a>
+
+              <!-- Navbar Toggler -->
+              <div class="dope-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
+              </div>
+
+              <!-- Menu -->
+              <div class="dope-menu">
+                <!-- close btn -->
+                <div class="dopecloseIcon">
+                  <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                </div>
+              </div>
+
+              <!-- Nav Start -->
+              <div class="dopenav">
+                <ul id="nav">
+                  <li><a href="{% url 'core:indexpage' %}">Home</a></li>
+                  <li><a href="{% url 'core:events' %}">Events</a></li>
+                  <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
+                  <li><a href="{% url 'core:score_board' %}">ScoreBoard</a></li>                    
+
+                  <li><a href="{% url 'core:about' %}">About</a></li>
+                  
+                  
+                  
+                  <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                  <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+
+
+                  {% if request.user.is_authenticated %}
+                  <li> 
+
+                    {% if user.profile_picture%}
+                    <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
+                   
+                      <a href="#" style="color:#fff"> Pages</a>
+                    <ul class="sub-menu">
+                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                         <li><a href="{% url 'core:hall-of-fame'%}">Hall of Fame</a>
+                       </ul>
+                  </li>
+                  </ul>
+
+                    {%else%}
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+
+                    {%endif%}
+                    <ul class="sub-menu">
+                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                         <li><a href="{% url 'users:logout'%}">Logout</a>
+                       </ul>
+                  </li>
+          
+                {% else %}
+                <a href="{% url 'users:login' %}" class="btn-style blue-btn ml-5">Login</a>
+
+                {% endif %}
+              </ul>
+              </div>
+
+              </div>
+              <!-- Nav End -->
+              </div>
+            </nav>
+            <div class="overlay"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row section-gap">
+        <div class="col-md-12">
+          <h1>Web Design & Development</h1>
+          <ul class="pagination">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li>Service Details</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End header section -->
+  <!-- Start portfolio-details section -->
+  <section class="portfolio-details-section section-gap-top">
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-lg-8 gallery-wrap">
+          <div class="outer">
+            <div id="big" class="owl-carousel owl-theme portfolio-carousel">
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project1.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project2.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project3.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project4.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project1.jpg' %}" alt="">
+              </div>
+            </div>
+
+            
+          </div>
+        </div>
+        <div class="col-lg-4 details-container">
+          <div class="details-wrap">
+            <h2>Project Information</h2>
+            <table>
+              <tr>
+                <td class="title">Client</td>
+                <td>Donal Arichange</td>
+              </tr>
+              <tr>
+                <td class="title">Project type</td>
+                <td>Digital Marketing</td>
+              </tr>
+              <tr>
+                <td class="title">Date</td>
+                <td>June 22, 2019</td>
+              </tr>
+              <tr>
+                <td class="title">Duration</td>
+                <td>06 Months</td>
+              </tr>
+              <tr>
+                <td class="title">Website</td>
+                <td><a href="#">http://www.example.com</a></td>
+              </tr>
+              <tr>
+                <td class="title">Address</td>
+                <td>326 North Lake View <br>
+                  Street Watsonville, <br>
+                  CA 95076.</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row d-flex">
+        <div class="col-lg-8 gallery-wrap">
+          <div class="outer">
+            <div id="big" class="owl-carousel owl-theme portfolio-carousel">
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project1.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project2.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project3.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project4.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project1.jpg' %}" alt="">
+              </div>
+            </div>
+
+            
+          </div>
+        </div>
+        <div class="col-lg-4 details-container">
+          <div class="details-wrap">
+            <h2>Project Information</h2>
+            <table>
+              <tr>
+                <td class="title">Client</td>
+                <td>Donal Arichange</td>
+              </tr>
+              <tr>
+                <td class="title">Project type</td>
+                <td>Digital Marketing</td>
+              </tr>
+              <tr>
+                <td class="title">Date</td>
+                <td>June 22, 2019</td>
+              </tr>
+              <tr>
+                <td class="title">Duration</td>
+                <td>06 Months</td>
+              </tr>
+              <tr>
+                <td class="title">Website</td>
+                <td><a href="#">http://www.example.com</a></td>
+              </tr>
+              <tr>
+                <td class="title">Address</td>
+                <td>326 North Lake View <br>
+                  Street Watsonville, <br>
+                  CA 95076.</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex">
+        <div class="col-lg-8 gallery-wrap">
+          <div class="outer">
+            <div id="big" class="owl-carousel owl-theme portfolio-carousel">
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project1.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project2.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project3.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project4.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project1.jpg' %}" alt="">
+              </div>
+            </div>
+
+            
+          </div>
+        </div>
+        <div class="col-lg-4 details-container">
+          <div class="details-wrap">
+            <h2>Project Information</h2>
+            <table>
+              <tr>
+                <td class="title">Client</td>
+                <td>Donal Arichange</td>
+              </tr>
+              <tr>
+                <td class="title">Project type</td>
+                <td>Digital Marketing</td>
+              </tr>
+              <tr>
+                <td class="title">Date</td>
+                <td>June 22, 2019</td>
+              </tr>
+              <tr>
+                <td class="title">Duration</td>
+                <td>06 Months</td>
+              </tr>
+              <tr>
+                <td class="title">Website</td>
+                <td><a href="#">http://www.example.com</a></td>
+              </tr>
+              <tr>
+                <td class="title">Address</td>
+                <td>326 North Lake View <br>
+                  Street Watsonville, <br>
+                  CA 95076.</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row d-flex">
+        <div class="col-lg-8 gallery-wrap">
+          <div class="outer">
+            <div id="big" class="owl-carousel owl-theme portfolio-carousel">
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project1.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project2.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project3.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project4.jpg' %}" alt="">
+              </div>
+              <div class="item">
+                <img class="img-fluid" src="{% static 'img/project1.jpg' %}" alt="">
+              </div>
+            </div>
+
+            
+          </div>
+        </div>
+        <div class="col-lg-4 details-container">
+          <div class="details-wrap">
+            <h2>Project Information</h2>
+            <table>
+              <tr>
+                <td class="title">Client</td>
+                <td>Donal Arichange</td>
+              </tr>
+              <tr>
+                <td class="title">Project type</td>
+                <td>Digital Marketing</td>
+              </tr>
+              <tr>
+                <td class="title">Date</td>
+                <td>June 22, 2019</td>
+              </tr>
+              <tr>
+                <td class="title">Duration</td>
+                <td>06 Months</td>
+              </tr>
+              <tr>
+                <td class="title">Website</td>
+                <td><a href="#">http://www.example.com</a></td>
+              </tr>
+              <tr>
+                <td class="title">Address</td>
+                <td>326 North Lake View <br>
+                  Street Watsonville, <br>
+                  CA 95076.</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End portfolio-details section -->
+
+  <!-- Start subscribe-form section -->
+  <section class="subscribe-form-section">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center cta-subscribe-wrap other-page">
+        <div class="col-md-5">
+          <h4>Don't miss any Update <br>
+            Subscribe to our Newsletter.
+          </h4>
+        </div>
+        <div class="col-md-7">
+          <form class="input-group subscribe-form-wrap">
+            <input class="form-control" type="text" placeholder="Your Email Address">
+            <div class="input-group-append">
+              <button class="form-btn-style" type="submit">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End subscribe-form section -->
+  <!-- Start footer section -->
+  <footer class="footer-section home-two">
+    <div class="container">
+      <div class="row footer-top section-gap-bottom d-flex justify-content-between">
+        <div class="col-lg-4 col-md-6 col-6 footer-widgets">
+          <img class="footer-logo" src="{% static 'img/csec-logo2.svg' %}" alt="">
+
+          <p>It is a long established fact that
+            reader will be distracted the readable
+            content of a page when looking at its
+            point of using desktop.</p>
+          <ul class="social-lists">
+            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+            <li><a href="#"><i class="icofont-twitter"></i></a></li>
+            <li><a href="#"><i class="icofont-instagram"></i></a></li>
+            <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">About</h4>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Partners</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">Conditions</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Services</h4>
+            <ul>
+              <li><a href="#">Official lottery</a></li>
+              <li><a href="#">100% Safe Secure</a></li>
+              <li><a href="#">Instant Payout </a></li>
+              <li><a href="#">Performance Bonus</a></li>
+              <li><a href="#">Dedicated Support</a></li>
+              <li><a href="#">No commission</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Company</h4>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Apps</a></li>
+              <li><a href="#">Lottery</a></li>
+              <li><a href="#">Bonues</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row copyright-bottom d-flex align-items-center">
+        <div class="col-md-6">
+          <p><a href="#">CSEC ASTU</a></p>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Privecy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End footer section -->
+  <!-- Start Scroll Top -->
+  <div class="scroll-top">
+    <i class="icofont-rounded-up"></i>
+  </div>
+  <!-- End Scroll Top -->
+{% endblock content%}

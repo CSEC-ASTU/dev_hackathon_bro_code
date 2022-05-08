@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <!-- Start Pre-loader -->
+  <div class="pre-loader-wrap">
+    <div class="pre-loader triangle">
+      <svg viewBox="0 0 86 80">
+        <polygon points="43 8 79 72 7 72"></polygon>
+      </svg>
+      <span>Loading...</span>
+    </div>
+  </div>
+  <!-- End Pre-loader -->
+  <!-- Start header section -->
+  <section class="header-section page-header">
+    <header class="header-area">
+      <div class="dope-nav-container breakpoint-off">
+        <div class="container">
+          <div class="row">
+            <!-- Main Menu -->
+            <nav class="dope-navbar justify-content-between" id="dopeNav">
+
+              <!-- Logo -->
+              <a class="nav-brand mt-5" href="{% url 'core:indexpage' %}"><img src="{% static 'img/csec-logo2.png' %}" alt=></a>
+
+              <!-- Navbar Toggler -->
+              <div class="dope-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
+              </div>
+
+              <!-- Menu -->
+              <div class="dope-menu">
+                <!-- close btn -->
+                <div class="dopecloseIcon">
+                  <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                </div>
+
+                
+              </div>
+
+              <!-- Nav Start -->
+              <div class="dopenav">
+                <ul id="nav">
+                  <li><a href="{% url 'core:indexpage' %}">Home</a></li>
+                  <li><a href="{% url 'core:events' %}">Events</a></li>
+                  <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
+                  <li><a href="{% url 'core:score_board' %}">ScoreBoard</a></li>                    
+
+                  <li><a href="{% url 'core:about' %}">About</a></li>
+                  
+                  
+                  
+                  <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                  <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+
+
+                  {% if request.user.is_authenticated %}
+                  <li> 
+
+                    {% if user.profile_picture%}
+                    <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
+                   
+                      <a href="#" style="color:#fff"> Pages</a>
+                    <ul class="sub-menu">
+                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                         <li><a href="{% url 'core:hall-of-fame'%}">Hall of Fame</a>
+                       </ul>
+                  </li>
+                  </ul>
+
+                    {%else%}
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+
+                    {%endif%}
+                    <ul class="sub-menu">
+                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                         <li><a href="{% url 'users:logout'%}">Logout</a>
+                       </ul>
+                  </li>
+          
+                {% else %}
+                <a href="{% url 'users:login' %}" class="btn-style blue-btn ml-5">Login</a>
+
+                {% endif %}
+              </ul>
+              </div>
+
+              </div>
+              <!-- Nav End -->
+                
+              <a class="nav-brand mt-5" href="{% url 'core:indexpage' %}"><img src="{% static 'img/csec-logo2.png' %}" alt=></a>
+              </div>
+            </nav>
+            <div class="overlay"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+  </section>
+  <!-- End header section -->
+  <!-- Start portfolio-details section -->
+  <section class="portfolio-details-section det  ">
+    <div class="container">
+      <div class="row d-flex ">
+
+        <div class="col-lg-6 details-container  mt-5">
+          <div class="abt mt-5 mr-5">
+            <h1>Tomas Edison</h1>
+            
+            <p style="mr-5">  
+              Where does it come from?
+              
+              Contrary to popular belief, Lorem Ipsum 
+              is not simply random text. 
+              It has roots in a piece of class
+
+            </p>
+            <table>
+              <tr>
+                <td class="title">Client</td>
+                <td>Donal Arichange</td>
+              </tr>
+              <tr>
+                <td class="title">Project type</td>
+                <td>Digital Marketing</td>
+              </tr>
+            </table>
+
+          </div>
+        </div>
+        <div class="col-lg-6 gallery-wrap  mt-5 mb-5">
+          <div class="outer mb-5 mt-5"  style="background-color:#dddbdc;margin-top:50px;">
+            <div id="big" class="owl-carousel owl-theme portfolio-carousel mb-2 mt-5" >
+              
+                <img class="img-fluid" style="max-height:300px;object-fit: fill;" src="https://cmhof.imgix.net/content/uploads/2019/03/11072215/Anderson_Bill.jpg" alt="">
+              
+          </div>
+
+          <div class="ml-4 mt-5 pb-5" > 
+
+            <h4>achivments</h4>
+            <table>
+              <tr>
+                <td class="title">Client</td>
+                <td>Donal Arichange</td>
+              </tr>
+              <tr>
+                <td class="title">Project type</td>
+                <td>Digital Marketing</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+      </div>
+
+
+
+     
+    </div>
+  </section>
+  <!-- End portfolio-details section -->
+
+  <!-- Start footer section -->
+  <footer class="footer-section home-two">
+    <div class="container">
+      <div class="row footer-top section-gap-bottom d-flex justify-content-between">
+        <div class="col-lg-4 col-md-6 col-6 footer-widgets">
+          <img class="footer-logo" src="{% static 'img/csec-logo2.svg' %}" alt="">
+
+          <p>It is a long established fact that
+            reader will be distracted the readable
+            content of a page when looking at its
+            point of using desktop.</p>
+          <ul class="social-lists">
+            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+            <li><a href="#"><i class="icofont-twitter"></i></a></li>
+            <li><a href="#"><i class="icofont-instagram"></i></a></li>
+            <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">About</h4>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Partners</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">Conditions</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Services</h4>
+            <ul>
+              <li><a href="#">Official lottery</a></li>
+              <li><a href="#">100% Safe Secure</a></li>
+              <li><a href="#">Instant Payout </a></li>
+              <li><a href="#">Performance Bonus</a></li>
+              <li><a href="#">Dedicated Support</a></li>
+              <li><a href="#">No commission</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Company</h4>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Apps</a></li>
+              <li><a href="#">Lottery</a></li>
+              <li><a href="#">Bonues</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row copyright-bottom d-flex align-items-center">
+        <div class="col-md-6">
+          <p><a href="#">CSEC ASTU</a></p>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Privecy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End footer section -->
+  <!-- Start Scroll Top -->
+  <div class="scroll-top">
+    <i class="icofont-rounded-up"></i>
+  </div>
+  <!-- End Scroll Top -->
+{% endblock content%}

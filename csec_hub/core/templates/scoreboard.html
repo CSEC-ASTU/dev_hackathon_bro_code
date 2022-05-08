@@ -1,0 +1,372 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+  <!-- Start Pre-loader -->
+  <div class="pre-loader-wrap">
+    <div class="pre-loader triangle">
+      <svg viewBox="0 0 86 80">
+        <polygon points="43 8 79 72 7 72"></polygon>
+      </svg>
+      <span>Loading...</span>
+    </div>
+  </div>
+  <!-- End Pre-loader -->
+  <!-- Start header section -->
+  <section class="header-section page-header">
+    <header class="header-area">
+      <div class="dope-nav-container breakpoint-off">
+        <div class="container">
+          <div class="row">
+            <!-- Main Menu -->
+            <nav class="dope-navbar justify-content-between" id="dopeNav">
+
+              <!-- Logo -->
+              <a class="nav-brand mt-5" href="{% url 'core:indexpage' %}"><img src="{% static 'img/csec-logo2.png' %}" alt=></a>
+
+              <!-- Navbar Toggler -->
+              <div class="dope-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
+              </div>
+
+              <!-- Menu -->
+              <div class="dope-menu">
+                <!-- close btn -->
+                <div class="dopecloseIcon">
+                  <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                </div>
+                
+              </div>
+
+              <!-- Nav Start -->
+              <div class="dopenav">
+                <ul id="nav">
+                  <li><a href="{% url 'core:indexpage' %}">Home</a></li>
+                  <li><a href="{% url 'core:events' %}">Events</a></li>
+                  <li><a href="{% url 'core:feeds' %}">Feeds</a></li>
+                  <li><a href="{% url 'core:score_board' %}">ScoreBoard</a></li>                    
+
+                  <li><a href="{% url 'core:about' %}">About</a></li>
+                  
+                  
+                  
+                  <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                  <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+                  <li>
+                    <a href="#" style="color:#fff"> Pages</a>
+                    <ul class="sub-menu">
+                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                         <li><a href="{% url 'core:hall-of-fame'%}">Hall of Fame</a>
+                       </ul>
+                  </li>
+
+
+                  {% if request.user.is_authenticated %}
+                  <li> 
+
+                    {% if user.profile_picture%}
+                    <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
+
+                    {%else%}
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+
+                    {%endif%}
+                    <ul class="sub-menu">
+                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                         <li><a href="{% url 'users:logout'%}">Logout</a>
+                       </ul>
+                  </li>
+          
+                {% else %}
+                <a href="{% url 'users:login' %}" class="btn-style blue-btn ml-5">Login</a>
+
+                {% endif %}
+                   
+                 
+              </li>
+              </ul>
+              </div>
+
+              </div>
+              <!-- Nav End -->
+            
+              </div>
+            </nav>
+            <div class="overlay"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row section-gap">
+        <div class="col-md-12">
+          <h1>Our Feeds</h1>
+          <ul class="pagination">
+            <li><a href="#">Home</a></li>
+            <li>Our Feeds</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End header section -->
+
+  <!-- Start blog-post section -->
+  <section class="blog-post-section section-gap">
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-lg-8 col-md-12 blog-posts">
+
+          {% for score in filter.qs%}
+          <h4>{{score.title}} </h4>
+          <div class="single-post">
+        
+             {{score.body |safe}}
+               
+         
+            <div class="details">
+              <div class="meta">
+                <span>By:</span>{{score.posted_by}} / <span>Date:</span> {{score.updated_at}}
+               
+               
+              </div>
+            
+            </div>
+            
+            </h4>
+           
+          </div>
+
+          {% endfor %}
+
+         
+         
+          <nav aria-label="page navigation">
+            <ul class="pagination">
+              {% if page_obj.has_previous %}
+              <li class="page-item ">
+                <a class="page-link" href="?page=1">&laquo; first</a>
+              </li>
+              <li class="page-item">  <a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+
+              {% endif %}
+              <li class="page-item active current">
+                <a class="page-link" href="#">{{ page_obj.number }}</a>
+              </li>
+              {% if page_obj.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a>
+              </li>
+              <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+        <div class="col-lg-4 col-md-12 sidebar">
+        
+          <div class="widget category_widget">
+            <h4 class="widget-title">Filter ScoreBoard</h4>
+
+            <form method="get">
+
+      
+          <div class="container">
+        
+
+            
+            <div>
+              <label> <label for="id_scoreboard_date__day">Scoreboard date day</label> 
+              <input type="number" name="scoreboard_date__day" step="any" id="id_scoreboard_date__day" min="0">
+    
+         </label></div>
+    
+         <div>
+              <label> <label for="id_scoreboard_date__day">Scoreboard Month</label> 
+             <input type="number" name="scoreboard_date__month" step="any" id="id_scoreboard_date__month" min="0">
+         </label></div>
+         <div>
+            <label for="id_scoreboard_date__day">Scoreboard Year</label> 
+              <input type="number" name="scoreboard_date__year" step="any" id="id_scoreboard_date__year" min="0">
+        </div>
+         <div class="mb-3">
+           <label for="id_scoreboard_date__day">Week</label> 
+
+           <div>
+            <input type="number" name="week" step="any" id="id_scoreboard_date__year" min="0"> 
+
+           </div>
+            </div>
+     
+            <div>
+              <label for="id_week__gt">Week is greater than</label>
+              <input type="number" name="week__gt" step="any" id="id_week__gt" min="0">
+            </div>
+        
+            <div class="mb-3">
+              <label for="id_week__lt">Week is less than:</label>
+              <input type="number" name="week__lt" step="any" id="id_week__lt" min="0">
+            </div>
+        
+    
+        <button type="submit" class="menu-btn">  Filter</button>
+          </div>
+    
+             
+            </form>
+            
+           
+            
+          </div>
+          <div class="widget ads_widget text-center">
+            <img class="img-fluid" src="{% static 'img/ads.jpg' %}" alt="">
+          </div>
+          <div class="widget widget_recent_entries">
+            <h4 class="widget-title">Recent Post</h4>
+            <ul>
+              <li class="d-flex align-items-center justify-content-center">
+                <a class="thumb" href="single.html">
+                  <img src="{% static 'img/r1.jpg' %}" alt="">
+                </a>
+                <div class="meta-wrap">
+                  <a href="single.html">
+                    AdWords History Timeline Published
+                  </a>
+                  <p>November 16, 2018</p>
+                </div>
+              </li>
+              <li class="d-flex align-items-center justify-content-center">
+                <a class="thumb" href="single.html">
+                  <img src="{% static 'img/r2.jpg' %}" alt="">
+                </a>
+                <div class="meta-wrap">
+                  <a href="single.html">
+                    Contented direction septem but end excellent.
+                  </a>
+                  <p>November 16, 2018</p>
+                </div>
+              </li>
+              <li class="d-flex align-items-center justify-content-center">
+                <a class="thumb" href="single.html">
+                  <img src="{% static 'img/r3.jpg' %}" alt="">
+                </a>
+                <div class="meta-wrap">
+                  <a href="single.html">
+                    One morning, when Gregor Samsa woke from troubled.
+                  </a>
+                  <p>November 16, 2018</p>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End blog-post section -->
+  <!-- Start subscribe-form section -->
+  <section class="subscribe-form-section">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center cta-subscribe-wrap other-page">
+        <div class="col-md-5">
+          <h4>Don't miss any Update <br>
+            Subscribe to our Newsletter.
+          </h4>
+        </div>
+        <div class="col-md-7">
+          <form class="input-group subscribe-form-wrap">
+            <input class="form-control" type="text" placeholder="Your Email Address">
+            <div class="input-group-append">
+              <button class="form-btn-style" type="submit">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End subscribe-form section -->
+  <!-- Start footer section -->
+  <footer class="footer-section home-two">
+    <div class="container">
+      <div class="row footer-top section-gap-bottom d-flex justify-content-between">
+        <div class="col-lg-4 col-md-6 col-6 footer-widgets">
+          <img class="footer-logo" src="{% static 'img/csec-logo2.svg' %}" alt="">
+
+          <p>It is a long established fact that
+            reader will be distracted the readable
+            content of a page when looking at its
+            point of using desktop.</p>
+          <ul class="social-lists">
+            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+            <li><a href="#"><i class="icofont-twitter"></i></a></li>
+            <li><a href="#"><i class="icofont-instagram"></i></a></li>
+            <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">About</h4>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Partners</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">Conditions</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Services</h4>
+            <ul>
+              <li><a href="#">Official lottery</a></li>
+              <li><a href="#">100% Safe Secure</a></li>
+              <li><a href="#">Instant Payout </a></li>
+              <li><a href="#">Performance Bonus</a></li>
+              <li><a href="#">Dedicated Support</a></li>
+              <li><a href="#">No commission</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 footer-widgets">
+          <div class="single-widget">
+            <h4 class="wiget-title">Company</h4>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Apps</a></li>
+              <li><a href="#">Lottery</a></li>
+              <li><a href="#">Bonues</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row copyright-bottom d-flex align-items-center">
+        <div class="col-md-6">
+          <p><a href="#">CSEC ASTU</a></p>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Privecy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End footer section -->
+  <!-- Start Scroll Top -->
+  <div class="scroll-top">
+    <i class="icofont-rounded-up"></i>
+  </div>
+  <!-- End Scroll Top -->
+  
+  {% endblock content%}

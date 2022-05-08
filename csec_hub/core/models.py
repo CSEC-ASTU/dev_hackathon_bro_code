@@ -1,44 +1,31 @@
 
-from turtle import pos
+from pyexpat import model
 from django.db import models
-from users.models import Membership
-from users.models import Division
+from users.models import User, Membership, Division
 from django.contrib.auth.models import Group
 from taggit.managers import TaggableManager
 
-class CpdScoreBoard(models.Model):
+class ScoreBoard(models.Model):
 
-    def upload_to_cpd_score_board(self, filename):
-        return 'cpd_score_board/%s' % filename
+    def upload_to_score_board(self, filename):
+        return 'cscore_board/%s' % filename
 
     title = models.CharField(max_length=255)
-    description = models.TextField()
-    image = models.ImageField(upload_to=upload_to_cpd_score_board)
-    posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='cpd_score_board_posted_by')
+    body = models.TextField()
+    posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='score_board_posted_by')
     tags = TaggableManager() 
+    scoreboard_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
+    week = models.PositiveIntegerField()
 
-class DevScoreBoard(models.Model):
-
-    def upload_to_dev_score_board(self, filename):
-        return 'dev_score_board/%s' % filename
-        
-    title = models.CharField(max_length=255)
-    description = models.TextField()
-    image = models.ImageField(upload_to=upload_to_dev_score_board)
-    posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='dev_score_board_posted_by')
-    tags = TaggableManager()  
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    is_active = models.BooleanField(default=True)
 
 class Feed(models.Model):
     title = models.CharField(max_length=255)
     body = models.TextField()
     type = models.ForeignKey('FeedType', on_delete=models.CASCADE, related_name='feed_type')
-    posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='feed_posted_by')
+    posted_by = models.ForeignKey(Membership, on_delete=models.CASCADE, related_name='feed_posted_by', limit_choices_to={'is_active': True},)
     tags = TaggableManager()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -61,7 +48,7 @@ class FeedType(models.Model):
     
 class Event(models.Model):
     def upload_to_event(self, filename):
-        return 'event/%Y/%m/%d/%s' % filename
+        return f'event/%Y/%m/%d/{filename}'
 
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -80,4 +67,31 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
-     
+# event partispant model
+class EventParticipant(models.Model):
+    def limit_choices_to_event_participant(self):
+        return {'is_active': True}
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='event_participant')
+    participant = models.ManyToManyField(User, related_name='event_participant')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+
+
+class Candidate(Membership):
+    msg = models.TextField()
+    votes = models.PositiveIntegerField(default=0)
+    
+
+    def __str__(self):
+        return self.user.username
+
+
+class Voting(models.Model):
+    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE, related_name='voting_candidate')
+    voted_by = models.ManyToManyField(User, related_name='candidate_voted')
+    vote_date = models.DateTimeField()
+    msg = models.CharField(max_length=3, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
