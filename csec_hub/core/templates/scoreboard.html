@@ -66,10 +66,10 @@
                   <li> 
 
                     {% if user.profile_picture%}
-                    <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
+                    <img src="{{ user.profile_picture.url }}" class="rounded-circle" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
 
                     {%else%}
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="65">
 
                     {%endif%}
                     <ul class="sub-menu">
@@ -101,7 +101,7 @@
     <div class="container">
       <div class="row section-gap">
         <div class="col-md-12">
-          <h1>Our Feeds</h1>
+          <h1>Our Score board</h1>
           <ul class="pagination">
             <li><a href="#">Home</a></li>
             <li>Our Feeds</li>

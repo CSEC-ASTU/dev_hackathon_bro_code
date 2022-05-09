@@ -64,10 +64,10 @@
                   <li> 
 
                     {% if user.profile_picture%}
-                    <img src="{{ user.profile_picture.url }}" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
+                    <img src="{{ user.profile_picture.url }}" class="rounded-circle" style="width:65px;border-radius:50%;padding:5px 5px;"alt="">
 
                     {%else%}
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="150">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="profile" class="rounded-circle" width="65">
 
                     {%endif%}
                     <ul class="sub-menu">

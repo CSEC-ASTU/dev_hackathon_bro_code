@@ -9,14 +9,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 
 
-@receiver(post_save, sender=FeedType)
-def add_to_group(sender, instance, created, **kwargs):
-    if created:
-        new_group, created = Group.objects.get_or_create(name=instance.name)
-        User.groups.add(new_group)
-        instance.save()
-    else:
-        pass
+
 
 @receiver(post_save, sender=Feed)
 def send_feed_notification(sender, instance, created, **kwargs):
