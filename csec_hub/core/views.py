@@ -87,7 +87,7 @@ class FeedView(ListView):
         self.form_class = SearchForm
         self.queryset = self.model.objects.filter(is_active=True)
         self.paginate_by = 1
-        self.paginate_orphans = 1
+      
 
     def get_queryset(self):
         queryset = self.model.objects.filter(is_active=True)
