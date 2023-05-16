@@ -13,7 +13,6 @@
 ### Technology Stack
 
   This project is built using the following technologies:
-
     * Django (Python web framework)
     * HTML/CSS/JavaScript
     * Bootstrap (front-end framework)
